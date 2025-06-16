@@ -5,6 +5,24 @@ body {
 box-sizing: border-box;
 }
 
+#main {
+  background-color: #fff;
+  transition: transform 0.4s ease-in-out;
+  padding-top: 10.1875rem;
+  position: relative;
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  #main {
+    padding-top: 6.75rem;
+  }
+}
+@media (min-width: 992px) {
+  #main {
+    padding-top: 13.5rem;
+  }
+}
+
 .container {
   margin-left: auto;
   margin-right: auto;
@@ -21,3 +39,4 @@ box-sizing: border-box;
     max-width: 1200px;
   }
 }
+
