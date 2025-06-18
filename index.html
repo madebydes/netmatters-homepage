@@ -11,42 +11,50 @@
 	<title>Netmatters Homepage</title>
 </head>
 <body>
-	<header>
-		<div>
-			<div>
-				<a href="#">
-					<img src="img/nm-logo.png" alt="Netmatters logo">
-				</a>
-				<a href="#">
-					<span></span>Support
-				</a>
-				<a href="#">
-					<span></span>Contact
-				</a>
-				<form action="#">
-					<label for="search-input-wide-viewport">Search the website:</label>
-					<input type="text" id="search-input-wide-viewport" placeholder="Search..." name="keyword">
-					<button type="submit" aria-label="Search">
-						<span></span>
-					</button>
-				</form>
-				<a href="tel:000" aria-label="Call us">
-					<span></span>
-				</a>
-				<button aria-label="Toggle navigation">
-					<span></span>
-					<span></span>
-					<span></span>
-				</button>
-			</div>
-			<form action="#">
-				<label for="search-input-narrow-viewport">Search the website:</label>
-				<input type="text" id="search-input-narrow-viewport" placeholder="Search..." name="keyword">
-				<button type="submit" aria-label="Search">
-					<span></span>
-				</button>
-			</form>
-		</div>
+ <header class="main-header">
+        <div class="container">
+
+            <div class="main-header__top-bar">
+
+               
+                <a href="#" class="main-logo">
+                    <img src="img/nm-logo.png" alt="Netmatters logo" class="main-logo-image">
+                </a>
+
+                <a href="#" class="site-support-cta">
+                    <span class="icon icon-mouse"></span>                   
+                    Support
+                </a>
+                <a href="#" class="site-contact-cta">
+                    <span class="icon icon-paperplane"></span> 
+                    Contact
+                </a>
+
+                
+                <form action="#" class="site-search-widget site-search-widget--wide-viewport">
+                    <label for="search-input-wide-viewport" class="screen-reader-only">Search the
+                        website:</label>
+                    <input type="text" id="search-input-wide-viewport" placeholder="Search..." name="keyword"
+                        class="site-search-widget__field site-search-widget__field--wide-viewport">
+                    <button type="submit" aria-label="Search"
+                        class="site-search-widget__trigger site-search-widget__trigger--wide-viewport">
+
+                        <span class="site-search-widget__icon" aria-hidden="true"></span> 
+
+                    </button>
+                </form>
+
+              
+                <a href="tel:000" aria-label="Call us" class="site-phone-cta">
+                    <span class="site-phone-cta__icon" aria-hidden="true"></span>
+                </a>
+
+                <button aria-label="Toggle navigation" class="site-nav-toggle"> 
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 		<nav>
 			<div>
 				<ul>
