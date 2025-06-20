@@ -379,6 +379,125 @@ body {
   display: block;
 }
 
+.main-nav__item:hover .main-nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2.25rem;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 2.25rem 67px 0px 67px;
+  border-color: transparent transparent transparent;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+@media (min-width: 1260px) {
+  .main-nav__item:hover .main-nav__link::after {
+    border-width: 2.25rem 83px 0px 83px;
+  }
+}
+
+.main-nav__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.main-nav__link:hover {
+  text-decoration: none;
+}
+
+.main-nav__dropdown {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.main-nav__sublist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.main-nav__sublist li {
+  width: 33%;
+  padding: 0.625rem 1rem 0.625rem 0;
+  margin-top: 1rem;
+}
+
+.main-nav__sublist li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav__sublist li a .icon {
+  width: 1.25rem;
+  margin-bottom: 0;
+  margin-right: 0.25rem;
+}
+
+.main-nav__item-text {
+  display: block;
+  text-transform: uppercase;
+}
+
+.main-nav__dropdown-title {
+  font-size: 2rem;
+}
+
+.main-nav__sublist {
+  font-size: 1.2rem;
+}
+
+.main-nav__item-text--small {
+  font-size: 0.625rem;
+  line-height: 0.5rem;
+}
+
+.main-nav__item-text--large {
+  font-size: 1.125rem;
+}
+
+.main-header__top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-nav-toggle {
+  background-color: #323544;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 3.5rem;
+  width: 4rem;
+  background-color: #323544;
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.site-nav-toggle:hover {
+  background-color: #121318;
+}
+
+.site-nav-toggle span {
+  display: block;
+  width: 2rem;
+  height: 0.25rem;
+  background-color: #fff;
+}
+
 footer {
   background-color: #333645;
   color: #fff;
