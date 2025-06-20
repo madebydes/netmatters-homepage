@@ -55,35 +55,6 @@ body {
   }
 }
 
-.clients__pop-up-link--web-design, .clients__pop-up-link--digital-marketing, .clients__pop-up-link--it-support, .clients__pop-up-link--bespoke-software, .news__card-read-more-button, .welcome__button-link, .services__card-read-more-button, .banner__button, .site-contact-cta, .site-support-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.75em 1em;
-  border: none;
-  border-radius: 0.25em;
-  color: #fff;
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.screen-reader-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.no-line-break {
-  white-space: nowrap;
-}
-
 .main-logo {
   margin-right: auto;
   text-decoration: none;
@@ -186,7 +157,7 @@ body {
   color: #666;
   border: 1px solid #ccc;
   font-size: 0.875rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
 }
 
 .site-search-widget__field::placeholder {
@@ -195,7 +166,7 @@ body {
 
 .site-search-widget__field:focus {
   border-color: #5bc0de;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(91, 192, 222, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(90, 192, 222, 0.5);
   outline: none;
 }
 
@@ -322,27 +293,6 @@ body {
 
 .main-header--hide-upwards {
   transform: translateY(-100%);
-}
-
-.main-logo {
-  margin-right: auto;
-  text-decoration: none;
-}
-
-@media (min-width: 768px) {
-  .main-logo {
-    max-width: 22rem;
-  }
-}
-
-@media (min-width: 992px) {
-  .main-logo {
-    max-width: 100%;
-  }
-}
-
-.main-logo-image {
-  width: 90%;
 }
 
 .main-nav {
@@ -496,6 +446,27 @@ body {
   width: 2rem;
   height: 0.25rem;
   background-color: #fff;
+}
+
+.banner {
+  min-height: 35rem;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .banner {
+    text-align: left;
+  }
+}
+
+.banner__hero-item--headline {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/nm-banner.png");
+}
+
+@media (min-width: 992px) {
+  .banner__hero-item--headline {
+    background-image: linear-gradient(270deg, transparent 25%, #000), url("../img/nm-banner.png");
+  }
 }
 
 footer {

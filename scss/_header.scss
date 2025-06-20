@@ -21,24 +21,8 @@
   transform: translateY(-100%);
 }
 
-.main-logo {
-  margin-right: auto;
-  text-decoration: none;
-}
-@media (min-width: 768px) {
-  .main-logo {
-    max-width: 22rem;
-  }
-}
-@media (min-width: 992px) {
-  .main-logo {
-    max-width: 100%;
-  }
-}
 
-.main-logo-image {
-  width: 90%;
-}
+
 
 
 .main-nav {
@@ -71,7 +55,6 @@
 .main-nav__item:hover .main-nav__dropdown {
   display: block;
 }
-
 .main-nav__item:hover .main-nav__link::after {
   content: "";
   position: absolute;
@@ -184,3 +167,4 @@
   height: 0.25rem;
   background-color: #fff;
 }
+
