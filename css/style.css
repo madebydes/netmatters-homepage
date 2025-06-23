@@ -448,6 +448,153 @@ body {
   background-color: #fff;
 }
 
+.main-nav__item--bespoke-software:hover .main-nav__link {
+  background-color: #67809F;
+}
+
+.main-nav__item--it-support:hover .main-nav__link {
+  background-color: #4183D7;
+}
+
+.main-nav__item--digital-marketing:hover .main-nav__link {
+  background-color: #2ECC71;
+}
+
+.main-nav__item--telecoms-services:hover .main-nav__link {
+  background-color: #D64541;
+}
+
+.main-nav__item--web-design:hover .main-nav__link {
+  background-color: #926FB1;
+}
+
+.main-nav__item--cyber-security:hover .main-nav__link {
+  background-color: #F62459;
+}
+
+.main-nav__item--developer-training:hover .main-nav__link {
+  background-color: #CE4125;
+}
+
+.main-nav__item--bespoke-software .main-nav__dropdown {
+  background-color: #526781;
+}
+
+.main-nav__item--it-support .main-nav__dropdown {
+  background-color: #286ABD;
+}
+
+.main-nav__item--digital-marketing .main-nav__dropdown {
+  background-color: #25A25A;
+}
+
+.main-nav__item--telecoms-services .main-nav__dropdown {
+  background-color: #BC2C28;
+}
+
+.main-nav__item--web-design .main-nav__dropdown {
+  background-color: #79539A;
+}
+
+.main-nav__item--cyber-security .main-nav__dropdown {
+  background-color: #DE093F;
+}
+
+.main-nav__item--developer-training .main-nav__dropdown {
+  background-color: #A3331D;
+}
+
+.main-nav__item--bespoke-software .icon {
+  fill: #67809F;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--bespoke-software:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--it-support .icon {
+  fill: #4183D7;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--it-support:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--digital-marketing .icon {
+  fill: #2ECC71;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--digital-marketing:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--telecoms-services .icon {
+  fill: #D64541;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--telecoms-services:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--web-design .icon {
+  fill: #9877B6;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--web-design:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--cyber-security .icon {
+  fill: #F62459;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--cyber-security:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--developer-training .icon {
+  fill: #CE4125;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--developer-training:hover .icon {
+  fill: #fff;
+}
+
+.main-nav__item--bespoke-software:hover .main-nav__link::after {
+  border-top-color: #67809F;
+}
+
+.main-nav__item--it-support:hover .main-nav__link::after {
+  border-top-color: #4183D7;
+}
+
+.main-nav__item--digital-marketing:hover .main-nav__link::after {
+  border-top-color: #2ECC71;
+}
+
+.main-nav__item--telecoms-services:hover .main-nav__link::after {
+  border-top-color: #D64541;
+}
+
+.main-nav__item--web-design:hover .main-nav__link::after {
+  border-top-color: #926FB1;
+}
+
+.main-nav__item--cyber-security:hover .main-nav__link::after {
+  border-top-color: #F62459;
+}
+
+.main-nav__item--developer-training:hover .main-nav__link::after {
+  border-top-color: #CE4125;
+}
+
 .banner {
   min-height: 35rem;
   text-align: center;
@@ -597,6 +744,47 @@ body {
 @media (min-width: 992px) {
   .banner__hero-item--headline {
     background-image: linear-gradient(270deg, transparent 25%, #000), url("../img/nm-banner.png");
+  }
+}
+
+.banner__hero-item--headline .banner__button {
+  background-color: #926FB1;
+}
+
+.banner__hero-item--headline .banner__button:hover {
+  background-color: #6c4a89;
+}
+
+.banner__hero-item--headline .banner__heading {
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 500px) {
+  .banner__hero-item--headline .banner__heading {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .banner__hero-item--headline .banner__heading {
+    font-size: 3.5rem;
+  }
+}
+
+.banner__hero-item--headline .banner__tagline {
+  font-size: 1rem;
+  max-width: 40ch;
+}
+
+@media screen and (min-width: 500px) {
+  .banner__hero-item--headline .banner__tagline {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .banner__hero-item--headline .banner__tagline {
+    font-size: 1.625rem;
   }
 }
 
