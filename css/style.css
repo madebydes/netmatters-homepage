@@ -138,7 +138,7 @@ a:hover {
   }
 }
 
-.banner__button, .site-contact-cta, .site-support-cta {
+.services__card-read-more-button:hover, .banner__button, .site-contact-cta, .site-support-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -151,7 +151,7 @@ a:hover {
   cursor: pointer;
 }
 
-.banner__button:hover, .site-contact-cta:hover,
+.services__card-read-more-button:hover, .banner__button:hover, .site-contact-cta:hover,
 .site-support-cta:hover {
   text-decoration: none;
 }
@@ -893,6 +893,107 @@ a:hover {
 @media (min-width: 992px) {
   .banner__hero-item--headline .banner__tagline {
     font-size: 1.625rem;
+  }
+}
+
+.services {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.services a {
+  text-decoration: none;
+}
+
+.services__menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.services__menu-container > * {
+  flex-basis: 100%;
+}
+
+@media (min-width: 768px) {
+  .services__menu-container > :nth-last-child(-n+4) {
+    max-width: calc((100% - 2rem) / 2);
+  }
+}
+
+@media (min-width: 992px) {
+  .services__menu-container > :nth-child(-n+3) {
+    max-width: calc((100% - (2 * 2rem)) / 3);
+  }
+}
+
+@media (min-width: 1260px) {
+  .services__menu-container > :nth-last-child(-n+4) {
+    max-width: calc((100% - (3 * 2rem)) / 4);
+  }
+}
+
+.services__heading {
+  margin: 0;
+  color: #323544;
+  font-size: 2.75rem;
+}
+
+.services__view-case-studies-link {
+  color: #323544;
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.services__view-case-studies-link:hover {
+  text-decoration: underline;
+}
+
+.services__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 0;
+  transition: 0.5s ease;
+  padding: 1.875rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.services__card:hover {
+  top: -0.625rem;
+}
+
+.space-between-heading-and-view-more-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.services__view-case-studies-link--wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--wide-viewport {
+    display: block;
+  }
+}
+
+.services__view-case-studies-link--narrow-viewport {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--narrow-viewport {
+    display: none;
   }
 }
 
