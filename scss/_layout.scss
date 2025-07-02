@@ -129,7 +129,13 @@ a:hover {
   }
 }
 
-.services__card-read-more-button:hover, .banner__button, .site-contact-cta, .site-support-cta {
+.news__card-read-more-button:hover, 
+.welcome__button-link:hover, 
+.services__card-read-more-button:hover, 
+.services__card-read-more-button:hover, 
+.banner__button, 
+.site-contact-cta, 
+.site-support-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -141,7 +147,12 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
- .services__card-read-more-button:hover, .banner__button:hover, .site-contact-cta:hover, 
+ .news__card-read-more-button:hover, 
+ .welcome__button-link:hover, 
+ .services__card-read-more-button:hover, 
+ .services__card-read-more-button:hover, 
+ .banner__button:hover, 
+ .site-contact-cta:hover, 
 .site-support-cta:hover  {
   text-decoration: none;
 }
