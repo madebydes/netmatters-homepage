@@ -979,35 +979,6 @@ a:hover {
   top: -0.625rem;
 }
 
-.space-between-heading-and-view-more-link {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 2rem;
-}
-
-.services__view-case-studies-link--wide-viewport {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .services__view-case-studies-link--wide-viewport {
-    display: block;
-  }
-}
-
-.services__view-case-studies-link--narrow-viewport {
-  display: block;
-  margin-top: 1.5rem;
-  text-align: center;
-}
-
-@media (min-width: 768px) {
-  .services__view-case-studies-link--narrow-viewport {
-    display: none;
-  }
-}
-
 .services__card.services__card--bespoke-software:hover {
   background-color: #67809F;
 }
@@ -1131,6 +1102,117 @@ a:hover {
   background-color: #67809F;
 }
 
+.services__card-icon-background {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+.services__card-icon-background .icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.services__card-heading {
+  color: #323544;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.services__card-description {
+  color: #323544;
+  font-size: 0.8125rem;
+}
+
+.services__card-read-more-button {
+  margin-top: auto;
+}
+
+.services__card-read-more-button--bespoke-software {
+  background-color: #67809F;
+}
+
+.services__card-read-more-button--bespoke-software:hover {
+  background-color: #485b72;
+}
+
+.services__card-read-more-button--it-support {
+  background-color: #4183D7;
+}
+
+.services__card-read-more-button--it-support:hover {
+  background-color: #235ea8;
+}
+
+.services__card-read-more-button--digital-marketing {
+  background-color: #2ECC71;
+}
+
+.services__card-read-more-button--digital-marketing:hover {
+  background-color: #208e4e;
+}
+
+.services__card-read-more-button--telecoms-services {
+  background-color: #D64541;
+}
+
+.services__card-read-more-button--telecoms-services:hover {
+  background-color: #a72724;
+}
+
+.services__card-read-more-button--web-design {
+  background-color: #926FB1;
+}
+
+.services__card-read-more-button--web-design:hover {
+  background-color: #6c4a89;
+}
+
+.services__card-read-more-button--cyber-security {
+  background-color: #F62459;
+}
+
+.services__card-read-more-button--cyber-security:hover {
+  background-color: #c50838;
+}
+
+.services__card-read-more-button--developer-training {
+  background-color: #CE4125;
+}
+
+.services__card-read-more-button--developer-training:hover {
+  background-color: #8d2d19;
+}
+
+.space-between-heading-and-view-more-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+.services__view-case-studies-link--wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--wide-viewport {
+    display: block;
+  }
+}
+
+.services__view-case-studies-link--narrow-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--narrow-viewport {
+    display: block;
+  }
+}
+
 .services__card.services__card--bespoke-software .icon {
   fill: #fff;
 }
@@ -1237,90 +1319,6 @@ a:hover {
 
 .services__card.services__card--developer-training:hover .icon {
   fill: #CE4125;
-}
-
-.services__card-icon-background {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 50%;
-}
-
-.services__card-icon-background .icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.services__card-heading {
-  color: #323544;
-  font-size: 1.3rem;
-  font-weight: 400;
-}
-
-.services__card-description {
-  color: #323544;
-  font-size: 0.8125rem;
-}
-
-.services__card-read-more-button {
-  margin-top: auto;
-}
-
-.services__card-read-more-button--bespoke-software {
-  background-color: #67809F;
-}
-
-.services__card-read-more-button--bespoke-software:hover {
-  background-color: #485b72;
-}
-
-.services__card-read-more-button--it-support {
-  background-color: #4183D7;
-}
-
-.services__card-read-more-button--it-support:hover {
-  background-color: #235ea8;
-}
-
-.services__card-read-more-button--digital-marketing {
-  background-color: #2ECC71;
-}
-
-.services__card-read-more-button--digital-marketing:hover {
-  background-color: #208e4e;
-}
-
-.services__card-read-more-button--telecoms-services {
-  background-color: #D64541;
-}
-
-.services__card-read-more-button--telecoms-services:hover {
-  background-color: #a72724;
-}
-
-.services__card-read-more-button--web-design {
-  background-color: #926FB1;
-}
-
-.services__card-read-more-button--web-design:hover {
-  background-color: #6c4a89;
-}
-
-.services__card-read-more-button--cyber-security {
-  background-color: #F62459;
-}
-
-.services__card-read-more-button--cyber-security:hover {
-  background-color: #c50838;
-}
-
-.services__card-read-more-button--developer-training {
-  background-color: #CE4125;
-}
-
-.services__card-read-more-button--developer-training:hover {
-  background-color: #8d2d19;
 }
 
 blockquote {
@@ -1471,6 +1469,185 @@ blockquote {
 @media (min-width: 1260px) {
   .news__menu-container > :nth-child(-n+2) {
     max-width: calc((100% - 4rem) / 3);
+  }
+}
+
+.news__main-header {
+  margin: 0;
+  color: #323544;
+  font-size: 2.25rem;
+}
+
+.news__view-all-link {
+  color: #323544;
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.news__view-all-link:hover {
+  text-decoration: underline;
+}
+
+.news__card {
+  position: relative;
+  top: 0;
+  transition: 0.5s ease;
+}
+
+.news__card:hover {
+  top: -10px;
+  transition: 0.5s ease;
+}
+
+.news__card-image {
+  display: block;
+  width: 100%;
+}
+
+.news__card-category-label {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  padding: 0.25em 1em;
+  color: #fff;
+  background-color: #323544;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.news__card-category-label:hover {
+  text-decoration: underline;
+}
+
+.news__card-text-container {
+  padding: 1.875rem;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+}
+
+.news__card-title {
+  display: inline;
+  font-size: 1rem;
+}
+
+.news__card-read-length {
+  color: #999AA1;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.news__card-read-length:before {
+  content: "-";
+  padding-right: 0.5em;
+}
+
+.news__card-summary {
+  margin-bottom: 2rem;
+  color: #666;
+  font-size: 0.8125rem;
+}
+
+.news__card-author-container {
+  display: flex;
+  align-items: center;
+  padding-top: 1.875rem;
+  border-top: 1px solid #ccc;
+  margin-top: 1.875rem;
+}
+
+.news__card-avatar {
+  max-width: 3.125rem;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.news__card-author-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  font-size: 0.875rem;
+}
+
+.news__card-posted-by {
+  color: #323544;
+  font-weight: 600;
+}
+
+.news__card-posted-date {
+  display: block;
+  color: #666;
+}
+
+.news__card-title--careers {
+  color: #4183d7;
+}
+
+.news__card-title--bespoke-software {
+  color: #67809F;
+}
+
+.news__card-title--it-support {
+  color: #4183D7;
+}
+
+.news__card-title--web-design {
+  color: #926FB1;
+}
+
+.news__card-read-more-button--careers {
+  background-color: #4183d7;
+}
+
+.news__card-read-more-button--careers:hover {
+  background-color: #235ea8;
+}
+
+.news__card-read-more-button--bespoke-software {
+  background-color: #67809F;
+}
+
+.news__card-read-more-button--bespoke-software:hover {
+  background-color: #485b72;
+}
+
+.news__card-read-more-button--it-support {
+  background-color: #4183D7;
+}
+
+.news__card-read-more-button--it-support:hover {
+  background-color: #235ea8;
+}
+
+.news__card-read-more-button--web-design {
+  background-color: #926FB1;
+}
+
+.news__card-read-more-button--web-design:hover {
+  background-color: #6c4a89;
+}
+
+.news__view-all-link--wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .news__view-all-link--wide-viewport {
+    display: block;
+  }
+}
+
+.news__view-all-link--narrow-viewport {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .news__view-all-link--narrow-viewport {
+    display: none;
   }
 }
 
