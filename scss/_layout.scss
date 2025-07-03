@@ -1,4 +1,3 @@
- 
 *,
 *::before,
 *::after {
@@ -129,13 +128,10 @@ a:hover {
   }
 }
 
-.news__card-read-more-button:hover, 
-.welcome__button-link:hover, 
-.services__card-read-more-button:hover, 
-.services__card-read-more-button:hover, 
-.banner__button, 
-.site-contact-cta, 
-.site-support-cta {
+
+.clients__pop-up-link--web-design, .clients__pop-up-link--digital-marketing, 
+.clients__pop-up-link--it-support, .clients__pop-up-link--bespoke-software, .news__card-read-more-button, .welcome__button-link, 
+.services__card-read-more-button, .banner__button, .site-contact-cta, .site-support-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
@@ -147,13 +143,10 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
- .news__card-read-more-button:hover, 
- .welcome__button-link:hover, 
- .services__card-read-more-button:hover, 
- .services__card-read-more-button:hover, 
- .banner__button:hover, 
- .site-contact-cta:hover, 
-.site-support-cta:hover  {
+.clients__pop-up-link--web-design:hover, 
+.clients__pop-up-link--digital-marketing:hover, .clients__pop-up-link--it-support:hover, .clients__pop-up-link--bespoke-software:hover, 
+.news__card-read-more-button:hover, .welcome__button-link:hover, .services__card-read-more-button:hover, .banner__button:hover, .site-contact-cta:hover, 
+.site-support-cta:hover {
   text-decoration: none;
 }
 

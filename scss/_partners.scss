@@ -1,0 +1,12 @@
+
+.partners {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.partners img {
+  filter: grayscale(1);
+}
+.partners img:hover {
+  filter: grayscale(0);
+}

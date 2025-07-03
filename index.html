@@ -5,7 +5,6 @@
 	<meta http-equiv="X-UA-Compatible" Content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
-    <link rel="stylesheet" href="css/normalize.css" />
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/iconmoon.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap" rel="stylesheet">
@@ -23,11 +22,8 @@
         <div class="container">
 
             <div class="main-header__top-bar">
-   <div class="container">
 
-            <div class="main-header__top-bar">
-
-               
+               <!-- Nematters logo -->
                 <a href="#" class="main-logo">
                     <img src="img/nm-logo.png" alt="Netmatters logo" class="main-logo-image">
                 </a>
@@ -67,10 +63,23 @@
                 </button>
             </div>
 
+
+          
+            <form action="#" class="site-search-widget site-search-widget--narrow-viewport">
+                <label for="search-input-narrow-viewport" class="screen-reader-only">Search the website:</label>
+                <input type="text" id="search-input-narrow-viewport" placeholder="Search..." name="keyword"
+                    class="site-search-widget__field site-search-widget__field--narrow-viewport">
+                <button type="submit" aria-label="Search" class="site-search-widget__trigger">
+
+                    <span class="site-search-widget__icon" aria-hidden="true"></span> 
+
+                </button>
+            </form>
+
         </div>
         </div>
 
-		<nav class="main-nav"> 
+        <nav class="main-nav"> 
             <div class="container">
                 <ul class="main-nav__list">
 
@@ -330,10 +339,12 @@
                 </ul>
             </div>
         </nav>
-	</header>
 
-	<main>
-          <section class="banner"> 
+    </header>
+
+    <main>
+
+        <section class="banner"> 
             <div class="banner__hero-container">
                 <div class="banner__hero-items-wrapper banner__hero-items-wrapper--transition">
 
@@ -365,7 +376,7 @@
             </div>
         </section>
 
-		 <section class="services"> 
+        <section class="services"> 
             <div class="container">
 
                 <div class="space-between-heading-and-view-more-link">
@@ -487,16 +498,20 @@
             </div>
         </section>
 
-		<section>
-			<h2>Partners</h2>
-			<div>
-				<div>
-					<img src="img/nm-partners.png" alt="Partners slider screenshot">
-				</div>
-			</div>
-		</section>
+        <section class="partners"> 
 
-	<section class="welcome"> 
+            <h2 class="screen-reader-only">Partners</h2>
+
+            <div class="logo-hero-horizontal-centering-container">
+                <div class="logo-hero-menu-container">
+
+                    <img src="img/nm-partners.png" alt="Partners slider screenshot" class="partners__screenshot">
+
+                </div>
+            </div>
+        </section>
+
+        <section class="welcome"> 
             <div class="container">
                 <div class="welcome__menu-container">
 
@@ -581,7 +596,8 @@
                 </div>
             </div>
         </section>
-		 <section class="news"> 
+
+        <section class="news"> 
             <div class="container">
 
                 <div class=".view-more-push-container">
@@ -679,103 +695,176 @@
 
             </div>
         </section>
-		<section>
-			<h2>Clients</h2>
-			<div>
-				<div>
-					<img src="img/nm-clients.png" alt="Clients slider screenshot">
-				</div>
-			</div>
-		</section>
 
-		<footer>
-			<div>
-				<div>
-					<div>
-						<div>
-							<img src="img/nm-logo-white.png" alt="Netmatters logo">
-						</div>
-						<h2>Follow us on:</h2>
-						<a href="#" aria-label="Facebook">
-							<span></span>
-						</a>
-						<a href="#" aria-label="Linkedin">
-							<span></span>
-						</a>
-						<a href="#" aria-label="Twitter">
-							<span></span>
-						</a>
-						<a href="#" aria-label="Instagram">
-							<span></span>
-						</a>
-					</div>
-					<div>
-						<nav>
-							<div>
-								<div>
-									<h2>About Netmatters</h2>
-									<ul>
-										<li><a href="#">News</a></li>
-										<li><a href="#">Our Careers</a></li>
-										<li><a href="#">Our Team</a></li>
-										<li><a href="#">Contact Us</a></li>
-										<li><a href="#">Privacy Policy</a></li>
-										<li><a href="#">Cookie Policy</a></li>
-										<li><a href="#">CCTV Policy</a></li>
-										<li><a href="#">Environmental Policy</a></li>
-										<li><a href="#">Sexual Harassment Policy</a></li>
-										<li><a href="#">Modern Slavery Statement</a></li>
-										<li><a href="#">Terms &amp; Conditions</a></li>
-									</ul>
-								</div>
-								<div>
-									<h2>Our Services</h2>
-									<ul>
-										<li><a href="#">Bespoke Software</a></li>
-										<li><a href="#">IT Support</a></li>
-										<li><a href="#">Digital Marketing</a></li>
-										<li><a href="#">Telecoms Services</a></li>
-										<li><a href="#">Web Design</a></li>
-										<li><a href="#">Cyber Security</a></li>
-										<li><a href="#">Developer Training</a></li>
-									</ul>
-								</div>
-								<div>
-									<h2>Our Industries</h2>
-									<ul>
-										<li><a href="#">Financial Services</a></li>
-										<li><a href="#">Construction</a></li>
-										<li><a href="#">Retail &amp; E-Commerce</a></li>
-										<li><a href="#">Non-Profits</a></li>
-										<li><a href="#">SME's</a></li>
-										<li><a href="#">Healthcare</a></li>
-										<li><a href="#">Education &amp; Training</a></li>
-										<li><a href="#">Travel &amp; Leisure</a></li>
-										<li><a href="#">Manufacturing & Offshore</a></li>
-									</ul>
-								</div>
-								<div>
-									<h2>Locations</h2>
-									<ul>
-										<li><a href="#">Cambridge Office</a></li>
-										<li><a href="#">Wymondham Office</a></li>
-										<li><a href="#">Great Yarmouth Office</a></li>
-									</ul>
-								</div>
-							</div>
-						</nav>
-					</div>
-				</div>
-			</div>
-			<div>
-				<div>
-					<span>© Copyright Netmatters 2025.</span>
-					<span>All rights reserved.</span>
-					<span><a href="#">Sitemap</a></span>
-				</div>
-			</div>
-		</footer>
-	</main>
-	<div></div>
+        <section class="clients"> 
+
+            <h2 class="screen-reader-only">Clients</h2>
+
+            <div class="logo-hero-horizontal-centering-container">
+                <div class="logo-hero-menu-container">
+                   <img src="img/nm-clients.png" alt="Clients slider screenshot" class="clients__screenshot">
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer"> 
+            <div class="container">
+                <div class="footer__menu-container">
+
+                    <div class="footer__sub-menu-container">
+
+                        <div class="footer__logo-container">
+                            <img src="img/nm-logo-white.png" alt="Netmatters logo">
+                        </div>
+
+                        <h2 class="footer__heading">Follow us on:</h2>
+
+                       
+                        <a href="#" class="footer__social-media-link footer__social-media-link--facebook">
+                        <span class="icon icon-facebook" aria-label="Facebook Icon" title="Facebook"></span>
+                        </a>
+
+                        <a href="#" class="footer__social-media-link footer__social-media-link--linkedin">
+						<span class="icon icon-linkedin2" aria-label="Linkedin Icon" title="Linkedin"></span>
+                        </a>
+
+                        <a href="#" class="footer__social-media-link footer__social-media-link--twitter">
+                        <span class="icon icon-x" aria-label="Twitter Icon" title="Twitter"></span>
+                        </a>
+
+                        <a href="#" class="footer__social-media-link footer__social-media-link--instagram">
+                         <span class="icon icon-instagram" aria-label="Instagram Icon" title="Instagram"></span>  
+                        </a>
+                    </div>
+
+                    <div class="footer__sub-menu-container">
+                        <nav>
+                            <div class="footer__menu-container footer__menu-container--sub-nav">
+
+                                <div class="footer__sub-menu-container footer__sub-menu-container--nav-list">
+                                    <h2 class="footer__heading">About Netmatters </h2>
+                                    <ul class="footer__nav-list">
+                                         <li class="footer__nav-item"><a href="#" class="footer__nav-link">News</a></li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Our
+                                                Careers</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Our
+                                                Team</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Contact Us</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Privacy
+                                                Policy</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Cookie
+                                                Policy</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">CCTV
+                                                Policy</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Environmental
+                                                Policy</a>
+                                        </li>
+										<li class="footer__nav-item"><a href="#" class="footer__nav-link">Sexual Harassment 
+                                                <span class="no-line-break">Policy</span></a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Modern Slavery
+                                                <span class="no-line-break">Statement</span></a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Terms
+                                                &amp;
+                                                Conditions</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="footer__sub-menu-container footer__sub-menu-container--nav-list">
+                                    <h2 class="footer__heading">Our Services</h2>
+                                    <ul class="footer__nav-list">
+                                       <li class="footer__nav-item"><a href="#" class="footer__nav-link">Bespoke
+                                                Software</a></li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">IT
+                                                Support</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Digital
+                                                Marketing</a></li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Telecoms
+                                                Services</a></li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Web
+                                                Design</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Cyber
+                                                Security</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Developer
+                                                Training</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="footer__sub-menu-container footer__sub-menu-container--nav-list">
+                                    <h2 class="footer__heading">Our Industries</h2>
+                                    <ul class="footer__nav-list">
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Financial
+                                                Services</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#"
+                                                class="footer__nav-link">Construction</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Retail
+                                                &amp;
+                                                E-Commerce</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#"
+                                                class="footer__nav-link">Non-Profits</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">SME's</a></li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Healthcare</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Education
+                                                &amp;
+                                                Training</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Travel
+                                                &amp;
+                                                Leisure</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Manufacturing &
+                                                <span class="no-line-break">Offshore</span></a>
+                                    </ul>
+                                </div>
+
+                                <div class="footer__sub-menu-container footer__sub-menu-container--nav-list">
+                                    <h2 class="footer__heading">Locations</h2>
+                                    <ul class="footer__nav-list">
+                                       <li class="footer__nav-item"><a href="#" class="footer__nav-link">Cambridge
+                                                Office</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Wymondham
+                                                Office</a>
+                                        </li>
+                                        <li class="footer__nav-item"><a href="#" class="footer__nav-link">Great Yarmouth Office</a></li>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__legal-section">
+                <div class="container">
+                    <span class="footer__legal-text">© Copyright Netmatters 2025.</span>
+                    <span class="footer__legal-text">All rights reserved.</span>
+                    <span><a href="#" class="footer__nav-link footer__nav-link--sitemap">Sitemap</a></span>
+                </div>
+            </div>
+
+        </footer>
+    </main>
+
 </body>
+
 </html>
