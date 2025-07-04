@@ -80,6 +80,10 @@ blockquote {
   padding: 0 0.5em;
 }
 
+.no-line-break {
+  white-space: nowrap;
+}
+
 .welcome__paragraph--first {
   font-weight: 600;
 }

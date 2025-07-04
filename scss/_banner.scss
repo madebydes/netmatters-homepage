@@ -133,11 +133,11 @@
 }
 
 .banner__hero-item--headline {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/nm-banner.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/banner/nm-banner.png");
 }
 @media (min-width: 992px) {
   .banner__hero-item--headline {
-    background-image: linear-gradient(270deg, transparent 25%, #000), url("../img/nm-banner.png");
+    background-image: linear-gradient(270deg, transparent 25%, #000), url("../img/banner/nm-banner.png");
   }
 }
 .banner__hero-item--headline .banner__button {
