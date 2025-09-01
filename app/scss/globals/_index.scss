@@ -1,0 +1,7 @@
+/* _index.scss
+   Forward all global variables, mixins and utilities.
+*/
+@forward "colors";
+@forward "typography";
+@forward "boilerplate";
+@forward "variables";

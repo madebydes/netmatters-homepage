@@ -1,3 +1,4 @@
+/* NOTE: This component displays client logos with a CSS-only hover pop-up effect. */
 
 .clients {
   margin-top: 4rem;
@@ -8,31 +9,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  position: relative; /* Establishes positioning context for the pop-up. */
   text-align: center;
 }
 .clients__section-for-each-client img {
   max-height: 4.5rem;
+  /* Logos are desaturated by default and colored on hover. */
   filter: grayscale(1);
 }
 .clients__section-for-each-client img:hover {
   filter: grayscale(0);
 }
 
+/* The pop-up container is positioned relative to its parent section. */
 .clients__pop-up-hover-container {
   position: absolute;
   display: none;
   width: 20rem;
-  bottom: 100%;
+  bottom: 100%; /* Positions the pop-up above the logo. */
 }
 
+/* This is the pure CSS trigger: hovering the parent section displays the pop-up container. */
 .clients__section-for-each-client:hover .clients__pop-up-hover-container {
   display: block;
 }
 
 .clients__pop-up-box {
-  background-color: #323544;
-  color: #fff;
+  background-color: var(--muted-2);
+  color: var(--text-color);
   padding: 1.25rem;
   width: 18rem;
   bottom: 100%;
@@ -43,13 +47,14 @@
 .clients__pop-up-box .icon {
   width: 1rem;
   margin-left: 0.25rem;
-  fill: #fff;
+  fill: var(--text-color);
 }
 
+/* CSS Triangle pop-up box */
 .clients__pop-up-box::after {
   content: "";
   position: absolute;
-  bottom: 1rem;
+  bottom: 1rem; /* Adjusts vertical position of the triangle. */
   left: 50%;
   transform: translateX(-50%);
   right: 50%;
@@ -57,23 +62,15 @@
   height: 0;
   border-left: 2rem solid transparent;
   border-right: 2rem solid transparent;
-  border-top: 2rem solid #323544;
+  border-top: 2rem solid var(--muted-2);
 }
 
-// .triangle {
-//    width: 0px;
-//    height: 0px;
-//    border-style: solid;
-//    border-width: 100px 100px 0 100px;
-//    border-color: #333645 transparent transparent transparent;
-//    transform: rotate(0deg);
-// }
 .clients__pop-up-link {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -92,23 +89,24 @@
   font-size: 0.8125rem;
 }
 
+/* Modifier classes for theming the CTA link colors. */
 .clients__pop-up-link--green {
-  background-color: #2ECC71;
+  background-color: var(--neutral-20);
 }
 .clients__pop-up-link--green:hover {
-  background-color: #208e4e;
+  background-color: var(--neutral-1);
 }
 
 .clients__pop-up-link--blue {
-  background-color: #4183D7;
+  background-color: var(--neutral-25);
 }
 .clients__pop-up-link--blue:hover {
-  background-color: #235ea8;
+  background-color: var(--neutral-7);
 }
 
 .clients__pop-up-link--yellow {
-  background-color: #E8A008;
+  background-color: var(--neutral-18);
 }
 .clients__pop-up-link--yellow:hover {
-  background-color: #E8A008;
+  background-color: var(--neutral-18);
 }

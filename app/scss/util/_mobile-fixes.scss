@@ -1,0 +1,179 @@
+/* _mobile-fixes.scss - A collection of overrides for small viewports. */
+
+/* All rules are scoped to a mobile-first breakpoint. */
+@media (max-width: 767px) {
+  /* A common fix to prevent horizontal scrollbars caused by oversized elements. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Basic responsive image reset. */
+  img {
+    display: block;
+  }
+
+  /* A11y/UX Fix: Allows dropdowns to be opened on tap/focus for touch devices. */
+  .main-nav__item:focus-within .main-nav__dropdown,
+  .main-nav__item:active .main-nav__dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Overrides the fixed-width desktop container to be full-width on mobile. */
+  .container {
+    max-width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Reduces logo size to make space in the mobile header. */
+  .main-logo-image {
+    max-width: 95%;
+  }
+
+  /* De-clutters the header by hiding non-essential CTAs on mobile. */
+  .site-support,
+  .site-contact-cta {
+    display: none !important;
+  }
+  .site-search-widget {
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* Ensures full-bleed banner elements don't cause overflow. */
+  .banner,
+  .banner__content,
+  .banner__inner {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  /* Classic responsive pattern: stacks flexbox grid items into a single column. */
+  .cards .card,
+  .service-cards .card,
+  .news-cards .card {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* General overflow prevention for full-width content sections. */
+  .reviews,
+  .testimonials,
+  .case-studies,
+  .clients-think {
+    display: block;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+
+  /* Stacks testimonial cards vertically. */
+  .reviews .card,
+  .testimonials .card,
+  .clients-think .card,
+  .case-studies .card {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Disables horizontal scrolling if a JS slider is used within these sections. */
+  .reviews .slider,
+  .testimonials .slider {
+    overflow: hidden;
+  }
+
+  /* Tightens up global padding for more screen real estate. */
+  .site-header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Touch-specific UX improvements to remove tap delay and highlight. */
+  a,
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    touch-action: manipulation;
+  }
+
+  /* Responsive show/hide pattern for the search widget. */
+  .site-search-widget--wide-viewport {
+    display: none !important; /* Hides the desktop version. */
+  }
+  .site-search-widget--narrow-viewport {
+    display: flex !important; /* Shows the mobile version. */
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Ensures the search input field doesn't overflow its container. */
+  .site-search-widget__field {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Standard accessibility (a11y) class to visually hide elements for screen readers only. */
+  .screen-reader-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+
+.site-phone-cta .icon {
+  font-size: 2rem;
+}
+
+/* --- LOGO CAROUSEL --- */
+
+/* Desktop: A centered, non-scrolling flex container. */
+.associates-logo-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  gap: 4.75rem;
+}
+
+.associates-logo-container img {
+  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
+  max-width: none;
+  height: 4.5rem;
+}
+
+/* Mobile: Overrides to enable horizontal scrolling. */
+@media (max-width: 767px) {
+  .associates-logo-container {
+    justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
+    overflow-x: auto; /* Enables horizontal scrolling. */
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+
+    /* Cross-browser technique to hide the scrollbar while keeping scroll functionality. */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
+  }
+}

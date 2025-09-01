@@ -1,3 +1,6 @@
+/* _welcome.scss */
+
+/* A simple reset to remove default browser padding/margins from blockquotes. */
 blockquote {
   padding: 0;
   margin: 0;
@@ -6,16 +9,18 @@ blockquote {
 .welcome {
   padding-top: 3rem;
   padding-bottom: 2rem;
-  background-color: #323544;
-  color: #fff;
+  background-color: var(--muted-2);
+  color: var(--text-color);
 }
 
+/* This is the main flex container for the two-column layout. */
 .welcome__menu-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows columns to stack on mobile. */
   gap: 2rem;
 }
 
+/* On larger screens, creates a responsive two-column grid with a gap. */
 @media (min-width: 992px) {
   .welcome__sub-menu-container {
     width: calc(50% - 2rem / 2);
@@ -27,27 +32,44 @@ blockquote {
   font-size: 2.25rem;
 }
 
+.welcome__stars {
+  margin-bottom: 2rem;
+}
+.welcome__stars .icon-star-full {
+  font-size: 3rem;
+  color: var(--neutral-21);
+  margin: 0 0.1rem;
+}
+
 .welcome__paragraph {
   margin-bottom: 2rem;
   line-height: 1.875rem;
 }
 .welcome__paragraph a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
 }
 .welcome__paragraph a:hover {
   text-decoration: underline;
 }
 
+/* A utility class to prevent the author's name/title from wrapping. */
+@media (min-width: 768px) {
+  .welcome__testimonial-author.no-line-break {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
+/* Base button styles. Modifiers below will change the background color. */
 .welcome__button-link {
-  background-color: #212330;
+  background-color: var(--accent-color);
   margin: 0 0.5rem 1rem 0;
   font-size: 1.25rem;
 }
 .welcome__button-link:hover {
-  background-color: #020203;
+  background-color: var(--primary-color);
 }
-
 
 .welcome__testimonial {
   margin: 2rem 0;
@@ -64,7 +86,7 @@ blockquote {
   font-weight: 600;
 }
 .welcome__testimonial-author a {
-  color: #fff;
+  color: var(--text-color);
   text-decoration: none;
 }
 .welcome__testimonial-author a:hover {
@@ -72,33 +94,35 @@ blockquote {
 }
 
 .welcome__testimonial-author-name {
-  color: #ccc;
+  color: var(--neutral-33);
 }
 
+/* Uses a pseudo-element to add a separator without extra HTML markup. */
 .welcome__testimonial-author-organisation:before {
   content: "-";
   padding: 0 0.5em;
 }
 
 .no-line-break {
-  white-space: nowrap;
+  white-space: wrap;
 }
 
+/* Modifier to add bold weight to the first paragraph. */
 .welcome__paragraph--first {
   font-weight: 600;
 }
 
+/* Modifier classes for theming the different review buttons. */
 .welcome__button-link--google {
-  background-color: #4387f6;
+  background-color: var(--neutral-31);
 }
 .welcome__button-link--google:hover {
-  background-color: #0b5ce2;
+  background-color: var(--neutral-16);
 }
 
 .welcome__button-link--trustpilot {
-  background-color: #00b67b;
+  background-color: var(--neutral-3);
 }
 .welcome__button-link--trustpilot:hover {
-  background-color: #006a47;
+  background-color: var(--muted-1);
 }
-

@@ -1,0 +1,336 @@
+/* _utilities.scss - A collection of helper classes, shared component styles, and site-wide adjustments. */
+
+/* Pushes the logo to the far left in a flex container. */
+.main-logo {
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.main-logo-image {
+  width: 95%;
+}
+
+/* Responsive show/hide pattern for the mobile-only phone icon in the header. */
+.site-phone-cta {
+  margin-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .site-phone-cta {
+    display: none;
+  }
+}
+
+/* A simple flexbox utility for aligning a heading and a link on the same line. */
+.view-more-push-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+/* This is the dark overlay used for the mobile slide-out menu. */
+.dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0%;
+  z-index: 20; /* Sits above the page content but below the slide-out menu. */
+  pointer-events: none; /* Inactive by default. */
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+/* JS-toggled class to activate the overlay. */
+.dark-overlay--active {
+  width: 100%;
+  height: 100%;
+  opacity: 50%;
+  /* The transform pushes the overlay to the side along with the slide-out menu. */
+  transform: translateX(-17.5rem);
+  pointer-events: auto;
+}
+@media (min-width: 992px) {
+  .dark-overlay--active {
+    transform: translateX(-22rem);
+  }
+}
+
+/* A "grouped selector" to apply base button styles to multiple components at once. */
+.clients__pop-up-link--web-design,
+.clients__pop-up-link--digital-marketing,
+.clients__pop-up-link--it-support,
+.clients__pop-up-link--bespoke-software,
+.news__card-read-more-button,
+.welcome__button-link,
+.services__card-read-more-button,
+.banner__button,
+.site-contact-cta,
+.site-support-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.clients__pop-up-link--web-design:hover,
+.clients__pop-up-link--digital-marketing:hover,
+.clients__pop-up-link--it-support:hover,
+.clients__pop-up-link--bespoke-software:hover,
+.news__card-read-more-button:hover,
+.welcome__button-link:hover,
+.services__card-read-more-button:hover,
+.banner__button:hover,
+.site-contact-cta:hover,
+.site-support-cta:hover {
+  text-decoration: none;
+}
+
+.welcome__button-link .icon,
+.banner__button .icon {
+  width: 1.25rem;
+  margin-left: 0.5rem;
+  fill: var(--text-color);
+}
+
+/* Shared styles for the logo carousel/wall. */
+.associates-logo-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: clip; /* Prevents overflow without creating a scrollbar. */
+}
+.associates-logo-layout-container {
+  display: flex;
+  gap: 4.75rem;
+  align-items: center;
+}
+
+.site-phone-cta__icon {
+  margin-top: 0.5em;
+  width: 2rem;
+  fill: var(--muted-2);
+}
+.site-phone-cta__icon:hover {
+  fill: var(--secondary-color);
+}
+
+/* --- HEADER CTA BUTTONS --- */
+/* Mobile-first: hidden by default. */
+.site-support-cta {
+  height: 3.5rem;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 1rem;
+  display: none;
+}
+@media (min-width: 992px) {
+  .site-support-cta {
+    display: inline-flex;
+    background-color: var(--neutral-25);
+  }
+  .site-support-cta:hover {
+    background-color: var(--neutral-7);
+  }
+}
+.site-support-cta .icon {
+  fill: var(--text-color);
+}
+
+.site-contact-cta {
+  height: 3.5rem;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 1rem;
+  display: none;
+}
+@media (min-width: 992px) {
+  .site-contact-cta {
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--neutral-32);
+  }
+  .site-contact-cta:hover {
+    background-color: var(--neutral-17);
+  }
+}
+.site-contact-cta .icon {
+  fill: var(--text-color);
+}
+
+/* --- SEARCH WIDGET --- */
+.site-search-widget {
+  position: relative;
+  margin: 0.5rem 0;
+}
+.site-search-widget__field {
+  display: inline-block;
+  width: 15rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--neutral-8);
+  border: 1px solid var(--neutral-33);
+  font-size: 0.875rem;
+  transition: border-color 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
+}
+.site-search-widget__field::placeholder {
+  color: var(--neutral-32);
+}
+.site-search-widget__field:focus {
+  border-color: var(--neutral-30);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(90, 192, 222, 0.5);
+  outline: none;
+}
+.site-search-widget__trigger {
+  top: 0.5rem;
+  right: 0.2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hides the desktop search icon on mobile. */
+.site-search-widget__trigger--wide-viewport .icon-search {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-search-widget__trigger--wide-viewport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-search-widget__trigger--wide-viewport .icon-search {
+    display: block;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    width: 1.6rem;
+  }
+}
+
+/* Responsive show/hide pattern for the mobile search bar. */
+.site-search-widget--narrow-viewport {
+  display: block;
+  margin-top: 1.2rem;
+}
+@media (min-width: 768px) {
+  .site-search-widget--narrow-viewport {
+    display: none;
+  }
+}
+.site-search-widget--narrow-viewport button.site-search-widget__trigger {
+  position: absolute;
+}
+
+/* Complex responsive logic to show/hide the desktop search bar at specific breakpoints. */
+#search-input-wide-viewport {
+  display: none;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #search-input-wide-viewport {
+    display: block;
+  }
+}
+@media (min-width: 992px) and (max-width: 1259px) {
+  #search-input-wide-viewport {
+    display: none;
+  }
+}
+@media (min-width: 1260px) {
+  #search-input-wide-viewport {
+    display: block;
+  }
+}
+
+.site-search-widget--wide-viewport {
+  display: none;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+@media (min-width: 768px) {
+  .site-search-widget--wide-viewport {
+    display: flex;
+  }
+}
+
+.site-search-widget__field--narrow-viewport {
+  width: 100%;
+  border-width: 2px;
+  border-radius: 2px;
+}
+
+.site-search-widget__field--wide-viewport {
+  height: 3.5rem;
+  background-color: var(--text-color);
+}
+@media (min-width: 768px) {
+  .site-search-widget__field--wide-viewport {
+    width: 10.875rem;
+  }
+}
+@media (min-width: 992px) {
+  .site-search-widget__field--wide-viewport {
+    display: none;
+  }
+}
+@media (min-width: 1260px) {
+  .site-search-widget__field--wide-viewport {
+    display: inline-block;
+    width: 15rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .site-search-widget__trigger--wide-viewport {
+    width: 4rem;
+    height: 3.5rem;
+    top: 0;
+    right: 0;
+    background-color: var(--neutral-32);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}
+.site-search-widget__trigger--wide-viewport:hover {
+  background-color: var(--neutral-17);
+}
+@media (min-width: 992px) {
+  .site-search-widget__trigger--wide-viewport {
+    position: relative;
+    border-radius: 0.25rem;
+  }
+}
+@media (min-width: 1260px) {
+  .site-search-widget__trigger--wide-viewport {
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}
+
+/* --- ICON STACKING --- */
+/* CSS-only technique to overlay one icon on top of another. */
+.main-nav__item--bespoke-software .main-nav__link .icon-laptop {
+  position: relative; /* Positioning context for the gears icon. */
+  display: inline-block;
+  vertical-align: middle;
+}
+/* Highly specific selector to ensure these styles are applied. */
+.main-nav__item--bespoke-software .main-nav__link .icon-fa--gears {
+  position: absolute; /* Takes the gears icon out of normal flow. */
+  top: -0.05rem;
+  right: -0.2rem;
+  font-size: 0.8rem;
+  z-index: 10; /* Ensures gears are on top of the laptop. */
+}
+/* Theming for the stacked icon. */
+.main-nav__item--bespoke-software .icon {
+  color: var(--neutral-22);
+}
+.main-nav__item--bespoke-software:hover .icon {
+  color: var(--text-color);
+}

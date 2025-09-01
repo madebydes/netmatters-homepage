@@ -1,3 +1,4 @@
+/* _news.scss */
 
 .news {
   margin-top: 3rem;
@@ -7,46 +8,53 @@
   text-decoration: none;
 }
 
+/* Flexbox container for the responsive card grid. */
 .news__menu-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: space-between;
 }
+/* Mobile-first: all cards start at full width. */
 .news__menu-container > * {
   flex-basis: 100%;
 }
+
+/* On tablets, hide the 3rd card to maintain a 2-column layout. */
 @media (min-width: 768px) {
   .news__menu-container > :last-child {
     display: none;
   }
 }
+/* On large desktops, show the 3rd card again for a 3-column layout. */
 @media (min-width: 1260px) {
   .news__menu-container > :last-child {
     display: block;
     max-width: calc((100% - 4rem) / 3);
   }
 }
-
+/* Tablet: Creates a 2-column grid using calc() to account for the gap. */
 @media (min-width: 768px) {
-  .news__menu-container > :nth-child(-n+2) {
+  .news__menu-container > :nth-child(-n + 2) {
     max-width: calc((100% - 2rem) / 2);
   }
 }
-
+/* Desktop: Resets the first two items to a 3-column width. */
 @media (min-width: 1260px) {
-  .news__menu-container > :nth-child(-n+2) {
+  .news__menu-container > :nth-child(-n + 2) {
     max-width: calc((100% - 4rem) / 3);
   }
 }
+/* --- END GRID LOGIC --- */
+
 .news__main-header {
   margin: 0;
-  color: #323544;
+  color: var(--muted-2);
   font-size: 2.25rem;
 }
 
 .news__view-all-link {
-  color: #323544;
+  color: var(--muted-2);
   font-size: 1.625rem;
   font-weight: 600;
 }
@@ -55,10 +63,35 @@
 }
 
 .news__card {
-  position: relative;
+  position: relative; /* Positioning context for the hover transform and category label. */
   top: 0;
   transition: 0.5s ease;
+  display: flex; /* Enables flexbox for child elements. */
+  flex-direction: column;
 }
+
+.news__card-read-more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start; /* Prevents button from stretching full-width in a flex container. */
+}
+
+/* This wraps the main content in a link, making the entire card clickable. */
+.news__card > a {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* CRUCIAL: Makes the link fill the card's height, ensuring equal-height clickable areas. */
+}
+
+/* Simple hover animation to lift the card. */
 .news__card:hover {
   top: -10px;
   transition: 0.5s ease;
@@ -69,13 +102,14 @@
   width: 100%;
 }
 
+/* Absolutely positioned label that sits on top of the card image. */
 .news__card-category-label {
   position: absolute;
   top: 0.5rem;
   right: 0;
   padding: 0.25em 1em;
-  color: #fff;
-  background-color: #323544;
+  color: var(--text-color);
+  background-color: var(--muted-2);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -86,10 +120,13 @@
 
 .news__card-text-container {
   padding: 1.875rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--neutral-33);
   border-top: none;
   border-radius: 3px;
   box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes the author block to the bottom of the card. */
 }
 
 .news__card-title {
@@ -98,7 +135,7 @@
 }
 
 .news__card-read-length {
-  color: #999AA1;
+  color: var(--neutral-32);
   font-size: 0.85rem;
   text-transform: uppercase;
 }
@@ -107,17 +144,20 @@
   padding-right: 0.5em;
 }
 
+/* This summary block will grow to fill available space, pushing content below it down. */
 .news__card-summary {
   margin-bottom: 2rem;
-  color: #666;
+  color: var(--neutral-8);
   font-size: 0.8125rem;
+  flex-grow: 1;
 }
 
+/* The author block at the bottom of the card. */
 .news__card-author-container {
   display: flex;
   align-items: center;
   padding-top: 1.875rem;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--neutral-33);
   margin-top: 1.875rem;
 }
 
@@ -135,59 +175,56 @@
 }
 
 .news__card-posted-by {
-  color: #323544;
+  color: var(--muted-2);
   font-weight: 600;
 }
 
 .news__card-posted-date {
   display: block;
-  color: #666;
+  color: var(--neutral-8);
 }
 
+/* --- THEME COLORS FOR NEWS ITEMS --- */
+/* BEM modifiers are used to apply unique colors based on the news category. */
 .news__card-title--careers {
-  color: #4183d7;
+  color: var(--neutral-25);
 }
-
 .news__card-title--bespoke-software {
-  color: #67809F;
+  color: var(--neutral-22);
 }
-
 .news__card-title--it-support {
-  color: #4183D7;
+  color: var(--neutral-25);
 }
-
 .news__card-title--web-design {
-  color: #926FB1;
+  color: var(--neutral-27);
 }
 
 .news__card-read-more-button--careers {
-  background-color: #4183d7;
+  background-color: var(--neutral-25);
 }
 .news__card-read-more-button--careers:hover {
-  background-color: #235ea8;
+  background-color: var(--neutral-7);
 }
-
 .news__card-read-more-button--bespoke-software {
-  background-color: #67809F;
+  background-color: var(--neutral-22);
 }
 .news__card-read-more-button--bespoke-software:hover {
-  background-color: #485b72;
+  background-color: var(--neutral-4);
 }
-
 .news__card-read-more-button--it-support {
-  background-color: #4183D7;
+  background-color: var(--neutral-25);
 }
 .news__card-read-more-button--it-support:hover {
-  background-color: #235ea8;
+  background-color: var(--neutral-7);
 }
-
 .news__card-read-more-button--web-design {
-  background-color: #926FB1;
+  background-color: var(--neutral-27);
 }
 .news__card-read-more-button--web-design:hover {
-  background-color: #6c4a89;
+  background-color: var(--neutral-9);
 }
 
+/* Standard responsive show/hide pattern for the "View All" link. */
 .news__view-all-link--wide-viewport {
   display: none;
 }

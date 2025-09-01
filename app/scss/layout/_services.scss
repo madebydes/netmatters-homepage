@@ -1,0 +1,319 @@
+/* _services.scss */
+/* NOTE: Uses a BEM-like naming convention with extensive use of modifiers for theming. */
+
+.services {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.services a {
+  text-decoration: none;
+}
+
+/* Flexbox container for the responsive card grid. */
+.services__menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+/* Mobile-first: all cards start at full width. */
+.services__menu-container > * {
+  flex-basis: 100%;
+}
+
+/* --- COMPLEX RESPONSIVE GRID LOGIC --- */
+/* Tablet: Creates a 2-column grid. */
+@media (min-width: 768px) {
+  .services__menu-container > :nth-last-child(-n + 4) {
+    max-width: calc((100% - 2rem) / 2);
+  }
+}
+/* Medium Desktop: Creates a 3-column grid. */
+@media (min-width: 992px) {
+  .services__menu-container > :nth-child(-n + 3) {
+    max-width: calc((100% - (2 * 2rem)) / 3);
+  }
+}
+/* Large Desktop: Creates a 4-column grid. */
+@media (min-width: 1260px) {
+  .services__menu-container > :nth-last-child(-n + 4) {
+    max-width: calc((100% - (3 * 2rem)) / 4);
+  }
+}
+
+/* On tablets and up, the bottom 4 cards are scaled down for a more compact layout. */
+@media (min-width: 768px) {
+  .services__menu-container > :nth-last-child(-n + 4) .services__card {
+    padding: 1.25rem;
+  }
+  .services__menu-container > :nth-last-child(-n + 4) .services__card-heading {
+    font-size: 1.1rem;
+  }
+  .services__menu-container
+    > :nth-last-child(-n + 4)
+    .services__card-description {
+    font-size: 0.75rem;
+  }
+  .services__menu-container
+    > :nth-last-child(-n + 4)
+    .services__card-icon-background {
+    width: 55px;
+    height: 55px;
+  }
+  .services__menu-container
+    > :nth-last-child(-n + 4)
+    .services__card-icon-background
+    .icon {
+    font-size: 1.7rem;
+  }
+}
+/* --- END GRID LOGIC --- */
+
+.services__heading {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 2.75rem;
+}
+
+.services__view-case-studies-link {
+  color: var(--muted-2);
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+.services__view-case-studies-link:hover {
+  text-decoration: underline;
+}
+
+.services__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Context for the `top` transform on hover. */
+  top: 0;
+  transition: top 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+  padding: 1.875rem;
+  border: 1px solid var(--neutral-33);
+  border-radius: 1rem;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.services__card:hover {
+  top: -0.625rem; /* "Lifts" the card on hover. */
+}
+
+.services__card-icon-background {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.services__card-icon-background .icon {
+  font-size: 2rem;
+  color: var(--text-color);
+}
+
+.services__card:hover .services__card-icon-background {
+  background-color: var(--text-color);
+}
+
+/* 2. The icon color changes to the card's original theme color. */
+.services__card--bespoke-software:hover .icon {
+  color: var(--neutral-22);
+}
+.services__card--it-support:hover .icon {
+  color: var(--neutral-25);
+}
+.services__card--digital-marketing:hover .icon {
+  color: var(--neutral-20);
+}
+.services__card--telecoms-services:hover .icon {
+  color: var(--neutral-24);
+}
+.services__card--web-design:hover .icon {
+  color: var(--neutral-27);
+}
+.services__card--cyber-security:hover .icon {
+  color: var(--neutral-26);
+}
+.services__card--developer-training:hover .icon {
+  color: var(--neutral-19);
+}
+
+/* Default state icon container background colors. */
+.services__card--bespoke-software .services__card-icon-background {
+  background-color: var(--neutral-22);
+}
+.services__card--it-support .services__card-icon-background {
+  background-color: var(--neutral-25);
+}
+.services__card--digital-marketing .services__card-icon-background {
+  background-color: var(--neutral-20);
+}
+.services__card--telecoms-services .services__card-icon-background {
+  background-color: var(--neutral-24);
+}
+.services__card--web-design .services__card-icon-background {
+  background-color: var(--neutral-27);
+}
+.services__card--cyber-security .services__card-icon-background {
+  background-color: var(--neutral-26);
+}
+.services__card--developer-training .services__card-icon-background {
+  background-color: var(--neutral-19);
+}
+
+/* 3. The card background takes on its theme color, and text becomes white. */
+.services__card:hover {
+  .services__card-heading,
+  .services__card-description {
+    color: var(--text-color);
+  }
+}
+.services__card--bespoke-software:hover {
+  background-color: var(--neutral-22);
+}
+.services__card--it-support:hover {
+  background-color: var(--neutral-25);
+}
+.services__card--digital-marketing:hover {
+  background-color: var(--neutral-20);
+}
+.services__card--telecoms-services:hover {
+  background-color: var(--neutral-24);
+}
+.services__card--web-design:hover {
+  background-color: var(--neutral-27);
+}
+.services__card--cyber-security:hover {
+  background-color: var(--neutral-26);
+}
+.services__card--developer-training:hover {
+  background-color: var(--neutral-19);
+}
+/* --- END HOVER THEME --- */
+
+.services__card-heading {
+  color: var(--muted-2);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.services__card-description {
+  color: var(--neutral-8);
+  font-size: 0.8125rem;
+}
+
+/* Pushes the button to the bottom of the flex container, creating equal-height cards. */
+.services__card-read-more-button {
+  margin-top: auto;
+}
+
+/* --- BUTTON THEMING (Default & Hover) --- */
+.services__card-read-more-button--bespoke-software {
+  background-color: var(--neutral-22);
+}
+.services__card-read-more-button--it-support {
+  background-color: var(--neutral-25);
+}
+.services__card-read-more-button--digital-marketing {
+  background-color: var(--neutral-20);
+}
+.services__card-read-more-button--telecoms-services {
+  background-color: var(--neutral-24);
+}
+.services__card-read-more-button--web-design {
+  background-color: var(--neutral-27);
+}
+.services__card-read-more-button--cyber-security {
+  background-color: var(--neutral-26);
+}
+.services__card-read-more-button--developer-training {
+  background-color: var(--neutral-19);
+}
+
+/* On hover, button background becomes white, and text takes on the card's theme color. */
+.services__card:hover .services__card-read-more-button {
+  background-color: var(--text-color);
+}
+.services__card--bespoke-software:hover .services__card-read-more-button {
+  color: var(--neutral-22);
+}
+.services__card--it-support:hover .services__card-read-more-button {
+  color: var(--neutral-25);
+}
+.services__card--digital-marketing:hover .services__card-read-more-button {
+  color: var(--neutral-20);
+}
+.services__card--telecoms-services:hover .services__card-read-more-button {
+  color: var(--neutral-24);
+}
+.services__card--web-design:hover .services__card-read-more-button {
+  color: var(--neutral-27);
+}
+.services__card--cyber-security:hover .services__card-read-more-button {
+  color: var(--neutral-26);
+}
+.services__card--developer-training:hover .services__card-read-more-button {
+  color: var(--neutral-19);
+}
+/* --- END BUTTON THEMING --- */
+
+.space-between-heading-and-view-more-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+/* Standard responsive show/hide pattern for the "View Case Studies" link. */
+.services__view-case-studies-link--wide-viewport {
+  display: none;
+}
+@media (min-width: 768px) {
+  .services__view-case-studies-link--wide-viewport {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .services__view-case-studies-link--mobile-viewport {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .services__view-case-studies-link--mobile-viewport {
+    display: none;
+  }
+}
+
+.services__view-case-studies-link--narrow-viewport {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) {
+  .services__view-case-studies-link--narrow-viewport {
+    display: none;
+  }
+}
+
+/* --- ICON STACKING --- */
+
+.services__card--bespoke-software .icon-laptop {
+  position: relative; /* Positioning context for the gears icon. */
+  display: inline-block;
+}
+.services__card--bespoke-software .icon-fa--gears {
+  position: absolute; /* Takes the gears icon out of normal flow. */
+  font-size: 1.1rem;
+  color: var(--text-color);
+  top: -0.1rem;
+  right: -0.2rem;
+  z-index: 2; /* Ensures gears are on top of the laptop. */
+}

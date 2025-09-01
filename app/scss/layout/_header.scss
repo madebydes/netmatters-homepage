@@ -1,11 +1,13 @@
+/* _header.scss */
 
+/* This is the main sticky header container. */
 .main-header {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 15;
-  background-color: #fff;
-  transition: transform 0.4s ease-in-out;
+  z-index: 15; /* Sits above most page content. */
+  background-color: var(--text-color);
+  transition: transform 0.4s ease-in-out; /* For the auto-hide animation. */
   padding-top: 1.25rem;
   padding-bottom: 1rem;
   margin-bottom: 1.25rem;
@@ -17,40 +19,43 @@
   }
 }
 
+/* JS-controlled class to implement the "auto-hiding" header on scroll. */
 .main-header--hide-upwards {
   transform: translateY(-100%);
 }
 
+/* Mobile-first: The main navigation is hidden by default. */
 .main-nav {
   display: none;
-  background-color: #323544;
-  color: #fff;
+  background-color: var(--muted-2);
+  color: var(--text-color);
 }
+/* It becomes visible on larger screens. */
 @media (min-width: 992px) {
   .main-nav {
     display: block;
     margin-top: 1rem;
-    padding-bottom: 1rem;
   }
 }
 .main-nav a {
-  color: #fff;
+  color: var(--text-color);
 }
 .main-nav a:visited {
-  color: #fff;
+  color: var(--text-color);
 }
 
-
 .main-nav__list {
-  display: flex;
+  display: flex; /* Creates the horizontal navigation layout. */
 }
 
 .main-nav__item {
-  flex: 1;
+  flex: 1; /* Distributes space equally among nav items. */
 }
+/* Pure CSS hover effect to show the dropdown mega-menu. */
 .main-nav__item:hover .main-nav__dropdown {
   display: block;
 }
+/* "CSS Triangle" trick: creates the pointer arrow using a pseudo-element's borders. */
 .main-nav__item:hover .main-nav__link::after {
   content: "";
   position: absolute;
@@ -71,7 +76,7 @@
 }
 
 .main-nav__link {
-  position: relative;
+  position: relative; /* Positioning context for the ::after triangle. */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,9 +86,10 @@
   text-decoration: none;
 }
 
+/* The mega-menu dropdown container. */
 .main-nav__dropdown {
   display: none;
-  position: absolute;
+  position: absolute; /* Takes the dropdown out of the normal document flow. */
   width: 100%;
   left: 0;
   padding-top: 3rem;
@@ -92,11 +98,11 @@
 
 .main-nav__sublist {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows sub-menu items to wrap into multiple rows. */
   align-items: center;
 }
 .main-nav__sublist li {
-  width: 33%;
+  width: 33%; /* Creates a three-column layout for sub-menu items. */
   padding: 0.625rem 1rem 0.625rem 0;
   margin-top: 1rem;
 }
@@ -106,7 +112,7 @@
   gap: 0.5rem;
 }
 .main-nav__sublist li a .icon {
-  width: 1.25rem;
+  font-size: 1rem;
   margin-bottom: 0;
   margin-right: 0.25rem;
 }
@@ -139,169 +145,130 @@
   align-items: center;
 }
 
-
+/* The "hamburger" menu button for mobile. */
 .site-nav-toggle {
-  background-color: #323544;
+  background-color: var(--muted-2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
   height: 3.5rem;
   width: 4rem;
-  background-color: #323544;
+  background-color: var(--muted-2);
   padding: 1rem 1rem;
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
 }
 .site-nav-toggle:hover {
-  background-color: #121318;
+  background-color: var(--secondary-color);
 }
 .site-nav-toggle span {
   display: block;
   width: 2rem;
   height: 0.25rem;
-  background-color: #fff;
+  background-color: var(--text-color);
 }
 
+/* --- THEME COLORS FOR NAVIGATION ITEMS --- */
 
-
+/* Main nav link hover background */
 .main-nav__item--bespoke-software:hover .main-nav__link {
-  background-color: #67809F;
+  background-color: var(--neutral-22);
 }
-
 .main-nav__item--it-support:hover .main-nav__link {
-  background-color: #4183D7;
+  background-color: var(--neutral-25);
 }
-
 .main-nav__item--digital-marketing:hover .main-nav__link {
-  background-color: #2ECC71;
+  background-color: var(--neutral-20);
 }
-
 .main-nav__item--telecoms-services:hover .main-nav__link {
-  background-color: #D64541;
+  background-color: var(--neutral-24);
 }
-
 .main-nav__item--web-design:hover .main-nav__link {
-  background-color: #926FB1;
+  background-color: var(--neutral-27);
 }
-
 .main-nav__item--cyber-security:hover .main-nav__link {
-  background-color: #F62459;
+  background-color: var(--neutral-26);
 }
-
 .main-nav__item--developer-training:hover .main-nav__link {
-  background-color: #CE4125;
+  background-color: var(--neutral-19);
 }
 
+/* Dropdown background */
 .main-nav__item--bespoke-software .main-nav__dropdown {
-  background-color: #526781;
+  background-color: var(--neutral-11);
 }
-
 .main-nav__item--it-support .main-nav__dropdown {
-  background-color: #286ABD;
+  background-color: var(--neutral-13);
 }
-
 .main-nav__item--digital-marketing .main-nav__dropdown {
-  background-color: #25A25A;
+  background-color: var(--neutral-6);
 }
-
 .main-nav__item--telecoms-services .main-nav__dropdown {
-  background-color: #BC2C28;
+  background-color: var(--neutral-12);
 }
-
 .main-nav__item--web-design .main-nav__dropdown {
-  background-color: #79539A;
+  background-color: var(--neutral-15);
 }
-
 .main-nav__item--cyber-security .main-nav__dropdown {
-  background-color: #DE093F;
+  background-color: var(--neutral-14);
 }
-
 .main-nav__item--developer-training .main-nav__dropdown {
-  background-color: #A3331D;
+  background-color: var(--neutral-5);
 }
 
+/* Main nav icon colors (default state) */
+.main-nav__link .icon {
+  font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
 .main-nav__item--bespoke-software .icon {
-  fill: #67809F;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-22);
 }
-.main-nav__item--bespoke-software:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--it-support .icon {
-  fill: #4183D7;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-25);
 }
-.main-nav__item--it-support:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--digital-marketing .icon {
-  fill: #2ECC71;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-20);
 }
-.main-nav__item--digital-marketing:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--telecoms-services .icon {
-  fill: #D64541;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-24);
 }
-.main-nav__item--telecoms-services:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--web-design .icon {
-  fill: #9877B6;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-29);
 }
-.main-nav__item--web-design:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--cyber-security .icon {
-  fill: #F62459;
-  margin-bottom: 0.5rem;
+  color: var(--neutral-26);
 }
-.main-nav__item--cyber-security:hover .icon {
-  fill: #fff;
-}
-
 .main-nav__item--developer-training .icon {
-  fill: #CE4125;
-  margin-bottom: 0.5rem;
-}
-.main-nav__item--developer-training:hover .icon {
-  fill: #fff;
+  color: var(--neutral-19);
 }
 
+/* All nav icons turn white on hover. */
+.main-nav__item:hover .icon {
+  color: var(--text-color);
+}
+
+/* Dropdown arrow colors on hover */
 .main-nav__item--bespoke-software:hover .main-nav__link::after {
-  border-top-color: #67809F;
+  border-top-color: var(--neutral-22);
 }
-
 .main-nav__item--it-support:hover .main-nav__link::after {
-  border-top-color: #4183D7;
+  border-top-color: var(--neutral-25);
 }
-
 .main-nav__item--digital-marketing:hover .main-nav__link::after {
-  border-top-color: #2ECC71;
+  border-top-color: var(--neutral-20);
 }
-
 .main-nav__item--telecoms-services:hover .main-nav__link::after {
-  border-top-color: #D64541;
+  border-top-color: var(--neutral-24);
 }
-
 .main-nav__item--web-design:hover .main-nav__link::after {
-  border-top-color: #926FB1;
+  border-top-color: var(--neutral-27);
 }
-
 .main-nav__item--cyber-security:hover .main-nav__link::after {
-  border-top-color: #F62459;
+  border-top-color: var(--neutral-26);
 }
-
 .main-nav__item--developer-training:hover .main-nav__link::after {
-  border-top-color: #CE4125;
+  border-top-color: var(--neutral-19);
 }

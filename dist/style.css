@@ -1,0 +1,2239 @@
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
+/* _index.scss
+   Forward all global variables, mixins and utilities.
+*/
+:root {
+  --background-color: hsl(0, 0%, 0%); /* #000000 */
+  --text-color: hsl(0, 0%, 100%); /* #ffffff */
+  --primary-color: hsl(240, 20%, 1%); /* #020203 */
+  --secondary-color: hsl(230, 14.3%, 8.2%); /* #121318 */
+  --accent-color: hsl(232, 18.5%, 15.9%); /* #212330 */
+  --muted-1: hsl(160, 100%, 20.8%); /* #006a47 */
+  --muted-2: hsl(230, 15.3%, 23.1%); /* #323544 */
+  --border-color: hsl(230, 15%, 23.5%); /* #333645 */
+  --neutral-1: hsl(145, 63.2%, 34.1%); /* #208e4e */
+  --neutral-2: hsl(201, 100%, 35.5%); /* #0077b5 */
+  --neutral-3: hsl(161, 100%, 35.7%); /* #00b67b */
+  --neutral-4: hsl(213, 22.6%, 36.5%); /* #485b72 */
+  --neutral-5: hsl(10, 69.8%, 37.6%); /* #a3331d */
+  --neutral-6: hsl(145, 62.8%, 39%); /* #25a25a */
+  --neutral-7: hsl(213, 65.5%, 39.8%); /* #235ea8 */
+  --neutral-8: hsl(0, 0%, 40%); /* #666666 */
+  --neutral-9: hsl(272, 29.9%, 41.4%); /* #6c4a89 */
+  --neutral-10: hsl(221, 44.1%, 41.4%); /* #3b5998 */
+  --neutral-11: hsl(213, 22.3%, 41.4%); /* #526781 */
+  --neutral-12: hsl(2, 64.9%, 44.7%); /* #bc2c28 */
+  --neutral-13: hsl(213, 65.1%, 44.9%); /* #286abd */
+  --neutral-14: hsl(345, 92.2%, 45.3%); /* #de093f */
+  --neutral-15: hsl(272, 30%, 46.5%); /* #79539a */
+  --neutral-16: hsl(217, 90.7%, 46.5%); /* #0b5ce2 */
+  --neutral-17: hsl(234, 4.2%, 46.7%); /* #72737c */
+  --neutral-18: hsl(41, 93.3%, 47.1%); /* #e8a008 */
+  --neutral-19: hsl(10, 69.5%, 47.6%); /* #ce4125 */
+  --neutral-20: hsl(145, 63.2%, 49%); /* #2ecc71 */
+  --neutral-21: hsl(39, 100%, 50%); /* #ffa500 */
+  --neutral-22: hsl(213, 22.6%, 51.4%); /* #67809f */
+  --neutral-23: hsl(203, 89.1%, 53.1%); /* #1da1f2 */
+  --neutral-24: hsl(2, 64.5%, 54.7%); /* #d64541 */
+  --neutral-25: hsl(214, 65.2%, 54.9%); /* #4183d7 */
+  --neutral-26: hsl(345, 92.1%, 55.3%); /* #f62459 */
+  --neutral-27: hsl(272, 29.7%, 56.5%); /* #926fb1 */
+  --neutral-28: hsl(349, 75.2%, 57.3%); /* #e4405f */
+  --neutral-29: hsl(271, 30.1%, 59%); /* #9877b6 */
+  --neutral-30: hsl(194, 66.5%, 61.4%); /* #5bc0de */
+  --neutral-31: hsl(217, 90.9%, 61.4%); /* #4387f6 */
+  --neutral-32: hsl(233, 4.1%, 61.6%); /* #999aa1 */
+  --neutral-33: hsl(0, 0%, 80%); /* #cccccc */
+}
+
+/* _typography.scss
+   Basic typography settings and scale.
+*/
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.5;
+}
+
+/* _boilerplate.scss
+
+*/
+* {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  line-height: 1.42857143;
+  overscroll-behavior: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+main {
+  background-color: var(--text-color);
+  transition: transform 0.4s ease-in-out;
+  padding-top: 10.1875rem;
+  position: relative;
+  z-index: 10;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding-top: 6.75rem;
+  }
+}
+@media (min-width: 992px) {
+  main {
+    padding-top: 13rem;
+    overflow-x: hidden;
+  }
+}
+/* Reusable class for webpage */
+.container {
+  width: 100%; /* Modular width by default */
+  max-width: 1200px; /* Set a consistent max-width for the largest size */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* Use padding for inner spacing */
+  padding-right: 1rem;
+}
+
+/* For tablets and up */
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+/* For small desktops */
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+/* For large desktops */
+@media (min-width: 1260px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--muted-2);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* _variables.scss
+   Project tokens. Use these for spacing, z-index, transitions.
+*/
+/* layout _index.scss */
+/* _banner.scss */
+.banner {
+  min-height: 35rem; /* Prevents layout shifts while image loads */
+  text-align: center; /* Mobile-first alignment */
+}
+
+@media (min-width: 992px) {
+  .banner {
+    text-align: left;
+  }
+}
+.banner__menu-container {
+  /* Flexbox is used for vertical/horizontal centering */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 35rem;
+}
+
+@media (min-width: 992px) {
+  .banner__menu-container {
+    align-items: flex-start;
+  }
+}
+/* The "viewport" for the slider. */
+.banner__hero-container {
+  position: relative; /* Positioning context for nav dots */
+  overflow: hidden; /* This is what makes the slider work */
+  width: 100%;
+}
+
+/* The moving "filmstrip" that holds slides. Its `transform` is controlled by JS. */
+.banner__hero-items-wrapper {
+  display: flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* JS-toggled class to enable the slide animation. */
+.banner__hero-items-wrapper--transition {
+  transition: transform 0.3s ease-out;
+}
+
+.banner__hero-item {
+  min-width: 100vw; /* Each slide must occupy the full viewport width. */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.banner__heading {
+  margin: 0;
+  color: var(--text-color); /* Uses CSS Custom Properties for theming. */
+  font-size: 2.5rem;
+}
+
+@media (min-width: 992px) {
+  .banner__heading {
+    font-size: 4rem;
+  }
+}
+.banner__tagline {
+  max-width: 35ch; /* `ch` unit is used for optimal line length. */
+  color: var(--text-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  -webkit-hyphens: none;
+          hyphens: none;
+}
+
+@media (min-width: 992px) {
+  .banner__tagline {
+    font-size: 1.625rem;
+  }
+}
+.banner__button {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  text-wrap: nowrap;
+}
+
+/* Slider navigation dots. */
+.banner__hero-nav {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%); /* Absolute centering trick */
+  display: flex;
+  gap: 1rem;
+}
+
+.banner__hero-nav button {
+  position: relative;
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  background-color: var(--text-color);
+  opacity: 50%;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border 0.2s ease;
+}
+
+/* The active state is controlled by JS. */
+.banner__hero-nav .banner__hero-nav-button--active {
+  opacity: 100%;
+}
+
+/* The outer ring is a pseudo-element, requires no extra HTML. */
+.banner__hero-nav .banner__hero-nav-button--active::after {
+  content: "";
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 0.2rem solid var(--text-color);
+  border-radius: 50%;
+  bottom: -0.5rem;
+  left: -0.5rem;
+}
+
+/* --- SLIDE VARIATION: HEADLINE --- */
+.banner__hero-item--headline {
+  /* Mobile: Dark overlay ensures text readability. */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/banner/nm-banner.png");
+}
+
+@media (min-width: 992px) {
+  .banner__hero-item--headline {
+    /* Desktop: Gradient fades image to solid color for text background. */
+    background-image: linear-gradient(270deg, transparent 25%, var(--background-color)), url("../img/banner/nm-banner.png");
+  }
+}
+/* Style overrides for this specific slide variation. */
+.banner__hero-item--headline .banner__button {
+  background-color: var(--neutral-27);
+}
+
+.banner__hero-item--headline .banner__button:hover {
+  background-color: var(--neutral-9);
+}
+
+.banner__hero-item--headline .banner__heading {
+  font-size: 1.75rem;
+}
+
+@media screen and (min-width: 500px) {
+  .banner__hero-item--headline .banner__heading {
+    font-size: 2.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .banner__hero-item--headline .banner__heading {
+    font-size: 3.5rem;
+  }
+}
+.banner__hero-item--headline .banner__tagline {
+  font-size: 1rem;
+  max-width: 40ch;
+}
+
+@media screen and (min-width: 500px) {
+  .banner__hero-item--headline .banner__tagline {
+    font-size: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .banner__hero-item--headline .banner__tagline {
+    font-size: 1.625rem;
+  }
+}
+/* NOTE: This component displays client logos with a CSS-only hover pop-up effect. */
+.clients {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.clients__section-for-each-client {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Establishes positioning context for the pop-up. */
+  text-align: center;
+}
+
+.clients__section-for-each-client img {
+  max-height: 4.5rem;
+  /* Logos are desaturated by default and colored on hover. */
+  filter: grayscale(1);
+}
+
+.clients__section-for-each-client img:hover {
+  filter: grayscale(0);
+}
+
+/* The pop-up container is positioned relative to its parent section. */
+.clients__pop-up-hover-container {
+  position: absolute;
+  display: none;
+  width: 20rem;
+  bottom: 100%; /* Positions the pop-up above the logo. */
+}
+
+/* This is the pure CSS trigger: hovering the parent section displays the pop-up container. */
+.clients__section-for-each-client:hover .clients__pop-up-hover-container {
+  display: block;
+}
+
+.clients__pop-up-box {
+  background-color: var(--muted-2);
+  color: var(--text-color);
+  padding: 1.25rem;
+  width: 18rem;
+  bottom: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+}
+
+.clients__pop-up-box .icon {
+  width: 1rem;
+  margin-left: 0.25rem;
+  fill: var(--text-color);
+}
+
+/* CSS Triangle pop-up box */
+.clients__pop-up-box::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem; /* Adjusts vertical position of the triangle. */
+  left: 50%;
+  transform: translateX(-50%);
+  right: 50%;
+  width: 0;
+  height: 0;
+  border-left: 2rem solid transparent;
+  border-right: 2rem solid transparent;
+  border-top: 2rem solid var(--muted-2);
+}
+
+.clients__pop-up-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.clients__pop-up-heading {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.clients__pop-up-description {
+  font-size: 0.8125rem;
+}
+
+/* Modifier classes for theming the CTA link colors. */
+.clients__pop-up-link--green {
+  background-color: var(--neutral-20);
+}
+
+.clients__pop-up-link--green:hover {
+  background-color: var(--neutral-1);
+}
+
+.clients__pop-up-link--blue {
+  background-color: var(--neutral-25);
+}
+
+.clients__pop-up-link--blue:hover {
+  background-color: var(--neutral-7);
+}
+
+.clients__pop-up-link--yellow {
+  background-color: var(--neutral-18);
+}
+
+.clients__pop-up-link--yellow:hover {
+  background-color: var(--neutral-18);
+}
+
+.footer {
+  background-color: var(--muted-2);
+  padding-top: 2rem;
+  display: flex;
+  /* This allows the .footer__legal-section to be pushed to the bottom. */
+  flex-direction: column;
+}
+
+.footer__menu-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens. */
+  gap: 3rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 767px) {
+  .footer__menu-container {
+    gap: 1.2rem;
+    justify-content: center;
+  }
+}
+.footer__sub-menu-container {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer__sub-menu-container:first-of-type {
+  flex: 0 0 auto; /* Prevents the first column (logo/socials) from growing or shrinking. */
+}
+
+.footer__sub-menu-container:nth-of-type(2) {
+  flex: 2 1 0%; /* Allows the second column (nav links) to grow and shrink as needed. */
+}
+
+@media (min-width: 1260px) {
+  .footer__sub-menu-container {
+    width: auto;
+  }
+}
+.footer__menu-container--sub-nav {
+  flex-direction: row;
+}
+
+@media (min-width: 768px) {
+  .footer__menu-container--sub-nav {
+    flex-direction: row;
+  }
+}
+/* Uses `calc()` to create responsive column widths with precise gap spacing. */
+@media (min-width: 768px) {
+  .footer__sub-menu-container--nav-list {
+    width: calc(50% - 2rem);
+  }
+}
+@media (min-width: 992px) {
+  .footer__sub-menu-container--nav-list {
+    width: calc(25% - 2rem);
+  }
+}
+.footer__logo-container {
+  max-width: 20rem;
+}
+
+.footer__logo-container img {
+  display: block;
+  width: 80%;
+}
+
+@media (min-width: 768px) {
+  .footer__logo-container img {
+    width: 100%;
+  }
+}
+.footer__heading {
+  vertical-align: top;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.footer__nav-list {
+  list-style-type: none;
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__nav-item {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.footer__nav-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.footer__nav-link:hover {
+  text-decoration: underline;
+}
+
+/* The "sticky" bottom bar of the footer. */
+.footer__legal-section {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  /* The key to the sticky footer: pushes this element to the bottom of the flex container. */
+  margin-top: auto;
+}
+
+.footer__legal-text {
+  display: block; /* Stacks text on mobile. */
+}
+
+@media (min-width: 768px) {
+  .footer__legal-text {
+    display: inline; /* Puts text on the same line on desktop. */
+  }
+}
+/* The adjacent sibling selector (+) adds a separator between text elements on desktop. */
+@media (min-width: 768px) {
+  .footer__legal-text + .footer__legal-text::after {
+    content: " - ";
+  }
+}
+.footer__nav-link--sitemap {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .footer__nav-link--sitemap {
+    display: inline;
+    margin-left: 0.2rem;
+  }
+}
+/* --- Social Icons --- */
+.footer__social-media-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.18s ease, transform 0.12s ease;
+  box-sizing: border-box;
+}
+
+.footer__social-media-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 480px; /* Prevents the container from stretching too wide. */
+  width: 100%;
+}
+
+.footer__social-media-link {
+  width: 50px;
+  height: 50px;
+  font-size: 1.35rem;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+/* Simple hover micro-interaction. */
+.footer__social-media-link:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .footer__social-media-list {
+    justify-content: center;
+    gap: 0.6rem;
+    max-width: 220px;
+    margin-top: 0.5rem;
+  }
+  /* `flex-basis` is used with `calc()` to create a two-column grid. */
+  .footer__social-media-link {
+    flex: 0 0 calc(50% - 0.6rem);
+    max-width: calc(50% - 0.6rem);
+    width: auto;
+    height: 65px;
+    font-size: 1.71rem;
+    border-radius: 3px;
+  }
+}
+/* Modifier classes for theming hover states. */
+.footer__social-media-link--facebook:hover {
+  background-color: var(--neutral-10);
+}
+
+.footer__social-media-link--linkedin:hover {
+  background-color: var(--neutral-2);
+}
+
+.footer__social-media-link--twitter:hover {
+  background-color: var(--neutral-23);
+}
+
+.footer__social-media-link--instagram:hover {
+  background-color: var(--neutral-28);
+}
+
+/* _header.scss */
+/* This is the main sticky header container. */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 15; /* Sits above most page content. */
+  background-color: var(--text-color);
+  transition: transform 0.4s ease-in-out; /* For the auto-hide animation. */
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .main-header {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+/* JS-controlled class to implement the "auto-hiding" header on scroll. */
+.main-header--hide-upwards {
+  transform: translateY(-100%);
+}
+
+/* Mobile-first: The main navigation is hidden by default. */
+.main-nav {
+  display: none;
+  background-color: var(--muted-2);
+  color: var(--text-color);
+}
+
+/* It becomes visible on larger screens. */
+@media (min-width: 992px) {
+  .main-nav {
+    display: block;
+    margin-top: 1rem;
+  }
+}
+.main-nav a {
+  color: var(--text-color);
+}
+
+.main-nav a:visited {
+  color: var(--text-color);
+}
+
+.main-nav__list {
+  display: flex; /* Creates the horizontal navigation layout. */
+}
+
+.main-nav__item {
+  flex: 1; /* Distributes space equally among nav items. */
+}
+
+/* Pure CSS hover effect to show the dropdown mega-menu. */
+.main-nav__item:hover .main-nav__dropdown {
+  display: block;
+}
+
+/* "CSS Triangle" trick: creates the pointer arrow using a pseudo-element's borders. */
+.main-nav__item:hover .main-nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: -2.25rem;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 2.25rem 67px 0px 67px;
+  border-color: transparent transparent transparent;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+@media (min-width: 1260px) {
+  .main-nav__item:hover .main-nav__link::after {
+    border-width: 2.25rem 83px 0px 83px;
+  }
+}
+.main-nav__link {
+  position: relative; /* Positioning context for the ::after triangle. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+}
+
+.main-nav__link:hover {
+  text-decoration: none;
+}
+
+/* The mega-menu dropdown container. */
+.main-nav__dropdown {
+  display: none;
+  position: absolute; /* Takes the dropdown out of the normal document flow. */
+  width: 100%;
+  left: 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.main-nav__sublist {
+  display: flex;
+  flex-wrap: wrap; /* Allows sub-menu items to wrap into multiple rows. */
+  align-items: center;
+}
+
+.main-nav__sublist li {
+  width: 33%; /* Creates a three-column layout for sub-menu items. */
+  padding: 0.625rem 1rem 0.625rem 0;
+  margin-top: 1rem;
+}
+
+.main-nav__sublist li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav__sublist li a .icon {
+  font-size: 1rem;
+  margin-bottom: 0;
+  margin-right: 0.25rem;
+}
+
+.main-nav__item-text {
+  display: block;
+  text-transform: uppercase;
+}
+
+.main-nav__dropdown-title {
+  font-size: 2rem;
+}
+
+.main-nav__sublist {
+  font-size: 1.2rem;
+}
+
+.main-nav__item-text--small {
+  font-size: 0.625rem;
+  line-height: 0.5rem;
+}
+
+.main-nav__item-text--large {
+  font-size: 1.125rem;
+}
+
+.main-header__top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* The "hamburger" menu button for mobile. */
+.site-nav-toggle {
+  background-color: var(--muted-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  height: 3.5rem;
+  width: 4rem;
+  background-color: var(--muted-2);
+  padding: 1rem 1rem;
+  border: none;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+.site-nav-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
+.site-nav-toggle span {
+  display: block;
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--text-color);
+}
+
+/* --- THEME COLORS FOR NAVIGATION ITEMS --- */
+/* Main nav link hover background */
+.main-nav__item--bespoke-software:hover .main-nav__link {
+  background-color: var(--neutral-22);
+}
+
+.main-nav__item--it-support:hover .main-nav__link {
+  background-color: var(--neutral-25);
+}
+
+.main-nav__item--digital-marketing:hover .main-nav__link {
+  background-color: var(--neutral-20);
+}
+
+.main-nav__item--telecoms-services:hover .main-nav__link {
+  background-color: var(--neutral-24);
+}
+
+.main-nav__item--web-design:hover .main-nav__link {
+  background-color: var(--neutral-27);
+}
+
+.main-nav__item--cyber-security:hover .main-nav__link {
+  background-color: var(--neutral-26);
+}
+
+.main-nav__item--developer-training:hover .main-nav__link {
+  background-color: var(--neutral-19);
+}
+
+/* Dropdown background */
+.main-nav__item--bespoke-software .main-nav__dropdown {
+  background-color: var(--neutral-11);
+}
+
+.main-nav__item--it-support .main-nav__dropdown {
+  background-color: var(--neutral-13);
+}
+
+.main-nav__item--digital-marketing .main-nav__dropdown {
+  background-color: var(--neutral-6);
+}
+
+.main-nav__item--telecoms-services .main-nav__dropdown {
+  background-color: var(--neutral-12);
+}
+
+.main-nav__item--web-design .main-nav__dropdown {
+  background-color: var(--neutral-15);
+}
+
+.main-nav__item--cyber-security .main-nav__dropdown {
+  background-color: var(--neutral-14);
+}
+
+.main-nav__item--developer-training .main-nav__dropdown {
+  background-color: var(--neutral-5);
+}
+
+/* Main nav icon colors (default state) */
+.main-nav__link .icon {
+  font-size: 1.45rem;
+  margin-bottom: 0.5rem;
+}
+
+.main-nav__item--bespoke-software .icon {
+  color: var(--neutral-22);
+}
+
+.main-nav__item--it-support .icon {
+  color: var(--neutral-25);
+}
+
+.main-nav__item--digital-marketing .icon {
+  color: var(--neutral-20);
+}
+
+.main-nav__item--telecoms-services .icon {
+  color: var(--neutral-24);
+}
+
+.main-nav__item--web-design .icon {
+  color: var(--neutral-29);
+}
+
+.main-nav__item--cyber-security .icon {
+  color: var(--neutral-26);
+}
+
+.main-nav__item--developer-training .icon {
+  color: var(--neutral-19);
+}
+
+/* All nav icons turn white on hover. */
+.main-nav__item:hover .icon {
+  color: var(--text-color);
+}
+
+/* Dropdown arrow colors on hover */
+.main-nav__item--bespoke-software:hover .main-nav__link::after {
+  border-top-color: var(--neutral-22);
+}
+
+.main-nav__item--it-support:hover .main-nav__link::after {
+  border-top-color: var(--neutral-25);
+}
+
+.main-nav__item--digital-marketing:hover .main-nav__link::after {
+  border-top-color: var(--neutral-20);
+}
+
+.main-nav__item--telecoms-services:hover .main-nav__link::after {
+  border-top-color: var(--neutral-24);
+}
+
+.main-nav__item--web-design:hover .main-nav__link::after {
+  border-top-color: var(--neutral-27);
+}
+
+.main-nav__item--cyber-security:hover .main-nav__link::after {
+  border-top-color: var(--neutral-26);
+}
+
+.main-nav__item--developer-training:hover .main-nav__link::after {
+  border-top-color: var(--neutral-19);
+}
+
+/* _news.scss */
+.news {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.news a {
+  text-decoration: none;
+}
+
+/* Flexbox container for the responsive card grid. */
+.news__menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* Mobile-first: all cards start at full width. */
+.news__menu-container > * {
+  flex-basis: 100%;
+}
+
+/* On tablets, hide the 3rd card to maintain a 2-column layout. */
+@media (min-width: 768px) {
+  .news__menu-container > :last-child {
+    display: none;
+  }
+}
+/* On large desktops, show the 3rd card again for a 3-column layout. */
+@media (min-width: 1260px) {
+  .news__menu-container > :last-child {
+    display: block;
+    max-width: calc((100% - 4rem) / 3);
+  }
+}
+/* Tablet: Creates a 2-column grid using calc() to account for the gap. */
+@media (min-width: 768px) {
+  .news__menu-container > :nth-child(-n+2) {
+    max-width: calc((100% - 2rem) / 2);
+  }
+}
+/* Desktop: Resets the first two items to a 3-column width. */
+@media (min-width: 1260px) {
+  .news__menu-container > :nth-child(-n+2) {
+    max-width: calc((100% - 4rem) / 3);
+  }
+}
+/* --- END GRID LOGIC --- */
+.news__main-header {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 2.25rem;
+}
+
+.news__view-all-link {
+  color: var(--muted-2);
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.news__view-all-link:hover {
+  text-decoration: underline;
+}
+
+.news__card {
+  position: relative; /* Positioning context for the hover transform and category label. */
+  top: 0;
+  transition: 0.5s ease;
+  display: flex; /* Enables flexbox for child elements. */
+  flex-direction: column;
+}
+
+.news__card-read-more-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start; /* Prevents button from stretching full-width in a flex container. */
+}
+
+/* This wraps the main content in a link, making the entire card clickable. */
+.news__card > a {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* CRUCIAL: Makes the link fill the card's height, ensuring equal-height clickable areas. */
+}
+
+/* Simple hover animation to lift the card. */
+.news__card:hover {
+  top: -10px;
+  transition: 0.5s ease;
+}
+
+.news__card-image {
+  display: block;
+  width: 100%;
+}
+
+/* Absolutely positioned label that sits on top of the card image. */
+.news__card-category-label {
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  padding: 0.25em 1em;
+  color: var(--text-color);
+  background-color: var(--muted-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.news__card-category-label:hover {
+  text-decoration: underline;
+}
+
+.news__card-text-container {
+  padding: 1.875rem;
+  border: 1px solid var(--neutral-33);
+  border-top: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Pushes the author block to the bottom of the card. */
+}
+
+.news__card-title {
+  display: inline;
+  font-size: 1rem;
+}
+
+.news__card-read-length {
+  color: var(--neutral-32);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.news__card-read-length:before {
+  content: "-";
+  padding-right: 0.5em;
+}
+
+/* This summary block will grow to fill available space, pushing content below it down. */
+.news__card-summary {
+  margin-bottom: 2rem;
+  color: var(--neutral-8);
+  font-size: 0.8125rem;
+  flex-grow: 1;
+}
+
+/* The author block at the bottom of the card. */
+.news__card-author-container {
+  display: flex;
+  align-items: center;
+  padding-top: 1.875rem;
+  border-top: 1px solid var(--neutral-33);
+  margin-top: 1.875rem;
+}
+
+.news__card-avatar {
+  max-width: 3.125rem;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.news__card-author-text-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  font-size: 0.875rem;
+}
+
+.news__card-posted-by {
+  color: var(--muted-2);
+  font-weight: 600;
+}
+
+.news__card-posted-date {
+  display: block;
+  color: var(--neutral-8);
+}
+
+/* --- THEME COLORS FOR NEWS ITEMS --- */
+/* BEM modifiers are used to apply unique colors based on the news category. */
+.news__card-title--careers {
+  color: var(--neutral-25);
+}
+
+.news__card-title--bespoke-software {
+  color: var(--neutral-22);
+}
+
+.news__card-title--it-support {
+  color: var(--neutral-25);
+}
+
+.news__card-title--web-design {
+  color: var(--neutral-27);
+}
+
+.news__card-read-more-button--careers {
+  background-color: var(--neutral-25);
+}
+
+.news__card-read-more-button--careers:hover {
+  background-color: var(--neutral-7);
+}
+
+.news__card-read-more-button--bespoke-software {
+  background-color: var(--neutral-22);
+}
+
+.news__card-read-more-button--bespoke-software:hover {
+  background-color: var(--neutral-4);
+}
+
+.news__card-read-more-button--it-support {
+  background-color: var(--neutral-25);
+}
+
+.news__card-read-more-button--it-support:hover {
+  background-color: var(--neutral-7);
+}
+
+.news__card-read-more-button--web-design {
+  background-color: var(--neutral-27);
+}
+
+.news__card-read-more-button--web-design:hover {
+  background-color: var(--neutral-9);
+}
+
+/* Standard responsive show/hide pattern for the "View All" link. */
+.news__view-all-link--wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .news__view-all-link--wide-viewport {
+    display: block;
+  }
+}
+.news__view-all-link--narrow-viewport {
+  display: block;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .news__view-all-link--narrow-viewport {
+    display: none;
+  }
+}
+/* _partners.scss */
+/* NOTE: This component is for a simple logo wall. */
+.partners {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.partners img {
+  /* The core effect: logos are desaturated by default. */
+  filter: grayscale(1);
+  /* Normalizes the logo sizes to prevent large logos from breaking the layout. */
+  max-height: 4.5rem;
+}
+
+/* On hover, the grayscale filter is removed, revealing the logo's full color. */
+.partners img:hover {
+  filter: grayscale(0);
+}
+
+/* _services.scss */
+/* NOTE: Uses a BEM-like naming convention with extensive use of modifiers for theming. */
+.services {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.services a {
+  text-decoration: none;
+}
+
+/* Flexbox container for the responsive card grid. */
+.services__menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+/* Mobile-first: all cards start at full width. */
+.services__menu-container > * {
+  flex-basis: 100%;
+}
+
+/* --- COMPLEX RESPONSIVE GRID LOGIC --- */
+/* Tablet: Creates a 2-column grid. */
+@media (min-width: 768px) {
+  .services__menu-container > :nth-last-child(-n+4) {
+    max-width: calc((100% - 2rem) / 2);
+  }
+}
+/* Medium Desktop: Creates a 3-column grid. */
+@media (min-width: 992px) {
+  .services__menu-container > :nth-child(-n+3) {
+    max-width: calc((100% - 4rem) / 3);
+  }
+}
+/* Large Desktop: Creates a 4-column grid. */
+@media (min-width: 1260px) {
+  .services__menu-container > :nth-last-child(-n+4) {
+    max-width: calc((100% - 6rem) / 4);
+  }
+}
+/* On tablets and up, the bottom 4 cards are scaled down for a more compact layout. */
+@media (min-width: 768px) {
+  .services__menu-container > :nth-last-child(-n+4) .services__card {
+    padding: 1.25rem;
+  }
+  .services__menu-container > :nth-last-child(-n+4) .services__card-heading {
+    font-size: 1.1rem;
+  }
+  .services__menu-container > :nth-last-child(-n+4) .services__card-description {
+    font-size: 0.75rem;
+  }
+  .services__menu-container > :nth-last-child(-n+4) .services__card-icon-background {
+    width: 55px;
+    height: 55px;
+  }
+  .services__menu-container > :nth-last-child(-n+4) .services__card-icon-background .icon {
+    font-size: 1.7rem;
+  }
+}
+/* --- END GRID LOGIC --- */
+.services__heading {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 2.75rem;
+}
+
+.services__view-case-studies-link {
+  color: var(--muted-2);
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.services__view-case-studies-link:hover {
+  text-decoration: underline;
+}
+
+.services__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Context for the `top` transform on hover. */
+  top: 0;
+  transition: top 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+  padding: 1.875rem;
+  border: 1px solid var(--neutral-33);
+  border-radius: 1rem;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.services__card:hover {
+  top: -0.625rem; /* "Lifts" the card on hover. */
+}
+
+.services__card-icon-background {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.services__card-icon-background .icon {
+  font-size: 2rem;
+  color: var(--text-color);
+}
+
+.services__card:hover .services__card-icon-background {
+  background-color: var(--text-color);
+}
+
+/* 2. The icon color changes to the card's original theme color. */
+.services__card--bespoke-software:hover .icon {
+  color: var(--neutral-22);
+}
+
+.services__card--it-support:hover .icon {
+  color: var(--neutral-25);
+}
+
+.services__card--digital-marketing:hover .icon {
+  color: var(--neutral-20);
+}
+
+.services__card--telecoms-services:hover .icon {
+  color: var(--neutral-24);
+}
+
+.services__card--web-design:hover .icon {
+  color: var(--neutral-27);
+}
+
+.services__card--cyber-security:hover .icon {
+  color: var(--neutral-26);
+}
+
+.services__card--developer-training:hover .icon {
+  color: var(--neutral-19);
+}
+
+/* Default state icon container background colors. */
+.services__card--bespoke-software .services__card-icon-background {
+  background-color: var(--neutral-22);
+}
+
+.services__card--it-support .services__card-icon-background {
+  background-color: var(--neutral-25);
+}
+
+.services__card--digital-marketing .services__card-icon-background {
+  background-color: var(--neutral-20);
+}
+
+.services__card--telecoms-services .services__card-icon-background {
+  background-color: var(--neutral-24);
+}
+
+.services__card--web-design .services__card-icon-background {
+  background-color: var(--neutral-27);
+}
+
+.services__card--cyber-security .services__card-icon-background {
+  background-color: var(--neutral-26);
+}
+
+.services__card--developer-training .services__card-icon-background {
+  background-color: var(--neutral-19);
+}
+
+/* 3. The card background takes on its theme color, and text becomes white. */
+.services__card:hover .services__card-heading,
+.services__card:hover .services__card-description {
+  color: var(--text-color);
+}
+
+.services__card--bespoke-software:hover {
+  background-color: var(--neutral-22);
+}
+
+.services__card--it-support:hover {
+  background-color: var(--neutral-25);
+}
+
+.services__card--digital-marketing:hover {
+  background-color: var(--neutral-20);
+}
+
+.services__card--telecoms-services:hover {
+  background-color: var(--neutral-24);
+}
+
+.services__card--web-design:hover {
+  background-color: var(--neutral-27);
+}
+
+.services__card--cyber-security:hover {
+  background-color: var(--neutral-26);
+}
+
+.services__card--developer-training:hover {
+  background-color: var(--neutral-19);
+}
+
+/* --- END HOVER THEME --- */
+.services__card-heading {
+  color: var(--muted-2);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.services__card-description {
+  color: var(--neutral-8);
+  font-size: 0.8125rem;
+}
+
+/* Pushes the button to the bottom of the flex container, creating equal-height cards. */
+.services__card-read-more-button {
+  margin-top: auto;
+}
+
+/* --- BUTTON THEMING (Default & Hover) --- */
+.services__card-read-more-button--bespoke-software {
+  background-color: var(--neutral-22);
+}
+
+.services__card-read-more-button--it-support {
+  background-color: var(--neutral-25);
+}
+
+.services__card-read-more-button--digital-marketing {
+  background-color: var(--neutral-20);
+}
+
+.services__card-read-more-button--telecoms-services {
+  background-color: var(--neutral-24);
+}
+
+.services__card-read-more-button--web-design {
+  background-color: var(--neutral-27);
+}
+
+.services__card-read-more-button--cyber-security {
+  background-color: var(--neutral-26);
+}
+
+.services__card-read-more-button--developer-training {
+  background-color: var(--neutral-19);
+}
+
+/* On hover, button background becomes white, and text takes on the card's theme color. */
+.services__card:hover .services__card-read-more-button {
+  background-color: var(--text-color);
+}
+
+.services__card--bespoke-software:hover .services__card-read-more-button {
+  color: var(--neutral-22);
+}
+
+.services__card--it-support:hover .services__card-read-more-button {
+  color: var(--neutral-25);
+}
+
+.services__card--digital-marketing:hover .services__card-read-more-button {
+  color: var(--neutral-20);
+}
+
+.services__card--telecoms-services:hover .services__card-read-more-button {
+  color: var(--neutral-24);
+}
+
+.services__card--web-design:hover .services__card-read-more-button {
+  color: var(--neutral-27);
+}
+
+.services__card--cyber-security:hover .services__card-read-more-button {
+  color: var(--neutral-26);
+}
+
+.services__card--developer-training:hover .services__card-read-more-button {
+  color: var(--neutral-19);
+}
+
+/* --- END BUTTON THEMING --- */
+.space-between-heading-and-view-more-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+/* Standard responsive show/hide pattern for the "View Case Studies" link. */
+.services__view-case-studies-link--wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--wide-viewport {
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+  .services__view-case-studies-link--mobile-viewport {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .services__view-case-studies-link--mobile-viewport {
+    display: none;
+  }
+}
+.services__view-case-studies-link--narrow-viewport {
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .services__view-case-studies-link--narrow-viewport {
+    display: none;
+  }
+}
+/* --- ICON STACKING --- */
+.services__card--bespoke-software .icon-laptop {
+  position: relative; /* Positioning context for the gears icon. */
+  display: inline-block;
+}
+
+.services__card--bespoke-software .icon-fa--gears {
+  position: absolute; /* Takes the gears icon out of normal flow. */
+  font-size: 1.1rem;
+  color: var(--text-color);
+  top: -0.1rem;
+  right: -0.2rem;
+  z-index: 2; /* Ensures gears are on top of the laptop. */
+}
+
+/* _welcome.scss */
+/* A simple reset to remove default browser padding/margins from blockquotes. */
+blockquote {
+  padding: 0;
+  margin: 0;
+}
+
+.welcome {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+  background-color: var(--muted-2);
+  color: var(--text-color);
+}
+
+/* This is the main flex container for the two-column layout. */
+.welcome__menu-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows columns to stack on mobile. */
+  gap: 2rem;
+}
+
+/* On larger screens, creates a responsive two-column grid with a gap. */
+@media (min-width: 992px) {
+  .welcome__sub-menu-container {
+    width: calc(50% - 1rem);
+  }
+}
+.welcome__heading {
+  margin-top: 0;
+  font-size: 2.25rem;
+}
+
+.welcome__stars {
+  margin-bottom: 2rem;
+}
+
+.welcome__stars .icon-star-full {
+  font-size: 3rem;
+  color: var(--neutral-21);
+  margin: 0 0.1rem;
+}
+
+.welcome__paragraph {
+  margin-bottom: 2rem;
+  line-height: 1.875rem;
+}
+
+.welcome__paragraph a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.welcome__paragraph a:hover {
+  text-decoration: underline;
+}
+
+/* A utility class to prevent the author's name/title from wrapping. */
+@media (min-width: 768px) {
+  .welcome__testimonial-author.no-line-break {
+    display: block;
+    white-space: nowrap;
+  }
+}
+/* Base button styles. Modifiers below will change the background color. */
+.welcome__button-link {
+  background-color: var(--accent-color);
+  margin: 0 0.5rem 1rem 0;
+  font-size: 1.25rem;
+}
+
+.welcome__button-link:hover {
+  background-color: var(--primary-color);
+}
+
+.welcome__testimonial {
+  margin: 2rem 0;
+}
+
+.welcome__testimonial-quote {
+  font-size: 1.3rem;
+  font-style: italic;
+}
+
+.welcome__testimonial-author {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.welcome__testimonial-author a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.welcome__testimonial-author a:hover {
+  text-decoration: underline;
+}
+
+.welcome__testimonial-author-name {
+  color: var(--neutral-33);
+}
+
+/* Uses a pseudo-element to add a separator without extra HTML markup. */
+.welcome__testimonial-author-organisation:before {
+  content: "-";
+  padding: 0 0.5em;
+}
+
+.no-line-break {
+  white-space: wrap;
+}
+
+/* Modifier to add bold weight to the first paragraph. */
+.welcome__paragraph--first {
+  font-weight: 600;
+}
+
+/* Modifier classes for theming the different review buttons. */
+.welcome__button-link--google {
+  background-color: var(--neutral-31);
+}
+
+.welcome__button-link--google:hover {
+  background-color: var(--neutral-16);
+}
+
+.welcome__button-link--trustpilot {
+  background-color: var(--neutral-3);
+}
+
+.welcome__button-link--trustpilot:hover {
+  background-color: var(--muted-1);
+}
+
+/* util _index.scss  */
+/* _mobile-fixes.scss - A collection of overrides for small viewports. */
+/* All rules are scoped to a mobile-first breakpoint. */
+@media (max-width: 767px) {
+  /* A common fix to prevent horizontal scrollbars caused by oversized elements. */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  /* Basic responsive image reset. */
+  img {
+    display: block;
+  }
+  /* A11y/UX Fix: Allows dropdowns to be opened on tap/focus for touch devices. */
+  .main-nav__item:focus-within .main-nav__dropdown,
+  .main-nav__item:active .main-nav__dropdown {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  /* Overrides the fixed-width desktop container to be full-width on mobile. */
+  .container {
+    max-width: 100% !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+  /* Reduces logo size to make space in the mobile header. */
+  .main-logo-image {
+    max-width: 95%;
+  }
+  /* De-clutters the header by hiding non-essential CTAs on mobile. */
+  .site-support,
+  .site-contact-cta {
+    display: none !important;
+  }
+  .site-search-widget {
+    display: flex !important;
+    align-items: center;
+  }
+  /* Ensures full-bleed banner elements don't cause overflow. */
+  .banner,
+  .banner__content,
+  .banner__inner {
+    box-sizing: border-box;
+    width: 100%;
+  }
+  /* Classic responsive pattern: stacks flexbox grid items into a single column. */
+  .cards .card,
+  .service-cards .card,
+  .news-cards .card {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* General overflow prevention for full-width content sections. */
+  .reviews,
+  .testimonials,
+  .case-studies,
+  .clients-think {
+    display: block;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+  /* Stacks testimonial cards vertically. */
+  .reviews .card,
+  .testimonials .card,
+  .clients-think .card,
+  .case-studies .card {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  /* Disables horizontal scrolling if a JS slider is used within these sections. */
+  .reviews .slider,
+  .testimonials .slider {
+    overflow: hidden;
+  }
+  /* Tightens up global padding for more screen real estate. */
+  .site-header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Touch-specific UX improvements to remove tap delay and highlight. */
+  a,
+  button {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    touch-action: manipulation;
+  }
+  /* Responsive show/hide pattern for the search widget. */
+  .site-search-widget--wide-viewport {
+    display: none !important; /* Hides the desktop version. */
+  }
+  .site-search-widget--narrow-viewport {
+    display: flex !important; /* Shows the mobile version. */
+    align-items: center;
+    width: 100%;
+  }
+  /* Ensures the search input field doesn't overflow its container. */
+  .site-search-widget__field {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  /* Standard accessibility (a11y) class to visually hide elements for screen readers only. */
+  .screen-reader-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+.site-phone-cta .icon {
+  font-size: 2rem;
+}
+
+/* --- LOGO CAROUSEL --- */
+/* Desktop: A centered, non-scrolling flex container. */
+.associates-logo-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  gap: 4.75rem;
+}
+
+.associates-logo-container img {
+  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
+  max-width: none;
+  height: 4.5rem;
+}
+
+/* Mobile: Overrides to enable horizontal scrolling. */
+@media (max-width: 767px) {
+  .associates-logo-container {
+    justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
+    overflow-x: auto; /* Enables horizontal scrolling. */
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+    /* Cross-browser technique to hide the scrollbar while keeping scroll functionality. */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  .associates-logo-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+}
+/* _utilities.scss - A collection of helper classes, shared component styles, and site-wide adjustments. */
+/* Pushes the logo to the far left in a flex container. */
+.main-logo {
+  margin-right: auto;
+  text-decoration: none;
+}
+
+.main-logo-image {
+  width: 95%;
+}
+
+/* Responsive show/hide pattern for the mobile-only phone icon in the header. */
+.site-phone-cta {
+  margin-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .site-phone-cta {
+    display: none;
+  }
+}
+/* A simple flexbox utility for aligning a heading and a link on the same line. */
+.view-more-push-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2rem;
+}
+
+/* This is the dark overlay used for the mobile slide-out menu. */
+.dark-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0%;
+  z-index: 20; /* Sits above the page content but below the slide-out menu. */
+  pointer-events: none; /* Inactive by default. */
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+/* JS-toggled class to activate the overlay. */
+.dark-overlay--active {
+  width: 100%;
+  height: 100%;
+  opacity: 50%;
+  /* The transform pushes the overlay to the side along with the slide-out menu. */
+  transform: translateX(-17.5rem);
+  pointer-events: auto;
+}
+
+@media (min-width: 992px) {
+  .dark-overlay--active {
+    transform: translateX(-22rem);
+  }
+}
+/* A "grouped selector" to apply base button styles to multiple components at once. */
+.clients__pop-up-link--web-design,
+.clients__pop-up-link--digital-marketing,
+.clients__pop-up-link--it-support,
+.clients__pop-up-link--bespoke-software,
+.news__card-read-more-button,
+.welcome__button-link,
+.services__card-read-more-button,
+.banner__button,
+.site-contact-cta,
+.site-support-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.clients__pop-up-link--web-design:hover,
+.clients__pop-up-link--digital-marketing:hover,
+.clients__pop-up-link--it-support:hover,
+.clients__pop-up-link--bespoke-software:hover,
+.news__card-read-more-button:hover,
+.welcome__button-link:hover,
+.services__card-read-more-button:hover,
+.banner__button:hover,
+.site-contact-cta:hover,
+.site-support-cta:hover {
+  text-decoration: none;
+}
+
+.welcome__button-link .icon,
+.banner__button .icon {
+  width: 1.25rem;
+  margin-left: 0.5rem;
+  fill: var(--text-color);
+}
+
+/* Shared styles for the logo carousel/wall. */
+.associates-logo-container {
+  display: flex;
+  justify-content: center;
+  overflow-x: clip; /* Prevents overflow without creating a scrollbar. */
+}
+
+.associates-logo-layout-container {
+  display: flex;
+  gap: 4.75rem;
+  align-items: center;
+}
+
+.site-phone-cta__icon {
+  margin-top: 0.5em;
+  width: 2rem;
+  fill: var(--muted-2);
+}
+
+.site-phone-cta__icon:hover {
+  fill: var(--secondary-color);
+}
+
+/* --- HEADER CTA BUTTONS --- */
+/* Mobile-first: hidden by default. */
+.site-support-cta {
+  height: 3.5rem;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 1rem;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .site-support-cta {
+    display: inline-flex;
+    background-color: var(--neutral-25);
+  }
+  .site-support-cta:hover {
+    background-color: var(--neutral-7);
+  }
+}
+.site-support-cta .icon {
+  fill: var(--text-color);
+}
+
+.site-contact-cta {
+  height: 3.5rem;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 1rem;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .site-contact-cta {
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--neutral-32);
+  }
+  .site-contact-cta:hover {
+    background-color: var(--neutral-17);
+  }
+}
+.site-contact-cta .icon {
+  fill: var(--text-color);
+}
+
+/* --- SEARCH WIDGET --- */
+.site-search-widget {
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.site-search-widget__field {
+  display: inline-block;
+  width: 15rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--neutral-8);
+  border: 1px solid var(--neutral-33);
+  font-size: 0.875rem;
+  transition: border-color 0.12s ease-in-out, box-shadow 0.12s ease-in-out;
+}
+
+.site-search-widget__field::-moz-placeholder {
+  color: var(--neutral-32);
+}
+
+.site-search-widget__field::placeholder {
+  color: var(--neutral-32);
+}
+
+.site-search-widget__field:focus {
+  border-color: var(--neutral-30);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(90, 192, 222, 0.5);
+  outline: none;
+}
+
+.site-search-widget__trigger {
+  top: 0.5rem;
+  right: 0.2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Hides the desktop search icon on mobile. */
+.site-search-widget__trigger--wide-viewport .icon-search {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .site-search-widget__trigger--wide-viewport {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-search-widget__trigger--wide-viewport .icon-search {
+    display: block;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    width: 1.6rem;
+  }
+}
+/* Responsive show/hide pattern for the mobile search bar. */
+.site-search-widget--narrow-viewport {
+  display: block;
+  margin-top: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .site-search-widget--narrow-viewport {
+    display: none;
+  }
+}
+.site-search-widget--narrow-viewport button.site-search-widget__trigger {
+  position: absolute;
+}
+
+/* Complex responsive logic to show/hide the desktop search bar at specific breakpoints. */
+#search-input-wide-viewport {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #search-input-wide-viewport {
+    display: block;
+  }
+}
+@media (min-width: 992px) and (max-width: 1259px) {
+  #search-input-wide-viewport {
+    display: none;
+  }
+}
+@media (min-width: 1260px) {
+  #search-input-wide-viewport {
+    display: block;
+  }
+}
+.site-search-widget--wide-viewport {
+  display: none;
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .site-search-widget--wide-viewport {
+    display: flex;
+  }
+}
+.site-search-widget__field--narrow-viewport {
+  width: 100%;
+  border-width: 2px;
+  border-radius: 2px;
+}
+
+.site-search-widget__field--wide-viewport {
+  height: 3.5rem;
+  background-color: var(--text-color);
+}
+
+@media (min-width: 768px) {
+  .site-search-widget__field--wide-viewport {
+    width: 10.875rem;
+  }
+}
+@media (min-width: 992px) {
+  .site-search-widget__field--wide-viewport {
+    display: none;
+  }
+}
+@media (min-width: 1260px) {
+  .site-search-widget__field--wide-viewport {
+    display: inline-block;
+    width: 15rem;
+  }
+}
+@media (min-width: 768px) {
+  .site-search-widget__trigger--wide-viewport {
+    width: 4rem;
+    height: 3.5rem;
+    top: 0;
+    right: 0;
+    background-color: var(--neutral-32);
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}
+.site-search-widget__trigger--wide-viewport:hover {
+  background-color: var(--neutral-17);
+}
+
+@media (min-width: 992px) {
+  .site-search-widget__trigger--wide-viewport {
+    position: relative;
+    border-radius: 0.25rem;
+  }
+}
+@media (min-width: 1260px) {
+  .site-search-widget__trigger--wide-viewport {
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
+}
+/* --- ICON STACKING --- */
+/* CSS-only technique to overlay one icon on top of another. */
+.main-nav__item--bespoke-software .main-nav__link .icon-laptop {
+  position: relative; /* Positioning context for the gears icon. */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Highly specific selector to ensure these styles are applied. */
+.main-nav__item--bespoke-software .main-nav__link .icon-fa--gears {
+  position: absolute; /* Takes the gears icon out of normal flow. */
+  top: -0.05rem;
+  right: -0.2rem;
+  font-size: 0.8rem;
+  z-index: 10; /* Ensures gears are on top of the laptop. */
+}
+
+/* Theming for the stacked icon. */
+.main-nav__item--bespoke-software .icon {
+  color: var(--neutral-22);
+}
+
+.main-nav__item--bespoke-software:hover .icon {
+  color: var(--text-color);
+}/*# sourceMappingURL=style.css.map */

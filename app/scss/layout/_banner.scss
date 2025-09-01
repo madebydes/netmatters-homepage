@@ -1,6 +1,8 @@
+/* _banner.scss */
+
 .banner {
-  min-height: 35rem;
-  text-align: center;
+  min-height: 35rem; /* Prevents layout shifts while image loads */
+  text-align: center; /* Mobile-first alignment */
 }
 @media (min-width: 992px) {
   .banner {
@@ -9,6 +11,7 @@
 }
 
 .banner__menu-container {
+  /* Flexbox is used for vertical/horizontal centering */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,47 +24,26 @@
   }
 }
 
-.banner {
-  min-height: 35rem;
-  text-align: center;
-}
-@media (min-width: 992px) {
-  .banner {
-    text-align: left;
-  }
-}
-
-.banner__menu-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 35rem;
-}
-@media (min-width: 992px) {
-  .banner__menu-container {
-    align-items: flex-start;
-  }
-}
-
-
+/* The "viewport" for the slider. */
 .banner__hero-container {
-  position: relative;
-  overflow: hidden;
+  position: relative; /* Positioning context for nav dots */
+  overflow: hidden; /* This is what makes the slider work */
   width: 100%;
 }
 
+/* The moving "filmstrip" that holds slides. Its `transform` is controlled by JS. */
 .banner__hero-items-wrapper {
   display: flex;
   user-select: none;
 }
 
+/* JS-toggled class to enable the slide animation. */
 .banner__hero-items-wrapper--transition {
   transition: transform 0.3s ease-out;
 }
 
 .banner__hero-item {
-  min-width: 100vw;
+  min-width: 100vw; /* Each slide must occupy the full viewport width. */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -69,7 +51,7 @@
 
 .banner__heading {
   margin: 0;
-  color: #fff;
+  color: var(--text-color); /* Uses CSS Custom Properties for theming. */
   font-size: 2.5rem;
 }
 @media (min-width: 992px) {
@@ -79,8 +61,8 @@
 }
 
 .banner__tagline {
-  max-width: 35ch;
-  color: #fff;
+  max-width: 35ch; /* `ch` unit is used for optimal line length. */
+  color: var(--text-color);
   font-size: 1.25rem;
   font-weight: 600;
   hyphens: none;
@@ -97,11 +79,12 @@
   text-wrap: nowrap;
 }
 
+/* Slider navigation dots. */
 .banner__hero-nav {
   position: absolute;
   bottom: 3rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Absolute centering trick */
   display: flex;
   gap: 1rem;
 }
@@ -113,38 +96,52 @@
   border: none;
   border-radius: 50%;
   outline: none;
-  background-color: #fff;
+  background-color: var(--text-color);
   opacity: 50%;
   cursor: pointer;
   transition: opacity 0.2s ease, border 0.2s ease;
 }
+
+/* The active state is controlled by JS. */
 .banner__hero-nav .banner__hero-nav-button--active {
   opacity: 100%;
 }
+/* The outer ring is a pseudo-element, requires no extra HTML. */
 .banner__hero-nav .banner__hero-nav-button--active::after {
   content: "";
   position: absolute;
   width: 1.75rem;
   height: 1.75rem;
-  border: 0.2rem solid #fff;
+  border: 0.2rem solid var(--text-color);
   border-radius: 50%;
   bottom: -0.5rem;
   left: -0.5rem;
 }
 
+/* --- SLIDE VARIATION: HEADLINE --- */
 .banner__hero-item--headline {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../img/banner/nm-banner.png");
+  /* Mobile: Dark overlay ensures text readability. */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/nm-banner.png");
 }
 @media (min-width: 992px) {
   .banner__hero-item--headline {
-    background-image: linear-gradient(270deg, transparent 25%, #000), url("../img/banner/nm-banner.png");
+    /* Desktop: Gradient fades image to solid color for text background. */
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/nm-banner.png");
   }
 }
+
+/* Style overrides for this specific slide variation. */
 .banner__hero-item--headline .banner__button {
-  background-color: #926FB1;
+  background-color: var(--neutral-27);
 }
 .banner__hero-item--headline .banner__button:hover {
-  background-color: #6c4a89;
+  background-color: var(--neutral-9);
 }
 
 .banner__hero-item--headline .banner__heading {

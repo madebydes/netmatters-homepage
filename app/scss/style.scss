@@ -1,0 +1,7 @@
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
+
+@use "./globals/_index" as *;
+@use "./layout/_index" as *;
+@use "./util/_index" as *;
