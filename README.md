@@ -14,7 +14,7 @@ This project is a modernised refactor of the original Netmatters homepage codeba
 ---
 
 ## Project structure (important paths)
-
+```
 sample-project/
 ├─ dist/ # Compiled CSS and other build artifacts (untouched)
 ├─ index.html
@@ -38,7 +38,7 @@ sample-project/
 │ └─ \_index.scss
 ├─ img/
 └─ fonts/
-
+```
 ## Colours & tokens
 
 - All colours are defined as CSS custom properties (HSL) in `app/scss/globals/_colors.scss` using semantic names such as:
