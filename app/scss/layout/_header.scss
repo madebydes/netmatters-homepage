@@ -1,8 +1,10 @@
+@use "../globals" as *; // make mixins available
+
 /* _header.scss */
 
 /* This is the main sticky header container. */
 .main-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 15; /* Sits above most page content. */
@@ -18,8 +20,13 @@
     margin-bottom: 0;
   }
 }
+// .main-header--fixed {
+//   position: fixed;
+//   transform: translateY(0); // Ensures it's visible
+//   // Add a subtle shadow to separate it from the content it floats over
+//   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+// }
 
-/* JS-controlled class to implement the "auto-hiding" header on scroll. */
 .main-header--hide-upwards {
   transform: translateY(-100%);
 }
@@ -76,11 +83,7 @@
 }
 
 .main-nav__link {
-  position: relative; /* Positioning context for the ::after triangle. */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.2rem 0;
+  @include nav-link;
 }
 .main-nav__link:hover {
   text-decoration: none;

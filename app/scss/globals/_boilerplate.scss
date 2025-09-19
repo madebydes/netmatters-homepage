@@ -1,6 +1,8 @@
 /* _boilerplate.scss
  
 */
+
+@use "variables" as *;
 * {
   box-sizing: border-box;
 }
@@ -12,9 +14,9 @@
 }
 
 body {
-  position: relative;
+  position: relative; // Containing block for absolute children
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: $font-stack-base;
   font-size: 1rem;
   letter-spacing: 0.03em;
   line-height: 1.42857143;

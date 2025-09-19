@@ -3,19 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="ROBOTS" content="NOINDEX,NOFOLLOW" />
     <link rel="stylesheet" href="dist/style.css" />
     <!-- Links to a stylesheet for custom icons (IconMoon) -->
     <link rel="stylesheet" href="dist/iconmoon.css" />
     <!-- Links to Google Fonts to import the 'Poppins' font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,600&display=swap"
-      rel="stylesheet"
-    />
     <title>Netmatters Homepage</title>
   </head>
   <body>
@@ -591,7 +584,7 @@
             class="banner__hero-items-wrapper banner__hero-items-wrapper--transition"
           >
             <!-- A single hero item -->
-            <section class="banner__hero-item banner__hero-item--headline">
+            <div class="banner__hero-item banner__hero-item--headline">
               <div class="container">
                 <!-- Container for the text and button content within the banner -->
                 <div class="banner__menu-container">
@@ -611,7 +604,7 @@
                   </a>
                 </div>
               </div>
-            </section>
+            </div>
           </div>
 
           <!-- Navigation dots for the hero banner carousel -->
@@ -787,10 +780,10 @@
         <div class="associates-logo-container">
           <div class="associates-logo-layout-container">
             <!-- Individual partner logos -->
-            <img src="img/partners/google-partner.jpg" alt="Google logo" />
+            <img src="img/partners/google-partner.jpg" alt="Google Partner" />
             <img
               src="img/partners/GBC-colour.png"
-              alt="Good Business Partner Logo"
+              alt="Good Business Charter Logo"
             />
             <img
               src="img/partners/norfolk_prohelp.png"
@@ -1079,13 +1072,13 @@
         </div>
       </section>
 
-      <!-- Section displaying logos of clients -->
+           <!-- Section displaying logos of clients -->
       <section class="clients">
         <div class="associates-logo-container">
           <div class="associates-logo-layout-container">
-            <!-- A section for a single client logo -->
-            <section class="clients__section-for-each-client">
-              <!-- A container for the pop-up that appears on hover -->
+
+            <!-- Client 1: Black Swan Care Group -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Black Swan Care Group</h3>
@@ -1094,32 +1087,26 @@
                     and residential homes with a focus on putting the needs of
                     their residents first.
                   </p>
-                  <a
-                    href="#"
-                    class="clients__pop-up-link clients__pop-up-link--yellow"
-                  >
+                  <a href="#" class="clients__pop-up-link clients__pop-up-link--yellow">
                     View Our Case Study <span class="triangle"></span>
                   </a>
                 </div>
               </div>
-              <!-- The client's logo image -->
-              <img
-                src="img/clients/black_swan_logo.png"
-                alt="Black Swan Care Group Logo"
-              />
-            </section>
+              <img src="img/clients/black_swan_logo.png" alt="Black Swan Care Group Logo" />
+            </div>
 
-            <!-- More client logo sections -->
-            <section class="clients__section-for-each-client">
+            <!-- Client 2: Xupes -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Xupes</h3>
                 </div>
               </div>
               <img src="img/clients/xupes_logo.png" alt="Xupes Logo" />
-            </section>
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 3: Beat -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Beat</h3>
@@ -1129,21 +1116,20 @@
                 </div>
               </div>
               <img src="img/clients/beat_logo.png" alt="Beat Logo" />
-            </section>
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 4: Survey Solutions -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Survey Solutions</h3>
                 </div>
               </div>
-              <img
-                src="img/clients/survey_solutions_logo.png"
-                alt="Survey Solutions Logo"
-              />
-            </section>
+              <img src="img/clients/survey_solutions_logo.png" alt="Survey Solutions Logo" />
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 5: Girl Guiding Anglia -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Girl Guiding Anglia</h3>
@@ -1151,51 +1137,42 @@
                     Girl Guiding Anglia is part of Girlguiding, the UK's leading
                     charity for girls and young women.
                   </p>
-                  <a
-                    href="#"
-                    class="clients__pop-up-link clients__pop-up-link--blue"
-                  >
+                  <a href="#" class="clients__pop-up-link clients__pop-up-link--blue">
                     View Our Case Study <span class="triangle"></span>
                   </a>
                 </div>
               </div>
-              <img
-                src="img/clients/girl_guides_anglia.png"
-                alt="Girl Guiding Anglia Logo"
-              />
-            </section>
+              <img src="img/clients/girl_guides_anglia.png" alt="Girl Guiding Anglia Logo" />
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 6: Sweetzy -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Sweetzy</h3>
                   <p class="clients__pop-up-description">
                     Sweetzy are an online sweets retailer, based in Wymondham.
                   </p>
-                  <a
-                    href="#"
-                    class="clients__pop-up-link clients__pop-up-link--green"
-                  >
+                  <a href="#" class="clients__pop-up-link clients__pop-up-link--green">
                     View Our Case Study <span class="triangle"></span>
                   </a>
                 </div>
               </div>
               <img src="img/clients/sweetzy_logo.png" alt="Sweetzy Logo" />
-            </section>
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 7: Howes Percival -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">Howes Percival</h3>
                 </div>
               </div>
-              <img
-                src="img/clients/howespercivallogo.png"
-                alt="Howes Percival Logo"
-              />
-            </section>
+              <img src="img/clients/howespercivallogo.png" alt="Howes Percival Logo" />
+            </div>
 
-            <section class="clients__section-for-each-client">
+            <!-- Client 8: GDST -->
+            <div class="clients__section-for-each-client">
               <div class="clients__pop-up-hover-container">
                 <div class="clients__pop-up-box">
                   <h3 class="clients__pop-up-heading">GDST</h3>
@@ -1203,19 +1180,14 @@
                     The Girls' Day School Trust (GDST) is the UK's leading
                     family of 25 independent girls' schools.
                   </p>
-                  <a
-                    href="#"
-                    class="clients__pop-up-link clients__pop-up-link--blue"
-                  >
+                  <a href="#" class="clients__pop-up-link clients__pop-up-link--blue">
                     View Our Case Study <span class="triangle"></span>
                   </a>
                 </div>
               </div>
-              <img
-                src="img/clients/girls_day_school_trust_logob.png"
-                alt="GDST Logo"
-              />
-            </section>
+              <img src="img/clients/girls_day_school_trust_logob.png" alt="GDST Logo" />
+            </div>
+
           </div>
         </div>
       </section>
@@ -1237,44 +1209,48 @@
               <div class="footer__social-media-list">
                 <a
                   href="#"
+                  aria-label="Follow us on Facebook"
                   class="footer__social-media-link footer__social-media-link--facebook"
                 >
                   <span
                     class="icon icon-facebook"
-                    aria-label="Facebook Icon"
+                    aria-hidden="true"
                     title="Facebook"
                   ></span>
                 </a>
 
                 <a
                   href="#"
+                  aria-label="Follow us on LinkedIn"
                   class="footer__social-media-link footer__social-media-link--linkedin"
                 >
                   <span
                     class="icon icon-linkedin2"
-                    aria-label="Linkedin Icon"
+                    aria-hidden="true"
                     title="Linkedin"
                   ></span>
                 </a>
 
                 <a
                   href="#"
+                  aria-label="Follow us on Twitter"
                   class="footer__social-media-link footer__social-media-link--twitter"
                 >
                   <span
                     class="icon icon-twitter-x"
-                    aria-label="Twitter Icon"
+                    aria-hidden="true"
                     title="Twitter"
                   ></span>
                 </a>
 
                 <a
                   href="#"
+                  aria-label="Follow us on Instagram"
                   class="footer__social-media-link footer__social-media-link--instagram"
                 >
                   <span
                     class="icon icon-instagram"
-                    aria-label="Instagram Icon"
+                    aria-hidden="true"
                     title="Instagram"
                   ></span>
                 </a>
@@ -1292,7 +1268,7 @@
                   <div
                     class="footer__sub-menu-container footer__sub-menu-container--nav-list"
                   >
-                    <div class="footer__social-media-grid">
+                    <!-- <div class="footer__social-media-grid"> -->
                       <h2 class="footer__heading">About Netmatters</h2>
                       <ul class="footer__nav-list">
                         <li class="footer__nav-item">
@@ -1342,7 +1318,7 @@
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  
 
                   <!-- "Our Services" navigation list -->
                   <div
@@ -1451,6 +1427,7 @@
                         >
                       </li>
                     </ul>
+                    </div>
                   </div>
                 </div>
               </nav>

@@ -1,0 +1,38 @@
+/* _mixins.scss
+   Reusable mixins for buttons and navigation.
+*/
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75em 1em;
+  border: none;
+  border-radius: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@mixin button-plain {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border 0.2s ease;
+  background-color: transparent;
+}
+
+@mixin button-icon {
+  width: 1.25rem;
+  margin-left: 0.5rem;
+  fill: var(--text-color);
+}
+
+@mixin nav-link {
+  position: relative; /* Positioning context for any pseudo-element. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 0;
+}

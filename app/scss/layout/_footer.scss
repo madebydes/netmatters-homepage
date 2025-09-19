@@ -1,6 +1,6 @@
 .footer {
   background-color: var(--muted-2);
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: flex;
   /* This allows the .footer__legal-section to be pushed to the bottom. */
   flex-direction: column;
@@ -9,7 +9,7 @@
 .footer__menu-container {
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens. */
-  gap: 3rem;
+  gap: 3.5rem;
   align-items: flex-start;
   justify-content: space-between;
   padding-bottom: 1rem;
@@ -66,7 +66,7 @@
 }
 .footer__logo-container img {
   display: block;
-  width: 80%;
+  padding-top: 1rem;
 }
 @media (min-width: 768px) {
   .footer__logo-container img {
@@ -110,6 +110,7 @@
   color: var(--text-color);
   /* The key to the sticky footer: pushes this element to the bottom of the flex container. */
   margin-top: auto;
+  font-size: small;
 }
 
 .footer__legal-text {
@@ -146,7 +147,7 @@
   background-color: var(--accent-color);
   color: var(--text-color);
   text-decoration: none;
-  border-radius: 3px;
+  // border-radius: 3px;
   transition: background 0.18s ease, transform 0.12s ease;
   box-sizing: border-box;
 }
@@ -165,8 +166,8 @@
 }
 
 .footer__social-media-link {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 55px;
   font-size: 1.35rem;
   margin: 0;
   flex: 0 0 auto;
@@ -192,7 +193,7 @@
     width: auto;
     height: 65px;
     font-size: 1.71rem;
-    border-radius: 3px;
+    // border-radius: 3px;
   }
 }
 

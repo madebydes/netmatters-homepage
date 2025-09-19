@@ -10,7 +10,7 @@
   /* The core effect: logos are desaturated by default. */
   filter: grayscale(1);
   /* Normalizes the logo sizes to prevent large logos from breaking the layout. */
-  max-height: 4.5rem;
+  max-height: 3.5rem;
 }
 /* On hover, the grayscale filter is removed, revealing the logo's full color. */
 .partners img:hover {

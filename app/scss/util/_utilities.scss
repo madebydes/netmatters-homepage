@@ -1,3 +1,5 @@
+@use "../globals" as *; // brings mixins (forwarded from globals/_index.scss) into scope
+
 /* _utilities.scss - A collection of helper classes, shared component styles, and site-wide adjustments. */
 
 /* Pushes the logo to the far left in a flex container. */
@@ -67,16 +69,7 @@
 .banner__button,
 .site-contact-cta,
 .site-support-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.75em 1em;
-  border: none;
-  border-radius: 0.25em;
-  color: var(--text-color);
-  text-transform: uppercase;
-  text-decoration: none;
-  cursor: pointer;
+  @include button-base;
 }
 .clients__pop-up-link--web-design:hover,
 .clients__pop-up-link--digital-marketing:hover,
@@ -93,9 +86,7 @@
 
 .welcome__button-link .icon,
 .banner__button .icon {
-  width: 1.25rem;
-  margin-left: 0.5rem;
-  fill: var(--text-color);
+  @include button-icon;
 }
 
 /* Shared styles for the logo carousel/wall. */
@@ -333,4 +324,42 @@
 }
 .main-nav__item--bespoke-software:hover .icon {
   color: var(--text-color);
+}
+
+/* --- MOVED FROM _mobile-fixes.scss --- */
+.site-phone-cta .icon {
+  font-size: 2rem;
+}
+
+/* --- LOGO CAROUSEL --- */
+
+.associates-logo-container {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  justify-content: center;
+  gap: 4.75rem;
+}
+
+.associates-logo-container img {
+  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
+  max-width: none;
+  height: 3.2rem;
+}
+
+/* Mobile: Overrides to enable horizontal scrolling. */
+@media (max-width: 767px) {
+  .associates-logo-container {
+    justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
+    overflow-x: auto; /* Enables horizontal scrolling. */
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+
+    /* Cross-browser technique to hide the scrollbar while keeping scroll functionality. */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
+  }
 }

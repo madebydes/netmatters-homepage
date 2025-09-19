@@ -1,3 +1,5 @@
+@use "../globals" as *; // make mixins available
+
 /* _banner.scss */
 
 .banner {
@@ -89,6 +91,8 @@
   gap: 1rem;
 }
 .banner__hero-nav button {
+  @include button-plain;
+  /* re-declare visual values so final output is identical to the original design */
   position: relative;
   width: 0.75rem;
   height: 0.75rem;

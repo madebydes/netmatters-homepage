@@ -49,7 +49,6 @@
 }
 
 /* _typography.scss
-   Basic typography settings and scale.
 */
 html {
   font-size: 16px;
@@ -62,6 +61,9 @@ body {
 
 /* _boilerplate.scss
 
+*/
+/* _variables.scss
+   Project tokens. Use these for spacing, z-index, transitions.
 */
 * {
   box-sizing: border-box;
@@ -150,10 +152,16 @@ a:hover {
   text-decoration: underline;
 }
 
-/* _variables.scss
-   Project tokens. Use these for spacing, z-index, transitions.
+/* _boilerplate.scss
+
+*/
+/* _mixins.scss
+   Reusable mixins for buttons and navigation.
 */
 /* layout _index.scss */
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
 /* _banner.scss */
 .banner {
   min-height: 35rem; /* Prevents layout shifts while image loads */
@@ -248,6 +256,12 @@ a:hover {
 }
 
 .banner__hero-nav button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border 0.2s ease;
+  background-color: transparent;
+  /* re-declare visual values so final output is identical to the original design */
   position: relative;
   width: 0.75rem;
   height: 0.75rem;
@@ -343,7 +357,7 @@ a:hover {
 }
 
 .clients__section-for-each-client img {
-  max-height: 4.5rem;
+  max-height: 3.5rem;
   /* Logos are desaturated by default and colored on hover. */
   filter: grayscale(1);
 }
@@ -448,7 +462,7 @@ a:hover {
 
 .footer {
   background-color: var(--muted-2);
-  padding-top: 2rem;
+  padding-top: 1rem;
   display: flex;
   /* This allows the .footer__legal-section to be pushed to the bottom. */
   flex-direction: column;
@@ -457,7 +471,7 @@ a:hover {
 .footer__menu-container {
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap onto the next line on smaller screens. */
-  gap: 3rem;
+  gap: 3.5rem;
   align-items: flex-start;
   justify-content: space-between;
   padding-bottom: 1rem;
@@ -516,7 +530,7 @@ a:hover {
 
 .footer__logo-container img {
   display: block;
-  width: 80%;
+  padding-top: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -561,6 +575,7 @@ a:hover {
   color: var(--text-color);
   /* The key to the sticky footer: pushes this element to the bottom of the flex container. */
   margin-top: auto;
+  font-size: small;
 }
 
 .footer__legal-text {
@@ -596,7 +611,6 @@ a:hover {
   background-color: var(--accent-color);
   color: var(--text-color);
   text-decoration: none;
-  border-radius: 3px;
   transition: background 0.18s ease, transform 0.12s ease;
   box-sizing: border-box;
 }
@@ -615,8 +629,8 @@ a:hover {
 }
 
 .footer__social-media-link {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 55px;
   font-size: 1.35rem;
   margin: 0;
   flex: 0 0 auto;
@@ -641,7 +655,6 @@ a:hover {
     width: auto;
     height: 65px;
     font-size: 1.71rem;
-    border-radius: 3px;
   }
 }
 /* Modifier classes for theming hover states. */
@@ -661,10 +674,13 @@ a:hover {
   background-color: var(--neutral-28);
 }
 
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
 /* _header.scss */
 /* This is the main sticky header container. */
 .main-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   z-index: 15; /* Sits above most page content. */
@@ -681,7 +697,6 @@ a:hover {
     margin-bottom: 0;
   }
 }
-/* JS-controlled class to implement the "auto-hiding" header on scroll. */
 .main-header--hide-upwards {
   transform: translateY(-100%);
 }
@@ -742,7 +757,7 @@ a:hover {
   }
 }
 .main-nav__link {
-  position: relative; /* Positioning context for the ::after triangle. */
+  position: relative; /* Positioning context for any pseudo-element. */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -987,34 +1002,33 @@ a:hover {
   justify-content: space-between;
 }
 
-/* Mobile-first: all cards start at full width. */
+/* Mobile-first: All cards are full-width by default. */
 .news__menu-container > * {
   flex-basis: 100%;
 }
 
-/* On tablets, hide the 3rd card to maintain a 2-column layout. */
+/* Tablet: Creates a 2-column grid. */
 @media (min-width: 768px) {
+  .news__menu-container > * {
+    /* Set the width for all cards */
+    flex-basis: calc((100% - 2rem) / 2);
+    max-width: calc((100% - 2rem) / 2);
+  }
+  /* Hide the third card specifically on tablets. */
   .news__menu-container > :last-child {
     display: none;
   }
 }
-/* On large desktops, show the 3rd card again for a 3-column layout. */
+/* Large Desktop: Overrides to a 3-column grid. */
 @media (min-width: 1260px) {
+  .news__menu-container > * {
+    /* Set the width for all cards to 1/3 */
+    flex-basis: calc((100% - 4rem) / 3);
+    max-width: calc((100% - 4rem) / 3);
+  }
+  /* Re-show the third card. Use 'flex' as the card itself is a flex container. */
   .news__menu-container > :last-child {
-    display: block;
-    max-width: calc((100% - 4rem) / 3);
-  }
-}
-/* Tablet: Creates a 2-column grid using calc() to account for the gap. */
-@media (min-width: 768px) {
-  .news__menu-container > :nth-child(-n+2) {
-    max-width: calc((100% - 2rem) / 2);
-  }
-}
-/* Desktop: Resets the first two items to a 3-column width. */
-@media (min-width: 1260px) {
-  .news__menu-container > :nth-child(-n+2) {
-    max-width: calc((100% - 4rem) / 3);
+    display: flex;
   }
 }
 /* --- END GRID LOGIC --- */
@@ -1037,9 +1051,9 @@ a:hover {
 .news__card {
   position: relative; /* Positioning context for the hover transform and category label. */
   top: 0;
-  transition: 0.5s ease;
   display: flex; /* Enables flexbox for child elements. */
   flex-direction: column;
+  transition: top 0.5s ease;
 }
 
 .news__card-read-more-button {
@@ -1066,12 +1080,14 @@ a:hover {
 /* Simple hover animation to lift the card. */
 .news__card:hover {
   top: -10px;
-  transition: 0.5s ease;
 }
 
 .news__card-image {
   display: block;
   width: 100%;
+  height: 220px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* Absolutely positioned label that sits on top of the card image. */
@@ -1240,7 +1256,7 @@ a:hover {
   /* The core effect: logos are desaturated by default. */
   filter: grayscale(1);
   /* Normalizes the logo sizes to prevent large logos from breaking the layout. */
-  max-height: 4.5rem;
+  max-height: 3.5rem;
 }
 
 /* On hover, the grayscale filter is removed, revealing the logo's full color. */
@@ -1726,166 +1742,135 @@ blockquote {
 }
 
 /* util _index.scss  */
-/* _mobile-fixes.scss - A collection of overrides for small viewports. */
-/* All rules are scoped to a mobile-first breakpoint. */
-@media (max-width: 767px) {
-  /* A common fix to prevent horizontal scrollbars caused by oversized elements. */
-  html,
-  body {
-    overflow-x: hidden;
-  }
-  /* Basic responsive image reset. */
-  img {
-    display: block;
-  }
-  /* A11y/UX Fix: Allows dropdowns to be opened on tap/focus for touch devices. */
-  .main-nav__item:focus-within .main-nav__dropdown,
-  .main-nav__item:active .main-nav__dropdown {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  /* Overrides the fixed-width desktop container to be full-width on mobile. */
-  .container {
-    max-width: 100% !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-  /* Reduces logo size to make space in the mobile header. */
-  .main-logo-image {
-    max-width: 95%;
-  }
-  /* De-clutters the header by hiding non-essential CTAs on mobile. */
-  .site-support,
-  .site-contact-cta {
-    display: none !important;
-  }
-  .site-search-widget {
-    display: flex !important;
-    align-items: center;
-  }
-  /* Ensures full-bleed banner elements don't cause overflow. */
-  .banner,
-  .banner__content,
-  .banner__inner {
-    box-sizing: border-box;
-    width: 100%;
-  }
-  /* Classic responsive pattern: stacks flexbox grid items into a single column. */
-  .cards .card,
-  .service-cards .card,
-  .news-cards .card {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  /* General overflow prevention for full-width content sections. */
-  .reviews,
-  .testimonials,
-  .case-studies,
-  .clients-think {
-    display: block;
-    max-width: 100%;
-    overflow-x: hidden;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-sizing: border-box;
-  }
-  /* Stacks testimonial cards vertically. */
-  .reviews .card,
-  .testimonials .card,
-  .clients-think .card,
-  .case-studies .card {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  /* Disables horizontal scrolling if a JS slider is used within these sections. */
-  .reviews .slider,
-  .testimonials .slider {
-    overflow: hidden;
-  }
-  /* Tightens up global padding for more screen real estate. */
-  .site-header {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  main {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Touch-specific UX improvements to remove tap delay and highlight. */
-  a,
-  button {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
-    touch-action: manipulation;
-  }
-  /* Responsive show/hide pattern for the search widget. */
-  .site-search-widget--wide-viewport {
-    display: none !important; /* Hides the desktop version. */
-  }
-  .site-search-widget--narrow-viewport {
-    display: flex !important; /* Shows the mobile version. */
-    align-items: center;
-    width: 100%;
-  }
-  /* Ensures the search input field doesn't overflow its container. */
-  .site-search-widget__field {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  /* Standard accessibility (a11y) class to visually hide elements for screen readers only. */
-  .screen-reader-only {
-    position: absolute !important;
-    width: 1px !important;
-    height: 1px !important;
-    padding: 0 !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    clip: rect(0 0 0 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
-  }
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
 }
-.site-phone-cta .icon {
-  font-size: 2rem;
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-ThinItalic.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
 }
-
-/* --- LOGO CAROUSEL --- */
-/* Desktop: A centered, non-scrolling flex container. */
-.associates-logo-container {
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  justify-content: center;
-  gap: 4.75rem;
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
 }
-
-.associates-logo-container img {
-  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
-  max-width: none;
-  height: 4.5rem;
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraLightItalic.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
 }
-
-/* Mobile: Overrides to enable horizontal scrolling. */
-@media (max-width: 767px) {
-  .associates-logo-container {
-    justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
-    overflow-x: auto; /* Enables horizontal scrolling. */
-    gap: 2.5rem;
-    padding: 0 1.5rem;
-    /* Cross-browser technique to hide the scrollbar while keeping scroll functionality. */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-  }
-  .associates-logo-container::-webkit-scrollbar {
-    display: none; /* Chrome/Safari/Opera */
-  }
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("../../../fonts/webfonts/poppins/Poppins-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
 /* _utilities.scss - A collection of helper classes, shared component styles, and site-wide adjustments. */
 /* Pushes the logo to the far left in a flex container. */
 .main-logo {
@@ -2236,4 +2221,42 @@ blockquote {
 
 .main-nav__item--bespoke-software:hover .icon {
   color: var(--text-color);
-}/*# sourceMappingURL=style.css.map */
+}
+
+/* --- MOVED FROM _mobile-fixes.scss --- */
+.site-phone-cta .icon {
+  font-size: 2rem;
+}
+
+/* --- LOGO CAROUSEL --- */
+.associates-logo-container {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  justify-content: center;
+  gap: 4.75rem;
+}
+
+.associates-logo-container img {
+  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
+  max-width: none;
+  height: 3.2rem;
+}
+
+/* Mobile: Overrides to enable horizontal scrolling. */
+@media (max-width: 767px) {
+  .associates-logo-container {
+    justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
+    overflow-x: auto; /* Enables horizontal scrolling. */
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+    /* Cross-browser technique to hide the scrollbar while keeping scroll functionality. */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  .associates-logo-container::-webkit-scrollbar {
+    display: none; /* Chrome/Safari/Opera */
+  }
+}
+/* --- MOVED FROM _mobile-fixes.scss --- */
+/* _mobile-fixes.scss - A collection of overrides for small viewports. *//*# sourceMappingURL=style.css.map */
