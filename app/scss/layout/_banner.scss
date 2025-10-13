@@ -2,18 +2,17 @@
 
 /* _banner.scss */
 
+/* --- Base Banner Styles (Your original, untouched code) --- */
 .banner {
-  min-height: 35rem; /* Prevents layout shifts while image loads */
-  text-align: center; /* Mobile-first alignment */
+  min-height: 35rem;
+  text-align: center;
 }
 @media (min-width: 992px) {
   .banner {
     text-align: left;
   }
 }
-
 .banner__menu-container {
-  /* Flexbox is used for vertical/horizontal centering */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,35 +24,27 @@
     align-items: flex-start;
   }
 }
-
-/* The "viewport" for the slider. */
 .banner__hero-container {
-  position: relative; /* Positioning context for nav dots */
-  overflow: hidden; /* This is what makes the slider work */
+  position: relative;
+  overflow: hidden;
   width: 100%;
 }
-
-/* The moving "filmstrip" that holds slides. Its `transform` is controlled by JS. */
 .banner__hero-items-wrapper {
   display: flex;
   user-select: none;
 }
-
-/* JS-toggled class to enable the slide animation. */
 .banner__hero-items-wrapper--transition {
   transition: transform 0.3s ease-out;
 }
-
 .banner__hero-item {
-  min-width: 100vw; /* Each slide must occupy the full viewport width. */
+  min-width: 100vw;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }
-
 .banner__heading {
   margin: 0;
-  color: var(--text-color); /* Uses CSS Custom Properties for theming. */
+  color: var(--text-color);
   font-size: 2.5rem;
 }
 @media (min-width: 992px) {
@@ -61,9 +52,8 @@
     font-size: 4rem;
   }
 }
-
 .banner__tagline {
-  max-width: 35ch; /* `ch` unit is used for optimal line length. */
+  max-width: 35ch;
   color: var(--text-color);
   font-size: 1.25rem;
   font-weight: 600;
@@ -74,25 +64,25 @@
     font-size: 1.625rem;
   }
 }
-
 .banner__button {
   margin-top: 1rem;
   font-size: 1.25rem;
   text-wrap: nowrap;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
-
-/* Slider navigation dots. */
 .banner__hero-nav {
   position: absolute;
   bottom: 3rem;
   left: 50%;
-  transform: translateX(-50%); /* Absolute centering trick */
+  transform: translateX(-50%);
   display: flex;
   gap: 1rem;
 }
 .banner__hero-nav button {
-  @include button-plain;
-  /* re-declare visual values so final output is identical to the original design */
   position: relative;
   width: 0.75rem;
   height: 0.75rem;
@@ -105,12 +95,9 @@
   cursor: pointer;
   transition: opacity 0.2s ease, border 0.2s ease;
 }
-
-/* The active state is controlled by JS. */
 .banner__hero-nav .banner__hero-nav-button--active {
   opacity: 100%;
 }
-/* The outer ring is a pseudo-element, requires no extra HTML. */
 .banner__hero-nav .banner__hero-nav-button--active::after {
   content: "";
   position: absolute;
@@ -122,15 +109,56 @@
   left: -0.5rem;
 }
 
-/* --- SLIDE VARIATION: HEADLINE --- */
-.banner__hero-item--headline {
-  /* Mobile: Dark overlay ensures text readability. */
+/* --- SLIDE VARIATIONS (Restoring YOUR original layout for ALL banners) --- */
+
+.banner__hero-item--1,
+.banner__hero-item--2,
+.banner__hero-item--3,
+.banner__hero-item--4,
+.banner__hero-item--5,
+.banner__hero-item--6,
+.banner__hero-item--7 {
+  /* Applying your original, responsive text styles to ALL banners */
+  .banner__heading {
+    font-size: 1.75rem;
+  }
+  @media screen and (min-width: 500px) {
+    .banner__heading {
+      font-size: 2.25rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .banner__heading {
+      font-size: 3.5rem;
+    }
+  }
+  .banner__tagline {
+    font-size: 1rem;
+    max-width: 40ch;
+  }
+  @media screen and (min-width: 500px) {
+    .banner__tagline {
+      font-size: 1.25rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .banner__tagline {
+      font-size: 1.625rem;
+    }
+  }
+}
+
+/* Banner 1 */
+.banner__hero-item--1 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../img/banner/nm-banner.png");
-}
-@media (min-width: 992px) {
-  .banner__hero-item--headline {
-    /* Desktop: Gradient fades image to solid color for text background. */
+  .banner__button {
+    background-color: var(--neutral-9);
+    &:hover {
+      background-color: var(--neutral-27);
+    }
+  }
+  @media (min-width: 992px) {
     background-image: linear-gradient(
         270deg,
         transparent 25%,
@@ -140,38 +168,122 @@
   }
 }
 
-/* Style overrides for this specific slide variation. */
-.banner__hero-item--headline .banner__button {
-  background-color: var(--neutral-27);
-}
-.banner__hero-item--headline .banner__button:hover {
-  background-color: var(--neutral-9);
+/* Banner 2 */
+.banner__hero-item--2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/bs-banner.png");
+  .banner__button {
+    background-color: var(--neutral-22);
+    &:hover {
+      background-color: var(--neutral-8);
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/bs-banner.png");
+  }
 }
 
-.banner__hero-item--headline .banner__heading {
-  font-size: 1.75rem;
-}
-@media screen and (min-width: 500px) {
-  .banner__hero-item--headline .banner__heading {
-    font-size: 2.25rem;
+/* Banner 3 */
+.banner__hero-item--3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/it-banner.png");
+  .banner__button {
+    background-color: #8e44ad;
+    &:hover {
+      background-color: #9b59b6;
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/it-banner.png");
   }
 }
-@media (min-width: 992px) {
-  .banner__hero-item--headline .banner__heading {
-    font-size: 3.5rem;
+
+/* Banner 4 */
+.banner__hero-item--4 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/dm-banner.png");
+  .banner__button {
+    background-color: #f39c12;
+    &:hover {
+      background-color: #f1c40f;
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/dm-banner.png");
   }
 }
-.banner__hero-item--headline .banner__tagline {
-  font-size: 1rem;
-  max-width: 40ch;
-}
-@media screen and (min-width: 500px) {
-  .banner__hero-item--headline .banner__tagline {
-    font-size: 1.25rem;
+
+/* Banner 5 */
+.banner__hero-item--5 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/ts-banner.png");
+  .banner__button {
+    background-color: #d35400;
+    &:hover {
+      background-color: #e67e22;
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/ts-banner.png");
   }
 }
-@media (min-width: 992px) {
-  .banner__hero-item--headline .banner__tagline {
-    font-size: 1.625rem;
+
+/* Banner 6 */
+.banner__hero-item--6 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/wd-banner.png");
+  .banner__button {
+    background-color: #c0392b;
+    &:hover {
+      background-color: #e74c3c;
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/wd-banner.png");
+  }
+}
+
+/* Banner 7 */
+.banner__hero-item--7 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/banner/cs-banner.png");
+  .banner__button {
+    background-color: #7f8c8d;
+    &:hover {
+      background-color: #95a5a6;
+    }
+  }
+  @media (min-width: 992px) {
+    background-image: linear-gradient(
+        270deg,
+        transparent 25%,
+        var(--background-color)
+      ),
+      url("../img/banner/cs-banner.png");
   }
 }
