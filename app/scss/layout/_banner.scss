@@ -1,8 +1,8 @@
-@use "../globals" as *; // make mixins available
+@use "../globals" as *;
 
 /* _banner.scss */
 
-/* --- Base Banner Styles (Your original, untouched code) --- */
+/* --- Base Banner Styles --- */
 .banner {
   min-height: 35rem;
   text-align: center;
@@ -109,8 +109,6 @@
   left: -0.5rem;
 }
 
-/* --- SLIDE VARIATIONS (Restoring YOUR original layout for ALL banners) --- */
-
 .banner__hero-item--1,
 .banner__hero-item--2,
 .banner__hero-item--3,
@@ -118,7 +116,6 @@
 .banner__hero-item--5,
 .banner__hero-item--6,
 .banner__hero-item--7 {
-  /* Applying your original, responsive text styles to ALL banners */
   .banner__heading {
     font-size: 1.75rem;
   }
