@@ -1,11 +1,6 @@
-/* _boilerplate.scss
- 
-*/
+/* _boilerplate.scss */
 
 @use "variables" as *;
-* {
-  box-sizing: border-box;
-}
 
 *,
 *::before,
@@ -13,69 +8,37 @@
   box-sizing: border-box;
 }
 
+html,
 body {
-  position: relative; // Containing block for absolute children
+  position: relative;
+  overflow-x: hidden; /* CRUCIAL: Prevents scrollbars during the push animation */
   margin: 0;
+  padding: 0;
   font-family: $font-stack-base;
   font-size: 1rem;
-  letter-spacing: 0.03em;
-  line-height: 1.42857143;
-  overscroll-behavior: none;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+/* This holds the space for the fixed header so content doesn't start underneath it */
+#container {
+  padding-top: 13rem; /* Desktop header height */
+
+  @media (max-width: 991px) {
+    padding-top: 10.1875rem; /* Mobile/Tablet header height */
+  }
 }
 
 main {
   background-color: var(--text-color);
-  transition: transform 0.4s ease-in-out;
-  padding-top: 10.1875rem;
-  position: relative;
-  z-index: 10;
+  /* padding-top is now handled by #container */
 }
-@media (min-width: 768px) {
-  main {
-    padding-top: 6.75rem;
-    overflow-x: hidden;
-  }
-}
-@media (min-width: 992px) {
-  main {
-    padding-top: 13rem;
-    overflow-x: hidden; // Fix reflow over flow
-  }
-}
-/* Reusable class for webpage */
+
 .container {
-  width: 100%; /* Modular width by default */
-  max-width: 1200px; /* Set a consistent max-width for the largest size */
+  width: 100%;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem; /* Use padding for inner spacing */
+  padding-left: 1rem;
   padding-right: 1rem;
-}
-
-/* For tablets and up */
-@media (min-width: 768px) {
-  .container {
-    max-width: 750px;
-  }
-}
-
-/* For small desktops */
-@media (min-width: 992px) {
-  .container {
-    max-width: 970px;
-  }
-}
-
-/* For large desktops */
-@media (min-width: 1260px) {
-  .container {
-    max-width: 1200px;
-  }
 }
 
 ul {
@@ -87,7 +50,12 @@ ul {
 a {
   color: var(--muted-2);
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
-a:hover {
-  text-decoration: underline;
+
+img {
+  max-width: 100%;
+  display: block;
 }

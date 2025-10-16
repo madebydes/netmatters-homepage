@@ -1,181 +1,157 @@
-@use "../globals" as *; // make mixins available
+@use "../globals" as *;
 
-/* _header.scss */
-
-/* This is the main sticky header container. */
 .main-header {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 15; /* Sits above most page content. */
-  background-color: var(--text-color);
-  transition: transform 0.4s ease-in-out; /* For the auto-hide animation. */
-  padding-top: 1.25rem;
-  padding-bottom: 1rem;
-  margin-bottom: 1.25rem;
-}
-@media (min-width: 992px) {
-  .main-header {
-    padding-bottom: 0;
-    margin-bottom: 0;
-  }
-}
-// .main-header--fixed {
-//   position: fixed;
-//   transform: translateY(0); // Ensures it's visible
-//   // Add a subtle shadow to separate it from the content it floats ove
-//   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-// }
-
-.main-header--hide-upwards {
-  transform: translateY(-100%);
+  z-index: 15;
+  transition: transform 0.4s ease;
 }
 
-/* Mobile-first: The main navigation is hidden by default. */
-.main-nav {
-  display: none;
-  background-color: var(--muted-2);
-  color: var(--text-color);
-}
-/* It becomes visible on larger screens. */
-@media (min-width: 992px) {
-  .main-nav {
-    display: block;
-    margin-top: 1rem;
-  }
-}
-.main-nav a {
-  color: var(--text-color);
-}
-.main-nav a:visited {
-  color: var(--text-color);
-}
-
-.main-nav__list {
-  display: flex; /* Creates the horizontal navigation layout. */
-}
-
-.main-nav__item {
-  flex: 1; /* Distributes space equally among nav items. */
-}
-/* Pure CSS hover effect to show the dropdown mega-menu. */
-.main-nav__item:hover .main-nav__dropdown {
-  display: block;
-}
-/* "CSS Triangle" trick: creates the pointer arrow using a pseudo-element's borders. */
-.main-nav__item:hover .main-nav__link::after {
-  content: "";
-  position: absolute;
-  bottom: -2.25rem;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 2.25rem 67px 0px 67px;
-  border-color: transparent transparent transparent;
-  transform: translateX(-50%);
-  z-index: 100;
-}
-@media (min-width: 1260px) {
-  .main-nav__item:hover .main-nav__link::after {
-    border-width: 2.25rem 83px 0px 83px;
-  }
-}
-
-.main-nav__link {
-  @include nav-link;
-}
-.main-nav__link:hover {
-  text-decoration: none;
-}
-
-/* The mega-menu dropdown container. */
-.main-nav__dropdown {
-  display: none;
-  position: absolute; /* Takes the dropdown out of the normal document flow. */
-  width: 100%;
+/* 2. The Cloned Sticky Header (outside #container) */
+.header-is-sticky {
+  position: fixed;
+  top: 0;
   left: 0;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  right: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: var(--text-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
 }
 
-.main-nav__sublist {
-  display: flex;
-  flex-wrap: wrap; /* Allows sub-menu items to wrap into multiple rows. */
-  align-items: center;
+/* 3. A Common Class for Hiding Either Header */
+.main-header--hidden {
+  transform: translateY(-101%);
 }
-.main-nav__sublist li {
-  width: 33%; /* Creates a three-column layout for sub-menu items. */
-  padding: 0.625rem 1rem 0.625rem 0;
-  margin-top: 1rem;
-}
-.main-nav__sublist li a {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.main-nav__sublist li a .icon {
-  font-size: 1rem;
-  margin-bottom: 0;
-  margin-right: 0.25rem;
-}
-
-.main-nav__item-text {
-  display: block;
-  text-transform: uppercase;
-}
-
-.main-nav__dropdown-title {
-  font-size: 2rem;
-}
-
-.main-nav__sublist {
-  font-size: 1.2rem;
-}
-
-.main-nav__item-text--small {
-  font-size: 0.625rem;
-  line-height: 0.5rem;
-}
-
-.main-nav__item-text--large {
-  font-size: 1.125rem;
+body.menu-is-active .header-is-sticky {
+  z-index: 8 !important; /* Set z-index to be lower than the sidebar's (which is 9) */
 }
 
 .main-header__top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
 }
 
-/* The "hamburger" menu button for mobile. */
+.main-nav {
+  display: none;
+  background-color: var(--muted-2);
+  color: var(--text-color);
+
+  @media (min-width: 992px) {
+    display: block;
+  }
+
+  a,
+  a:visited {
+    color: var(--text-color);
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    flex: 1;
+
+    &:hover .main-nav__dropdown {
+      display: block;
+    }
+
+    &:hover .main-nav__link::after {
+      content: "";
+      position: absolute;
+      bottom: -2.25rem;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 2.25rem 67px 0;
+      border-color: transparent;
+      transform: translateX(-50%);
+      z-index: 100;
+
+      @media (min-width: 1260px) {
+        border-width: 2.25rem 83px 0;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.main-nav__dropdown {
+  display: none;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  padding: 3rem 0;
+}
+
+.main-nav__sublist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 1.2rem;
+  li {
+    width: 33.33%;
+    padding: 0.625rem 1rem 0.625rem 0;
+    margin-top: 1rem;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.main-nav__item-text {
+  display: block;
+  text-transform: uppercase;
+  &--small {
+    font-size: 0.625rem;
+    line-height: 0.5rem;
+  }
+  &--large {
+    font-size: 1.125rem;
+  }
+}
+
 .site-nav-toggle {
   background-color: var(--muted-2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative;
   height: 3.5rem;
   width: 4rem;
-  background-color: var(--muted-2);
-  padding: 1rem 1rem;
+  padding: 1rem;
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
-}
-.site-nav-toggle:hover {
-  background-color: var(--secondary-color);
-}
-.site-nav-toggle span {
-  display: block;
-  width: 2rem;
-  height: 0.25rem;
-  background-color: var(--text-color);
+  span {
+    display: block;
+    width: 2rem;
+    height: 0.25rem;
+    background-color: var(--text-color);
+  }
 }
 
-/* --- THEME COLORS FOR NAVIGATION ITEMS --- */
-
-/* Main nav link hover background */
+/* Keep all your theme colors exactly as they were */
 .main-nav__item--bespoke-software:hover .main-nav__link {
   background-color: var(--neutral-22);
 }
@@ -198,7 +174,6 @@
   background-color: var(--neutral-19);
 }
 
-/* Dropdown background */
 .main-nav__item--bespoke-software .main-nav__dropdown {
   background-color: var(--neutral-11);
 }
@@ -221,7 +196,6 @@
   background-color: var(--neutral-5);
 }
 
-/* Main nav icon colors (default state) */
 .main-nav__link .icon {
   font-size: 1.45rem;
   margin-bottom: 0.5rem;
@@ -248,12 +222,10 @@
   color: var(--neutral-19);
 }
 
-/* All nav icons turn white on hover. */
 .main-nav__item:hover .icon {
   color: var(--text-color);
 }
 
-/* Dropdown arrow colors on hover */
 .main-nav__item--bespoke-software:hover .main-nav__link::after {
   border-top-color: var(--neutral-22);
 }

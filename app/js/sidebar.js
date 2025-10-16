@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // --- BANNER SLIDER SCRIPT ---
+  // (Your existing banner code)
 
   // --- SIDEBAR SCRIPT ---
   $(".site-nav-toggle").on("click", function (e) {
@@ -17,7 +18,7 @@ $(document).ready(function () {
     }
   });
 
-  // --- SIDEBAR SUB-MENU SCRIPT ---
+  // --- SIDEBAR SUB-MENU SCRIPT (NEW) ---
   $(".sidebar > ul > li > a").on("click", function (e) {
     // Check if this menu item has a sub-menu
     if ($(this).siblings(".sub-menu-banner").length > 0) {
