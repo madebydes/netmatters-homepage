@@ -1,6 +1,5 @@
 $(document).ready(function () {
   // --- BANNER SLIDER SCRIPT ---
-  // (Your existing banner code)
 
   // --- SIDEBAR SCRIPT ---
   $(".site-nav-toggle").on("click", function (e) {

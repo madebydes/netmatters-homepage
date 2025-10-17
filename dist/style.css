@@ -73,7 +73,7 @@ body {
 html,
 body {
   position: relative;
-  overflow-x: hidden; /* CRUCIAL: Prevents scrollbars during the push animation */
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
@@ -1977,6 +1977,261 @@ li.is-open > .sub-menu-banner {
     display: none;
   }
 }
+/* _cookies.scss */
+.cookie-consent {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* The dark overlay */
+  z-index: 2000; /* Highest z-index to be on top of everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* This is a helper class we will toggle with JS */
+}
+.cookie-consent.hidden {
+  display: none;
+}
+
+.cookie-consent__dialog {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 90%;
+  text-align: left;
+}
+
+.cookie-consent__header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cookie-consent__header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.cookie-consent__body {
+  padding: 20px;
+}
+.cookie-consent__body p {
+  margin: 0;
+  line-height: 1.5;
+  color: #666;
+}
+.cookie-consent__body a {
+  color: #926fb1;
+  text-decoration: underline;
+}
+
+.cookie-consent__footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.cookie-consent__footer .btn {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.cookie-consent__footer .btn--settings {
+  background-color: #ccc;
+  color: #333;
+}
+.cookie-consent__footer .btn--settings:hover {
+  background-color: #bbb;
+}
+.cookie-consent__footer .btn--accept {
+  background-color: #926fb1; /* Web Design theme color */
+  color: #fff;
+}
+.cookie-consent__footer .btn--accept:hover {
+  background-color: #79539a; /* Darker version for hover */
+}
+
+/*  COOKIE SETTINGS PANEL */
+/* Settings panel overlay - uses same base as .cookie-consent */
+.cookie-settings {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Allows scrolling if content is tall */
+  padding: 40px 0;
+}
+.cookie-settings.hidden {
+  display: none;
+}
+
+/* The settings dialog box itself */
+.cookie-settings__dialog {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  max-width: 800px; /* Larger than the consent banner */
+  width: 90%;
+  text-align: left;
+}
+
+/* Settings Header (matches image) */
+.cookie-settings__header {
+  padding: 15px 25px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cookie-settings__header h3 {
+  margin: 0;
+  font-size: 1.5rem; /* Slightly larger heading */
+  font-weight: 600;
+  color: #333;
+}
+
+/* Settings Body (where the content lives) */
+.cookie-settings__body {
+  padding: 25px;
+  line-height: 1.5;
+  color: #666;
+  max-height: 60vh; /* Make body scrollable on short screens */
+  overflow-y: auto;
+}
+.cookie-settings__body p,
+.cookie-settings__body ul {
+  margin-bottom: 1.5em;
+}
+.cookie-settings__body ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.cookie-settings__body strong {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Each cookie category (e.g., "Functional") */
+.cookie-setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.cookie-setting-item:last-child {
+  border-bottom: none;
+}
+
+.cookie-setting-item__text {
+  flex: 1;
+  padding-right: 20px;
+}
+.cookie-setting-item__text h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.cookie-setting-item__text p,
+.cookie-setting-item__text ul {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.cookie-setting-item__toggle {
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* The Toggle Switch Styling */
+.cookie-toggle {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+  /* Base button style within the toggle */
+  /* The hidden checkbox does all the work */
+  /* Style based on checkbox state: (Disabled) */
+  /* Style based on checkbox state: CHECKED (Enabled) */
+}
+.cookie-toggle .btn {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #f0f0f0;
+  color: #888;
+  border: none;
+  transition: all 0.2s ease;
+}
+.cookie-toggle__checkbox {
+  display: none;
+}
+.cookie-toggle__checkbox:not(:checked) + .cookie-toggle .btn--disable {
+  background-color: #926fb1;
+  color: #fff;
+}
+.cookie-toggle__checkbox:checked + .cookie-toggle .btn--enable {
+  background-color: #926fb1;
+  color: #fff;
+}
+
+/* A special class for toggles that can't be changed */
+.cookie-toggle--disabled {
+  cursor: not-allowed;
+  /* Show "Enable" as the active state for necessary cookies */
+}
+.cookie-toggle--disabled .btn {
+  background-color: #f0f0f0;
+  color: #aaa;
+}
+.cookie-toggle--disabled .btn--enable {
+  background-color: #ccc;
+  color: #777;
+}
+.cookie-toggle--disabled .btn--disable {
+  background-color: #f9f9f9;
+}
+
+/* Settings Footer */
+.cookie-settings__footer {
+  padding: 15px 25px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f9f9f9;
+}
+.cookie-settings__footer .btn--save-settings {
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #926fb1; /* Theme color */
+  color: #fff;
+}
+.cookie-settings__footer .btn--save-settings:hover {
+  background-color: #79539a; /* Darker hover */
+}
+
 /* util _index.scss  */
 @font-face {
   font-family: "Poppins";
