@@ -1,0 +1,24 @@
+# Environment variables - NEVER commit these
+.env
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Log files
+*.log
+error_log
+
+# Compiled CSS map (optional - can be committed)
+# dist/style.css.map

@@ -1,5 +1,5 @@
+/* _sidebar.scss */
 /* --- CORE LAYOUT & ANIMATION --- */
-
 body {
   position: relative;
   overflow-x: hidden;
@@ -10,7 +10,7 @@ body {
   background-color: #fff;
   z-index: 10;
   transition: transform 0.5s ease;
-  transform: translateX(0);
+  min-height: 100vh;
 }
 
 .sidebar {
@@ -32,6 +32,19 @@ body {
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #2a2b38;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 3px;
   }
 }
 
@@ -75,14 +88,15 @@ body.menu-is-active {
   }
 }
 
-/* --- INTERNAL SIDEBAR STYLING --- */
-
+/* --- INTERNAL SIDEBAR STYLING (GRID MENU) --- */
 .sidebar > .main {
   padding: 21px;
 
   > ul > li {
-    padding-top: 20px;
+    margin-bottom: 1rem;
+    transition: margin-bottom 0.2s;
 
+    /* Styling for the main button link (The Parent Item) */
     > a {
       display: block;
       color: #fff;
@@ -94,6 +108,7 @@ body.menu-is-active {
       border-radius: 3px;
       outline: 1px solid rgba(0, 0, 0, 0.25);
       border: 1px solid hsla(0, 0%, 100%, 0.1);
+      transition: background-color 0.2s, border-radius 0.2s;
 
       > * {
         display: block;
@@ -111,6 +126,7 @@ body.menu-is-active {
       }
     }
 
+    /* Parent Icon Colors */
     &.web > a span {
       color: #926fb1;
     }
@@ -132,10 +148,93 @@ body.menu-is-active {
     &.developer-course > a span {
       color: #ce4125;
     }
+
+    /* --- OPEN STATE FOR GRID ITEMS --- */
+    &.is-open {
+      /* Keep the button looking like a button, separated from the menu */
+      > a {
+        background-color: #333645;
+        border-radius: 3px;
+        border: 1px solid hsla(0, 0%, 100%, 0.1);
+      }
+    }
+  }
+
+  /* --- SUB-MENU SPECIFIC TO GRID ITEMS --- */
+  .sub-menu-banner {
+    display: none;
+    /* Dark background for contrast */
+    background-color: #2a2b36;
+
+    /* Rounded corners for the detached block */
+    border-radius: 3px;
+
+    /* Full border around the sub-menu block */
+    border: 1px solid rgba(0, 0, 0, 0.25);
+
+    /* THIS CREATES THE GAP between Main Item and Submenu */
+    margin-top: 10px;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    ul li {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    /* Specific link styling for the grid submenu items */
+    ul li a {
+      display: block;
+      width: 100%;
+      text-align: center;
+
+      /* Padding for the list items */
+      padding: 18px 10px;
+
+      /* Dividers between items */
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+      color: #fff;
+      background-color: transparent;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      line-height: 1.4;
+
+      /* No arrows for grid sub-items */
+      &::before {
+        content: none;
+        display: none;
+      }
+
+      &:hover {
+        background-color: #353642;
+      }
+    }
+
+    /* Remove top border from the first item since container has border */
+    ul li:first-child a {
+      border-top: none;
+    }
+    /* Remove bottom border from the last item */
+    ul li:last-child a {
+      border-bottom: none;
+    }
+  }
+
+  /* Show sub-menu when parent is open */
+  > ul > li.is-open .sub-menu-banner {
+    display: block;
   }
 }
 
-/* MAIN TEXT-BASED LINK */
+/* --- BOTTOM TEXT-BASED LINK LIST --- */
 .sidebar > ul {
   border-top: 1px solid rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
@@ -146,7 +245,7 @@ body.menu-is-active {
 
     > a {
       display: block;
-      color: #fff; /* Ensures text is visible */
+      color: #fff;
       padding: 20px;
       text-transform: uppercase;
       font-size: 1rem;
@@ -161,28 +260,30 @@ body.menu-is-active {
   }
 }
 
-/* --- SUB-MENU STYLING --- */
+/* --- GENERIC SUB-MENU STYLING (For the bottom text list) --- */
 .sub-menu-banner {
-  display: none; // Hidden by default
+  display: none;
 }
 
-li.is-open > .sub-menu-banner {
+.sidebar li.is-open > .sub-menu-banner {
   display: block;
 }
 
-.sub-menu-banner ul li a {
+/* Styles for the text-based list sub-menus (keeping arrows here) */
+.sidebar > ul .sub-menu-banner ul li a {
   border-top: 1px solid hsla(0, 0%, 100%, 0.05);
   display: block;
-  color: #fff; /* Ensures text is visible */
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.25);
   padding: 15px 20px;
   text-transform: uppercase;
   font-size: 0.875rem;
   text-decoration: none;
   position: relative;
+  text-align: left;
 }
 
-.sub-menu-banner ul li a::before {
+.sidebar > ul .sub-menu-banner ul li a::before {
   content: "\BB";
   padding-right: 15px;
 }
@@ -192,6 +293,7 @@ li.is-open > .sub-menu-banner {
 .visible-sm {
   display: block;
 }
+
 @media (min-width: 992px) {
   .visible-xs,
   .visible-sm {

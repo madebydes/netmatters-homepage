@@ -1,4 +1,4 @@
-/* NOTE: This component displays client logos with a CSS-only hover pop-up effect. */
+/* app/scss/layout/_clients.scss */
 
 .clients {
   margin-top: 4rem;
@@ -11,14 +11,18 @@
   align-items: center;
   position: relative; /* Establishes positioning context for the pop-up. */
   text-align: center;
+
+  /* --- FIX: PREVENT SQUASHING --- */
+  /* This ensures the wrapper maintains its full width and doesn't shrink to fit the screen */
+  flex: 0 0 auto;
+  width: auto;
 }
+
 .clients__section-for-each-client img {
-  max-height: 3.5rem;
-  /* Logos are desaturated by default and colored on hover. */
-  filter: grayscale(1);
-}
-.clients__section-for-each-client img:hover {
-  filter: grayscale(0);
+  /* Ensure images resize based on height, preserving aspect ratio */
+  width: auto;
+  max-height: 3.5rem; /* Matches partners height */
+  display: block;
 }
 
 /* The pop-up container is positioned relative to its parent section. */
@@ -27,6 +31,11 @@
   display: none;
   width: 20rem;
   bottom: 100%; /* Positions the pop-up above the logo. */
+
+  /* Center the popup relative to the logo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100; /* Ensure it appears above other content */
 }
 
 /* This is the pure CSS trigger: hovering the parent section displays the pop-up container. */
@@ -39,11 +48,11 @@
   color: var(--text-color);
   padding: 1.25rem;
   width: 18rem;
-  bottom: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* Space between box and logo */
+  position: relative;
+  text-align: center;
 }
+
 .clients__pop-up-box .icon {
   width: 1rem;
   margin-left: 0.25rem;
@@ -54,15 +63,14 @@
 .clients__pop-up-box::after {
   content: "";
   position: absolute;
-  bottom: 1rem; /* Adjusts vertical position of the triangle. */
+  top: 100%; /* At the bottom of the box */
   left: 50%;
   transform: translateX(-50%);
-  right: 50%;
   width: 0;
   height: 0;
-  border-left: 2rem solid transparent;
-  border-right: 2rem solid transparent;
-  border-top: 2rem solid var(--muted-2);
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid var(--muted-2);
 }
 
 .clients__pop-up-link {
@@ -77,16 +85,19 @@
   text-transform: uppercase;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  margin-top: 1rem;
 }
 
 .clients__pop-up-heading {
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .clients__pop-up-description {
   font-size: 0.8125rem;
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* Modifier classes for theming the CTA link colors. */
@@ -108,5 +119,7 @@
   background-color: var(--neutral-18);
 }
 .clients__pop-up-link--yellow:hover {
-  background-color: var(--neutral-18);
+  background-color: var(
+    --neutral-18
+  ); /* Often same on hover or slightly darker */
 }

@@ -6,13 +6,18 @@
   margin-bottom: 4rem;
 }
 
-.partners img {
+/* Apply grayscale filter to images in BOTH partners and clients */
+.partners img,
+.clients img {
   /* The core effect: logos are desaturated by default. */
   filter: grayscale(1);
   /* Normalizes the logo sizes to prevent large logos from breaking the layout. */
   max-height: 3.5rem;
+  transition: filter 0.3s ease; /* Smooth transition */
 }
-/* On hover, the grayscale filter is removed, revealing the logo's full color. */
-.partners img:hover {
+
+/* On hover, the grayscale filter is removed */
+.partners img:hover,
+.clients img:hover {
   filter: grayscale(0);
 }

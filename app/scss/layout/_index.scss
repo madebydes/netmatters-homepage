@@ -1,5 +1,5 @@
-/* layout _index.scss */
 @forward "_banner";
+@forward "_sidebar"; /* <--- ADD THIS LINE */
 @forward "_clients";
 @forward "_footer";
 @forward "_header";
@@ -7,5 +7,4 @@
 @forward "_partners";
 @forward "_services";
 @forward "_welcome";
-@forward "_sidebar";
 @forward "cookies";

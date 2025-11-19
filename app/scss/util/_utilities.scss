@@ -89,13 +89,21 @@
   @include button-icon;
 }
 
-/* Shared styles for the logo carousel/wall. */
+/* --- SHARED LOGO CAROUSEL STYLES --- */
+
+/* The outer container that hides overflow */
 .associates-logo-container {
   display: flex;
   justify-content: center;
-  overflow-x: clip; /* Prevents overflow without creating a scrollbar. */
+  overflow-x: clip;
 }
-.associates-logo-layout-container {
+
+/* 
+   UPDATED: We apply the flex layout and gap to BOTH 
+   the partners container and the new clients container 
+*/
+.associates-logo-layout-container,
+.clients-logo-layout-container {
   display: flex;
   gap: 4.75rem;
   align-items: center;
@@ -242,7 +250,6 @@
 
 .site-search-widget--wide-viewport {
   display: none;
-  margin-left: 2rem;
   margin-right: 1rem;
 }
 @media (min-width: 768px) {
@@ -331,23 +338,9 @@
   font-size: 2rem;
 }
 
-/* --- LOGO CAROUSEL --- */
+/* --- LOGO CAROUSEL MOBILE SCROLL --- */
 
-.associates-logo-container {
-  display: flex;
-  align-items: center;
-  overflow: visible;
-  justify-content: center;
-  gap: 4.75rem;
-}
-
-.associates-logo-container img {
-  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
-  max-width: none;
-  height: 3.2rem;
-}
-
-/* Mobile: Overrides to enable horizontal scrolling. */
+/* Mobile: Overrides to enable horizontal scrolling for BOTH containers. */
 @media (max-width: 767px) {
   .associates-logo-container {
     justify-content: flex-start; /* Aligns logos to the left to start the scroll. */

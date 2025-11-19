@@ -60,50 +60,84 @@ body {
   line-height: 1.5;
 }
 
-/* _boilerplate.scss */
+/* _boilerplate.scss
+
+*/
 /* _variables.scss
    Project tokens. Use these for spacing, z-index, transitions.
 */
+* {
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-html,
 body {
   position: relative;
-  overflow-x: hidden;
   margin: 0;
-  padding: 0;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  letter-spacing: 0.03em;
+  line-height: 1.42857143;
+  overscroll-behavior: none;
 }
 
-/* This holds the space for the fixed header so content doesn't start underneath it */
-#container {
-  padding-top: 13rem; /* Desktop header height */
-}
-@media (max-width: 991px) {
-  #container {
-    padding-top: 10.1875rem; /* Mobile/Tablet header height */
-  }
+img {
+  max-width: 100%;
+  display: block;
 }
 
 main {
   background-color: var(--text-color);
-  /* padding-top is now handled by #container */
+  padding-top: 10.1875rem;
+  position: relative;
+  z-index: 10;
 }
 
+@media (min-width: 768px) {
+  main {
+    padding-top: 6.75rem;
+    overflow-x: hidden;
+  }
+}
+@media (min-width: 992px) {
+  main {
+    padding-top: 13rem;
+    overflow-x: hidden;
+  }
+}
+/* Reusable class for webpage */
 .container {
-  width: 100%;
-  max-width: 1200px;
+  width: 100%; /* Modular width by default */
+  max-width: 1200px; /* Set a consistent max-width for the largest size */
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
+  padding-left: 1rem; /* Use padding for inner spacing */
   padding-right: 1rem;
 }
 
+/* For tablets and up */
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+/* For small desktops */
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+/* For large desktops */
+@media (min-width: 1260px) {
+  .container {
+    max-width: 1200px;
+  }
+}
 ul {
   list-style-type: none;
   margin: 0;
@@ -114,20 +148,17 @@ a {
   color: var(--muted-2);
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
+/* _boilerplate.scss
 
-/* _boilerplate.scss */
+*/
 /* _mixins.scss
    Reusable mixins for buttons and navigation.
 */
-/* layout _index.scss */
 /* style.scss - entrypoint
    Import via: sass app/scss/style.scss dist/style.css
 */
@@ -167,6 +198,10 @@ img {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  cursor: grab;
+}
+.banner__hero-items-wrapper:active {
+  cursor: grabbing;
 }
 
 .banner__hero-items-wrapper--transition {
@@ -174,7 +209,8 @@ img {
 }
 
 .banner__hero-item {
-  min-width: 100vw;
+  width: 100%;
+  flex-shrink: 0;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -430,7 +466,279 @@ img {
   }
 }
 
-/* NOTE: This component displays client logos with a CSS-only hover pop-up effect. */
+/* _sidebar.scss */
+/* --- CORE LAYOUT & ANIMATION --- */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+#container {
+  position: relative;
+  background-color: #fff;
+  z-index: 10;
+  transition: transform 0.5s ease;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 275px;
+  background: #333645;
+  z-index: 9;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@media (min-width: 992px) {
+  .sidebar {
+    width: 350px;
+  }
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: #2a2b38;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 3px;
+}
+
+/* --- ACTIVE STATE --- */
+body.menu-is-active #container {
+  transform: translateX(-275px);
+}
+@media (min-width: 992px) {
+  body.menu-is-active #container {
+    transform: translateX(-350px);
+  }
+}
+body.menu-is-active #container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  cursor: pointer;
+}
+
+/* --- HAMBURGER ANIMATION --- */
+.site-nav-toggle span {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.site-nav-toggle.is-active span:nth-child(1) {
+  transform: translateY(0.675rem) rotate(45deg);
+}
+.site-nav-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.site-nav-toggle.is-active span:nth-child(3) {
+  transform: translateY(-0.575rem) rotate(-45deg);
+}
+
+/* --- INTERNAL SIDEBAR STYLING (GRID MENU) --- */
+.sidebar > .main {
+  padding: 21px;
+  /* --- SUB-MENU SPECIFIC TO GRID ITEMS --- */
+  /* Show sub-menu when parent is open */
+}
+.sidebar > .main > ul > li {
+  margin-bottom: 1rem;
+  transition: margin-bottom 0.2s;
+  /* Styling for the main button link (The Parent Item) */
+  /* Parent Icon Colors */
+  /* --- OPEN STATE FOR GRID ITEMS --- */
+}
+.sidebar > .main > ul > li > a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.125rem;
+  padding: 19px 0 18px;
+  border-radius: 3px;
+  outline: 1px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  transition: background-color 0.2s, border-radius 0.2s;
+}
+.sidebar > .main > ul > li > a > * {
+  display: block;
+}
+.sidebar > .main > ul > li > a span {
+  padding-bottom: 10px;
+  font-size: 1.438rem;
+  color: #fff;
+}
+.sidebar > .main > ul > li > a small {
+  font-size: 0.625rem;
+  padding-bottom: 1px;
+}
+.sidebar > .main > ul > li.web > a span {
+  color: #926fb1;
+}
+.sidebar > .main > ul > li.it > a span {
+  color: #4183d7;
+}
+.sidebar > .main > ul > li.telecoms > a span {
+  color: #d64541;
+}
+.sidebar > .main > ul > li.software > a span {
+  color: #67809f;
+}
+.sidebar > .main > ul > li.digital > a span {
+  color: #2ecc71;
+}
+.sidebar > .main > ul > li.security > a span {
+  color: #f62459;
+}
+.sidebar > .main > ul > li.developer-course > a span {
+  color: #ce4125;
+}
+.sidebar > .main > ul > li.is-open {
+  /* Keep the button looking like a button, separated from the menu */
+}
+.sidebar > .main > ul > li.is-open > a {
+  background-color: #333645;
+  border-radius: 3px;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.sidebar > .main .sub-menu-banner {
+  display: none;
+  /* Dark background for contrast */
+  background-color: #2a2b36;
+  /* Rounded corners for the detached block */
+  border-radius: 3px;
+  /* Full border around the sub-menu block */
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  /* THIS CREATES THE GAP between Main Item and Submenu */
+  margin-top: 10px;
+  /* Specific link styling for the grid submenu items */
+  /* Remove top border from the first item since container has border */
+  /* Remove bottom border from the last item */
+}
+.sidebar > .main .sub-menu-banner ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.sidebar > .main .sub-menu-banner ul li {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.sidebar > .main .sub-menu-banner ul li a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  /* Padding for the list items */
+  padding: 18px 10px;
+  /* Dividers between items */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  /* No arrows for grid sub-items */
+}
+.sidebar > .main .sub-menu-banner ul li a::before {
+  content: none;
+  display: none;
+}
+.sidebar > .main .sub-menu-banner ul li a:hover {
+  background-color: #353642;
+}
+.sidebar > .main .sub-menu-banner ul li:first-child a {
+  border-top: none;
+}
+.sidebar > .main .sub-menu-banner ul li:last-child a {
+  border-bottom: none;
+}
+.sidebar > .main > ul > li.is-open .sub-menu-banner {
+  display: block;
+}
+
+/* --- BOTTOM TEXT-BASED LINK LIST --- */
+.sidebar > ul {
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+}
+.sidebar > ul > li {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+.sidebar > ul > li > a {
+  display: block;
+  color: #fff;
+  padding: 20px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: 1;
+  position: relative;
+}
+.sidebar > ul > li:hover > a {
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
+/* --- GENERIC SUB-MENU STYLING (For the bottom text list) --- */
+.sub-menu-banner {
+  display: none;
+}
+
+.sidebar li.is-open > .sub-menu-banner {
+  display: block;
+}
+
+/* Styles for the text-based list sub-menus (keeping arrows here) */
+.sidebar > ul .sub-menu-banner ul li a {
+  border-top: 1px solid hsla(0, 0%, 100%, 0.05);
+  display: block;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 15px 20px;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  text-decoration: none;
+  position: relative;
+  text-align: left;
+}
+
+.sidebar > ul .sub-menu-banner ul li a::before {
+  content: "»";
+  padding-right: 15px;
+}
+
+/* --- VISIBILITY HELPERS --- */
+.visible-xs,
+.visible-sm {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .visible-xs,
+  .visible-sm {
+    display: none;
+  }
+}
+/* <--- ADD THIS LINE */
+/* app/scss/layout/_clients.scss */
 .clients {
   margin-top: 4rem;
   margin-bottom: 4rem;
@@ -442,16 +750,17 @@ img {
   align-items: center;
   position: relative; /* Establishes positioning context for the pop-up. */
   text-align: center;
+  /* --- FIX: PREVENT SQUASHING --- */
+  /* This ensures the wrapper maintains its full width and doesn't shrink to fit the screen */
+  flex: 0 0 auto;
+  width: auto;
 }
 
 .clients__section-for-each-client img {
-  max-height: 3.5rem;
-  /* Logos are desaturated by default and colored on hover. */
-  filter: grayscale(1);
-}
-
-.clients__section-for-each-client img:hover {
-  filter: grayscale(0);
+  /* Ensure images resize based on height, preserving aspect ratio */
+  width: auto;
+  max-height: 3.5rem; /* Matches partners height */
+  display: block;
 }
 
 /* The pop-up container is positioned relative to its parent section. */
@@ -460,6 +769,10 @@ img {
   display: none;
   width: 20rem;
   bottom: 100%; /* Positions the pop-up above the logo. */
+  /* Center the popup relative to the logo */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100; /* Ensure it appears above other content */
 }
 
 /* This is the pure CSS trigger: hovering the parent section displays the pop-up container. */
@@ -472,10 +785,9 @@ img {
   color: var(--text-color);
   padding: 1.25rem;
   width: 18rem;
-  bottom: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem; /* Space between box and logo */
+  position: relative;
+  text-align: center;
 }
 
 .clients__pop-up-box .icon {
@@ -488,15 +800,14 @@ img {
 .clients__pop-up-box::after {
   content: "";
   position: absolute;
-  bottom: 1rem; /* Adjusts vertical position of the triangle. */
+  top: 100%; /* At the bottom of the box */
   left: 50%;
   transform: translateX(-50%);
-  right: 50%;
   width: 0;
   height: 0;
-  border-left: 2rem solid transparent;
-  border-right: 2rem solid transparent;
-  border-top: 2rem solid var(--muted-2);
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid var(--muted-2);
 }
 
 .clients__pop-up-link {
@@ -511,16 +822,19 @@ img {
   text-transform: uppercase;
   font-weight: 500;
   transition: background-color 0.3s ease;
+  margin-top: 1rem;
 }
 
 .clients__pop-up-heading {
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.125rem;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .clients__pop-up-description {
   font-size: 0.8125rem;
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* Modifier classes for theming the CTA link colors. */
@@ -545,7 +859,7 @@ img {
 }
 
 .clients__pop-up-link--yellow:hover {
-  background-color: var(--neutral-18);
+  background-color: var(--neutral-18); /* Often same on hover or slightly darker */
 }
 
 .footer {
@@ -765,67 +1079,107 @@ img {
 /* style.scss - entrypoint
    Import via: sass app/scss/style.scss dist/style.css
 */
+/* _header.scss */
+/* ============================================
+   STICKY HEADER ANIMATION KEYFRAMES
+   ============================================ */
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+/* ============================================
+   ANIMATION UTILITY CLASSES
+   ============================================ */
+.animated {
+  animation-fill-mode: both;
+}
+
+.slideInDown {
+  animation-name: slideInDown;
+}
+
+/* ============================================
+   MAIN HEADER - DEFAULT STATE
+   ============================================ */
 .main-header {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 15;
-  transition: transform 0.4s ease;
+  z-index: 15; /* Sits above most page content. */
+  background-color: var(--text-color);
+  padding-top: 1.25rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  /* ============================================
+     STICKY STATE - Applied via JavaScript
+     When scrolling UP, header becomes fixed
+     ============================================ */
 }
-
-/* 2. The Cloned Sticky Header (outside #container) */
-.header-is-sticky {
-  position: fixed;
-  top: 0;
+.main-header.sticky {
+  position: fixed !important;
+  top: 0 !important;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 999;
-  background-color: var(--text-color);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease;
+  margin-right: 0;
+  z-index: 1100; /* Above sidebar overlay */
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+  animation-duration: 0.25s;
+  transition: all 0.5s;
+  visibility: visible;
 }
 
-/* 3. A Common Class for Hiding Either Header */
-.main-header--hidden {
-  transform: translateY(-101%);
+@media (min-width: 992px) {
+  .main-header {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+.main-header--hide-upwards {
+  transform: translateY(-100%);
 }
 
-body.menu-is-active .header-is-sticky {
-  z-index: 8 !important; /* Set z-index to be lower than the sidebar's (which is 9) */
-}
-
-.main-header__top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1.25rem;
-  padding-bottom: 1rem;
-}
-
+/* Mobile-first: The main navigation is hidden by default. */
 .main-nav {
   display: none;
   background-color: var(--muted-2);
   color: var(--text-color);
 }
+
+/* It becomes visible on larger screens. */
 @media (min-width: 992px) {
   .main-nav {
     display: block;
+    margin-top: 1rem;
   }
 }
-.main-nav a,
+.main-nav a {
+  color: var(--text-color);
+}
+
 .main-nav a:visited {
   color: var(--text-color);
 }
+
 .main-nav__list {
-  display: flex;
+  display: flex; /* Creates the horizontal navigation layout. */
 }
+
 .main-nav__item {
-  flex: 1;
+  flex: 1; /* Distributes space equally among nav items. */
 }
+
+/* Pure CSS hover effect to show the dropdown mega-menu. */
 .main-nav__item:hover .main-nav__dropdown {
   display: block;
 }
+
+/* "CSS Triangle" trick: creates the pointer arrow using a pseudo-element's borders. */
 .main-nav__item:hover .main-nav__link::after {
   content: "";
   position: absolute;
@@ -834,77 +1188,111 @@ body.menu-is-active .header-is-sticky {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 2.25rem 67px 0;
-  border-color: transparent;
+  border-width: 2.25rem 67px 0px 67px;
+  border-color: transparent transparent transparent;
   transform: translateX(-50%);
   z-index: 100;
 }
+
 @media (min-width: 1260px) {
   .main-nav__item:hover .main-nav__link::after {
-    border-width: 2.25rem 83px 0;
+    border-width: 2.25rem 83px 0px 83px;
   }
 }
 .main-nav__link {
-  position: relative;
+  position: relative; /* Positioning context for any pseudo-element. */
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 1.2rem 0;
-  text-decoration: none;
 }
+
 .main-nav__link:hover {
   text-decoration: none;
 }
 
+/* The mega-menu dropdown container. */
 .main-nav__dropdown {
   display: none;
-  position: absolute;
+  position: absolute; /* Takes the dropdown out of the normal document flow. */
   width: 100%;
   left: 0;
-  padding: 3rem 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .main-nav__sublist {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows sub-menu items to wrap into multiple rows. */
   align-items: center;
-  font-size: 1.2rem;
 }
+
 .main-nav__sublist li {
-  width: 33.33%;
+  width: 33%; /* Creates a three-column layout for sub-menu items. */
   padding: 0.625rem 1rem 0.625rem 0;
   margin-top: 1rem;
 }
+
 .main-nav__sublist li a {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+.main-nav__sublist li a .icon {
+  font-size: 1rem;
+  margin-bottom: 0;
+  margin-right: 0.25rem;
+}
+
 .main-nav__item-text {
   display: block;
   text-transform: uppercase;
 }
+
+.main-nav__dropdown-title {
+  font-size: 2rem;
+}
+
+.main-nav__sublist {
+  font-size: 1.2rem;
+}
+
 .main-nav__item-text--small {
   font-size: 0.625rem;
   line-height: 0.5rem;
 }
+
 .main-nav__item-text--large {
   font-size: 1.125rem;
 }
 
+.main-header__top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* The "hamburger" menu button for mobile. */
 .site-nav-toggle {
   background-color: var(--muted-2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
   height: 3.5rem;
   width: 4rem;
-  padding: 1rem;
+  background-color: var(--muted-2);
+  padding: 1rem 1rem;
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
 }
+
+.site-nav-toggle:hover {
+  background-color: var(--secondary-color);
+}
+
 .site-nav-toggle span {
   display: block;
   width: 2rem;
@@ -912,7 +1300,8 @@ body.menu-is-active .header-is-sticky {
   background-color: var(--text-color);
 }
 
-/* Keep all your theme colors exactly as they were */
+/* --- THEME COLORS FOR NAVIGATION ITEMS --- */
+/* Main nav link hover background */
 .main-nav__item--bespoke-software:hover .main-nav__link {
   background-color: var(--neutral-22);
 }
@@ -941,6 +1330,7 @@ body.menu-is-active .header-is-sticky {
   background-color: var(--neutral-19);
 }
 
+/* Dropdown background */
 .main-nav__item--bespoke-software .main-nav__dropdown {
   background-color: var(--neutral-11);
 }
@@ -969,6 +1359,7 @@ body.menu-is-active .header-is-sticky {
   background-color: var(--neutral-5);
 }
 
+/* Main nav icon colors (default state) */
 .main-nav__link .icon {
   font-size: 1.45rem;
   margin-bottom: 0.5rem;
@@ -1002,10 +1393,12 @@ body.menu-is-active .header-is-sticky {
   color: var(--neutral-19);
 }
 
+/* All nav icons turn white on hover. */
 .main-nav__item:hover .icon {
   color: var(--text-color);
 }
 
+/* Dropdown arrow colors on hover */
 .main-nav__item--bespoke-software:hover .main-nav__link::after {
   border-top-color: var(--neutral-22);
 }
@@ -1302,15 +1695,19 @@ body.menu-is-active .header-is-sticky {
   margin-bottom: 4rem;
 }
 
-.partners img {
+/* Apply grayscale filter to images in BOTH partners and clients */
+.partners img,
+.clients img {
   /* The core effect: logos are desaturated by default. */
   filter: grayscale(1);
   /* Normalizes the logo sizes to prevent large logos from breaking the layout. */
   max-height: 3.5rem;
+  transition: filter 0.3s ease; /* Smooth transition */
 }
 
-/* On hover, the grayscale filter is removed, revealing the logo's full color. */
-.partners img:hover {
+/* On hover, the grayscale filter is removed */
+.partners img:hover,
+.clients img:hover {
   filter: grayscale(0);
 }
 
@@ -1791,279 +2188,8 @@ blockquote {
   background-color: var(--muted-1);
 }
 
-/* --- CORE LAYOUT & ANIMATION --- */
-body {
-  position: relative;
-  overflow-x: hidden;
-}
-
-#container {
-  position: relative;
-  background-color: #fff;
-  z-index: 10;
-  transition: transform 0.5s ease;
-  transform: translateX(0);
-}
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 275px;
-  background: #333645;
-  z-index: 9;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-@media (min-width: 992px) {
-  .sidebar {
-    width: 350px;
-  }
-}
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* --- ACTIVE STATE --- */
-body.menu-is-active #container {
-  transform: translateX(-275px);
-}
-@media (min-width: 992px) {
-  body.menu-is-active #container {
-    transform: translateX(-350px);
-  }
-}
-body.menu-is-active #container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 100;
-  cursor: pointer;
-}
-
-/* --- HAMBURGER ANIMATION --- */
-.site-nav-toggle span {
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-}
-
-.site-nav-toggle.is-active span:nth-child(1) {
-  transform: translateY(0.675rem) rotate(45deg);
-}
-.site-nav-toggle.is-active span:nth-child(2) {
-  opacity: 0;
-}
-.site-nav-toggle.is-active span:nth-child(3) {
-  transform: translateY(-0.575rem) rotate(-45deg);
-}
-
-/* --- INTERNAL SIDEBAR STYLING --- */
-.sidebar > .main {
-  padding: 21px;
-}
-.sidebar > .main > ul > li {
-  padding-top: 20px;
-}
-.sidebar > .main > ul > li > a {
-  display: block;
-  color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 1.125rem;
-  padding: 19px 0 18px;
-  border-radius: 3px;
-  outline: 1px solid rgba(0, 0, 0, 0.25);
-  border: 1px solid hsla(0, 0%, 100%, 0.1);
-}
-.sidebar > .main > ul > li > a > * {
-  display: block;
-}
-.sidebar > .main > ul > li > a span {
-  padding-bottom: 10px;
-  font-size: 1.438rem;
-  color: #fff;
-}
-.sidebar > .main > ul > li > a small {
-  font-size: 0.625rem;
-  padding-bottom: 1px;
-}
-.sidebar > .main > ul > li.web > a span {
-  color: #926fb1;
-}
-.sidebar > .main > ul > li.it > a span {
-  color: #4183d7;
-}
-.sidebar > .main > ul > li.telecoms > a span {
-  color: #d64541;
-}
-.sidebar > .main > ul > li.software > a span {
-  color: #67809f;
-}
-.sidebar > .main > ul > li.digital > a span {
-  color: #2ecc71;
-}
-.sidebar > .main > ul > li.security > a span {
-  color: #f62459;
-}
-.sidebar > .main > ul > li.developer-course > a span {
-  color: #ce4125;
-}
-
-/* MAIN TEXT-BASED LINK */
-.sidebar > ul {
-  border-top: 1px solid rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
-}
-.sidebar > ul > li {
-  border-top: 1px solid hsla(0, 0%, 100%, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-}
-.sidebar > ul > li > a {
-  display: block;
-  color: #fff; /* Ensures text is visible */
-  padding: 20px;
-  text-transform: uppercase;
-  font-size: 1rem;
-  text-decoration: none;
-  line-height: 1;
-  position: relative;
-}
-.sidebar > ul > li:hover > a {
-  background-color: hsla(0, 0%, 100%, 0.05);
-}
-
-/* --- SUB-MENU STYLING --- */
-.sub-menu-banner {
-  display: none;
-}
-
-li.is-open > .sub-menu-banner {
-  display: block;
-}
-
-.sub-menu-banner ul li a {
-  border-top: 1px solid hsla(0, 0%, 100%, 0.05);
-  display: block;
-  color: #fff; /* Ensures text is visible */
-  background-color: rgba(0, 0, 0, 0.25);
-  padding: 15px 20px;
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  text-decoration: none;
-  position: relative;
-}
-
-.sub-menu-banner ul li a::before {
-  content: "»";
-  padding-right: 15px;
-}
-
-/* --- VISIBILITY HELPERS --- */
-.visible-xs,
-.visible-sm {
-  display: block;
-}
-
-@media (min-width: 992px) {
-  .visible-xs,
-  .visible-sm {
-    display: none;
-  }
-}
 /* _cookies.scss */
-.cookie-consent {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7); /* The dark overlay */
-  z-index: 2000; /* Highest z-index to be on top of everything */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* This is a helper class we will toggle with JS */
-}
-.cookie-consent.hidden {
-  display: none;
-}
-
-.cookie-consent__dialog {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  max-width: 500px;
-  width: 90%;
-  text-align: left;
-}
-
-.cookie-consent__header {
-  padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
-}
-.cookie-consent__header h3 {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.cookie-consent__body {
-  padding: 20px;
-}
-.cookie-consent__body p {
-  margin: 0;
-  line-height: 1.5;
-  color: #666;
-}
-.cookie-consent__body a {
-  color: #926fb1;
-  text-decoration: underline;
-}
-
-.cookie-consent__footer {
-  padding: 15px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.cookie-consent__footer .btn {
-  padding: 10px 20px;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-.cookie-consent__footer .btn--settings {
-  background-color: #ccc;
-  color: #333;
-}
-.cookie-consent__footer .btn--settings:hover {
-  background-color: #bbb;
-}
-.cookie-consent__footer .btn--accept {
-  background-color: #926fb1; /* Web Design theme color */
-  color: #fff;
-}
-.cookie-consent__footer .btn--accept:hover {
-  background-color: #79539a; /* Darker version for hover */
-}
-
-/*  COOKIE SETTINGS PANEL */
-/* Settings panel overlay - uses same base as .cookie-consent */
-.cookie-settings {
+.cookie-consent, .cookie-settings {
   position: fixed;
   top: 0;
   left: 0;
@@ -2074,287 +2200,246 @@ li.is-open > .sub-menu-banner {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-y: auto; /* Allows scrolling if content is tall */
-  padding: 40px 0;
+  padding: 20px;
 }
-.cookie-settings.hidden {
+.cookie-consent.hidden, .hidden.cookie-settings {
   display: none;
 }
-
-/* The settings dialog box itself */
-.cookie-settings__dialog {
+.cookie-consent__dialog {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  max-width: 800px; /* Larger than the consent banner */
-  width: 90%;
+  max-width: 500px;
+  width: 100%;
   text-align: left;
 }
-
-/* Settings Header (matches image) */
-.cookie-settings__header {
-  padding: 15px 25px;
+.cookie-consent__header {
+  padding: 20px;
   border-bottom: 1px solid #e5e5e5;
 }
-.cookie-settings__header h3 {
+.cookie-consent__header h3 {
   margin: 0;
-  font-size: 1.5rem; /* Slightly larger heading */
+  font-size: 1.5rem;
   font-weight: 600;
   color: #333;
 }
-
-/* Settings Body (where the content lives) */
-.cookie-settings__body {
-  padding: 25px;
-  line-height: 1.5;
+.cookie-consent__body {
+  padding: 25px 20px;
+}
+.cookie-consent__body p {
+  margin: 0 35px;
+  line-height: 1.85;
   color: #666;
-  max-height: 60vh; /* Make body scrollable on short screens */
-  overflow-y: auto;
+  font-size: 0.95rem;
 }
-.cookie-settings__body p,
-.cookie-settings__body ul {
-  margin-bottom: 1.5em;
+.cookie-consent__body a {
+  color: #926fb1;
+  text-decoration: underline;
 }
-.cookie-settings__body ul {
-  padding-left: 20px;
-  list-style-type: disc;
+.cookie-consent__body a:hover {
+  color: #79539a;
 }
-.cookie-settings__body strong {
-  font-weight: 600;
+.cookie-consent__footer {
+  padding: 20px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cookie-consent__footer .btn {
+  padding: 12px 24px;
+  border-radius: 3px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+}
+.cookie-consent__footer .btn--settings {
+  background-color: #e0e0e0;
   color: #333;
 }
+.cookie-consent__footer .btn--settings:hover {
+  background-color: #d0d0d0;
+}
+.cookie-consent__footer .btn--accept, .cookie-consent__footer .btn--save-settings {
+  background-color: #926fb1;
+  color: #fff;
+}
+.cookie-consent__footer .btn--accept:hover, .cookie-consent__footer .btn--save-settings:hover {
+  background-color: #79539a;
+}
 
-/* Each cookie category (e.g., "Functional") */
-.cookie-setting-item {
+/* Settings Panel specific overrides */
+.cookie-settings {
+  overflow-y: auto;
+  /* Toggle Switches */
+}
+.cookie-settings__dialog {
+  max-width: 800px;
+}
+.cookie-settings .cookie-setting-item {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
   padding: 20px 0;
   border-bottom: 1px solid #f0f0f0;
 }
-.cookie-setting-item:last-child {
-  border-bottom: none;
-}
-
-.cookie-setting-item__text {
-  flex: 1;
+.cookie-settings .cookie-setting-item__text {
   padding-right: 20px;
 }
-.cookie-setting-item__text h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #333;
-  margin-top: 0;
-  margin-bottom: 10px;
+.cookie-settings .cookie-setting-item__text h4 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
 }
-.cookie-setting-item__text p,
-.cookie-setting-item__text ul {
-  margin-bottom: 0;
+.cookie-settings .cookie-setting-item__text p {
+  margin: 0;
   font-size: 0.9rem;
 }
-
-.cookie-setting-item__toggle {
-  flex-shrink: 0;
-  margin-top: 5px;
-}
-
-/* The Toggle Switch Styling */
-.cookie-toggle {
+.cookie-settings .cookie-toggle {
   display: flex;
   border: 1px solid #ccc;
   border-radius: 3px;
-  overflow: hidden;
   cursor: pointer;
-  /* Base button style within the toggle */
-  /* The hidden checkbox does all the work */
-  /* Style based on checkbox state: (Disabled) */
-  /* Style based on checkbox state: CHECKED (Enabled) */
 }
-.cookie-toggle .btn {
-  padding: 8px 15px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  background-color: #f0f0f0;
-  color: #888;
-  border: none;
-  transition: all 0.2s ease;
-}
-.cookie-toggle__checkbox {
+.cookie-settings .cookie-toggle__checkbox {
   display: none;
 }
-.cookie-toggle__checkbox:not(:checked) + .cookie-toggle .btn--disable {
-  background-color: #926fb1;
-  color: #fff;
+.cookie-settings .cookie-toggle .btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  background: #f5f5f5;
+  color: #999;
 }
-.cookie-toggle__checkbox:checked + .cookie-toggle .btn--enable {
-  background-color: #926fb1;
-  color: #fff;
-}
-
-/* A special class for toggles that can't be changed */
-.cookie-toggle--disabled {
-  cursor: not-allowed;
-  /* Show "Enable" as the active state for necessary cookies */
-}
-.cookie-toggle--disabled .btn {
-  background-color: #f0f0f0;
-  color: #aaa;
-}
-.cookie-toggle--disabled .btn--enable {
-  background-color: #ccc;
-  color: #777;
-}
-.cookie-toggle--disabled .btn--disable {
-  background-color: #f9f9f9;
-}
-
-/* Settings Footer */
-.cookie-settings__footer {
-  padding: 15px 25px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
-  background-color: #f9f9f9;
-}
-.cookie-settings__footer .btn--save-settings {
-  padding: 10px 20px;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  background-color: #926fb1; /* Theme color */
-  color: #fff;
-}
-.cookie-settings__footer .btn--save-settings:hover {
-  background-color: #79539a; /* Darker hover */
+.cookie-settings .cookie-toggle__checkbox:checked + label .btn--enable {
+  background: #926fb1;
+  color: white;
 }
 
 /* util _index.scss  */
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Thin.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Thin.ttf") format("truetype");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-ThinItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-ThinItalic.ttf") format("truetype");
   font-weight: 100;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraLight.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraLightItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-ExtraLightItalic.ttf") format("truetype");
   font-weight: 200;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Light.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-LightItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-LightItalic.ttf") format("truetype");
   font-weight: 300;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Regular.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Italic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Italic.ttf") format("truetype");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Medium.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-MediumItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-MediumItalic.ttf") format("truetype");
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-SemiBold.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-SemiBoldItalic.ttf") format("truetype");
   font-weight: 600;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Bold.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-BoldItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-BoldItalic.ttf") format("truetype");
   font-weight: 700;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraBold.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-ExtraBoldItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-ExtraBoldItalic.ttf") format("truetype");
   font-weight: 800;
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-Black.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-Black.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Poppins";
-  src: url("../../../fonts/webfonts/poppins/Poppins-BlackItalic.ttf") format("truetype");
+  src: url("../fonts/webfonts/poppins/Poppins-BlackItalic.ttf") format("truetype");
   font-weight: 900;
   font-style: italic;
   font-display: swap;
@@ -2463,14 +2548,20 @@ li.is-open > .sub-menu-banner {
   fill: var(--text-color);
 }
 
-/* Shared styles for the logo carousel/wall. */
+/* --- SHARED LOGO CAROUSEL STYLES --- */
+/* The outer container that hides overflow */
 .associates-logo-container {
   display: flex;
   justify-content: center;
-  overflow-x: clip; /* Prevents overflow without creating a scrollbar. */
+  overflow-x: clip;
 }
 
-.associates-logo-layout-container {
+/* 
+   UPDATED: We apply the flex layout and gap to BOTH 
+   the partners container and the new clients container 
+*/
+.associates-logo-layout-container,
+.clients-logo-layout-container {
   display: flex;
   gap: 4.75rem;
   align-items: center;
@@ -2627,7 +2718,6 @@ li.is-open > .sub-menu-banner {
 }
 .site-search-widget--wide-viewport {
   display: none;
-  margin-left: 2rem;
   margin-right: 1rem;
 }
 
@@ -2719,22 +2809,8 @@ li.is-open > .sub-menu-banner {
   font-size: 2rem;
 }
 
-/* --- LOGO CAROUSEL --- */
-.associates-logo-container {
-  display: flex;
-  align-items: center;
-  overflow: visible;
-  justify-content: center;
-  gap: 4.75rem;
-}
-
-.associates-logo-container img {
-  flex-shrink: 0; /* Prevents logos from shrinking to fit the container. */
-  max-width: none;
-  height: 3.2rem;
-}
-
-/* Mobile: Overrides to enable horizontal scrolling. */
+/* --- LOGO CAROUSEL MOBILE SCROLL --- */
+/* Mobile: Overrides to enable horizontal scrolling for BOTH containers. */
 @media (max-width: 767px) {
   .associates-logo-container {
     justify-content: flex-start; /* Aligns logos to the left to start the scroll. */
