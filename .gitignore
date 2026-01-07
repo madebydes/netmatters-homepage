@@ -1,4 +1,4 @@
-# Environment variables - NEVER commit these
+# Environment variables 
 .env
 
 # IDE and editor files
@@ -20,5 +20,4 @@ vendor/
 *.log
 error_log
 
-# Compiled CSS map (optional - can be committed)
-# dist/style.css.map
+

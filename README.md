@@ -1,67 +1,128 @@
-# Netmatters Homepage
+# Netmatters Homepage Clone
 
-## Overview
+A PHP conversion of the Netmatters website homepage with database integration.
 
-This project is a modernised refactor of the original Netmatters homepage codebase. The update focuses on:
+## Features
 
-- Using Sass **@use** / **@forward** module system (no `@import`).
-- Centralised semantic color variables written in **HSL** for easier theming and accessibility.
-- Reorganised SCSS into a clearer app structure with `globals`, `layout`, `util` folders.
-- Leaving `dist/` (compiled assets) untouched so you can control when to rebuild.
+- ✅ Responsive design matching the original Netmatters website
+- ✅ PHP includes for reusable components (header, footer, sidebar, etc.)
+- ✅ MySQL database integration for news posts
+- ✅ Contact page with form validation (client-side and server-side)
+- ✅ Contact form submissions stored in database
+- ✅ SCSS compilation with modular architecture
 
-> Note: This README was added as part of a professional update to my first attempt at bulding. It documents the new structure and how to build.
+## Requirements
 
----
+- PHP 7.4+ (PHP 8.0+ recommended)
+- MySQL 5.7+ or MariaDB 10.3+
+- Apache/Nginx web server with mod_rewrite
+- XAMPP, WAMP, MAMP, or similar local development environment
 
-## Project structure (important paths)
+## Installation
+
+### 1. Clone/Copy Files
+
+Copy the project files to your web server's document root:
+- XAMPP: `C:\xampp\htdocs\netmatters-homepage`
+- MAMP: `/Applications/MAMP/htdocs/netmatters-homepage`
+
+### 2. Create Database
+
+1. Open phpMyAdmin (http://localhost/phpmyadmin)
+2. Create a new database named `netmatters`
+3. Import `database/schema.sql` to create tables and seed data
+
+### 3. Configure Environment
+
+1. Copy `.env.example` to `.env`
+2. Update database credentials if needed:
+
 ```
-sample-project/
-├─ dist/ # Compiled CSS and other build artifacts (untouched)
-├─ index.html
-├─ app/
-│ └─ scss/
-│ ├─ style.scss # Entry point (uses @use to load modules)
-│ ├─ globals/
-│ │ ├─ \_colors.scss # Semantic CSS custom properties (HSL)
-│ │ ├─ \_typography.scss
-│ │ ├─ \_boilerplate.scss
-│ │ ├─ \_variables.scss # Non-colour tokens (spacing, z-index, transitions)
-│ │ └─ \_index.scss # @forward all globals
-│ ├─ layout/
-│ │ ├─ \_header.scss
-│ │ ├─ \_footer.scss
-│ │ ├─ ... # other layout partials
-│ │ └─ \_index.scss
-│ └─ util/
-│ ├─ \_utilities.scss
-│ ├─ \_mobile-fixes.scss
-│ └─ \_index.scss
-├─ img/
-└─ fonts/
+DB_HOST=localhost
+DB_NAME=netmatters
+DB_USER=root
+DB_PASS=
+DB_CHARSET=utf8mb4
 ```
-## Colours & tokens
 
-- All colours are defined as CSS custom properties (HSL) in `app/scss/globals/_colors.scss` using semantic names such as:
-  - `--background-color`
-  - `--text-color`
-  - `--primary-color`, `--secondary-color`, `--accent-color`
-  - `--muted-*`, `--neutral-*`
-- Each HSL variable is commented with the original hex value for reference.
-- Non-colour design tokens (spacing, z-index, transition durations) are in `app/scss/globals/_variables.scss` as SCSS variables — these are intentionally kept as SCSS tokens so they can be used in calculation and mixins.
+### 4. Add Office Images (for Contact Page)
 
-## Sass module usage
+Create the folder `img/offices/` and add:
+- `cambridge.jpg`
+- `wymondham.jpg`
+- `great-yarmouth.jpg`
 
-- The `style.scss` entry uses `@use` to bring globals and the forwarded `_index.scss` files from layout/util. This avoids polluting the global namespace and follows modern best practices.
+### 5. Access the Site
 
-## How colours were migrated
+- Homepage: http://localhost/netmatters-homepage/
+- Contact: http://localhost/netmatters-homepage/contact-us.php
 
-- Hex colours found in the original SCSS were converted to HSL and mapped to readible names.
-- Source SCSS partials in `app/scss/layout` and `app/scss/util` were updated to use `var(--semantic-name)` where possible. If no semantic mapping was available, a fallback `var(--color-<hex>)` pattern was used.
+## Project Structure
 
-## License & contact
+```
+netmatters-homepage/
+├── app/
+│   ├── js/                  # JavaScript files
+│   │   ├── banner.js
+│   │   ├── contact.js       # Contact form validation
+│   │   ├── cookies.js
+│   │   ├── header.js
+│   │   ├── partners.js
+│   │   ├── sidebar.js
+│   │   └── sticky-header.js
+│   └── scss/
+│       ├── globals/         # Variables, colors, mixins
+│       ├── layout/          # Component styles
+│       └── style.scss       # Main stylesheet
+├── classes/
+│   ├── Contact.php          # Contact form handling
+│   ├── Database.php         # Database singleton
+│   └── News.php             # News posts model
+├── config/
+│   ├── database.php         # DB configuration
+│   └── init.php             # Application bootstrap
+├── database/
+│   └── schema.sql           # Database schema & seed data
+├── dist/
+│   └── style.css            # Compiled CSS
+├── fonts/
+├── img/
+├── includes/
+│   ├── cookies.php
+│   ├── footer.php
+│   ├── head.php
+│   ├── header.php
+│   ├── scripts.php
+│   └── sidebar.php
+├── .env.example
+├── contact-us.php           # Contact page
+└── index.php                # Homepage
+```
 
-This project is dedicated to the public domain under The Unlicense. It is free for anyone to use, modify, distribute, and sublicense for any purpose without restriction.
+## Database Tables
 
-Full Unlicense text is included in the LICENSE file at the project root.
+### news_posts
+Stores news/blog posts displayed on the homepage.
 
----
+### contact_submissions
+Stores contact form submissions with fields:
+- name, email, phone, company, message
+- marketing_consent
+- ip_address, submitted_at
+
+## SCSS Compilation
+
+If you need to modify styles:
+
+1. Install Live Sass Compiler in VS Code, or
+2. Run: `sass --watch app/scss/style.scss:dist/style.css`
+
+## Testing
+
+1. Visit the homepage - news posts should load from the database
+2. Visit contact page - form validation should work
+3. Submit a contact form - check phpMyAdmin for new entries
+
+## License
+
+Educational project - Netmatters branding belongs to Netmatters Ltd.

@@ -47,6 +47,9 @@
   --neutral-31: hsl(217, 90.9%, 61.4%); /* #4387f6 */
   --neutral-32: hsl(233, 4.1%, 61.6%); /* #999aa1 */
   --neutral-33: hsl(0, 0%, 80%); /* #cccccc */
+  /* Contact page colors */
+  --contact-green: hsl(101, 49%, 53%); /* #6cc24a - matches phone numbers */
+  --contact-green-hover: hsl(101, 49%, 45%); /* darker on hover */
 }
 
 /* _typography.scss
@@ -56,7 +59,7 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-family: Poppins, sans-serif;
   line-height: 1.5;
 }
 
@@ -737,7 +740,6 @@ body.menu-is-active #container::after {
     display: none;
   }
 }
-/* <--- ADD THIS LINE */
 /* app/scss/layout/_clients.scss */
 .clients {
   margin-top: 4rem;
@@ -860,6 +862,612 @@ body.menu-is-active #container::after {
 
 .clients__pop-up-link--yellow:hover {
   background-color: var(--neutral-18); /* Often same on hover or slightly darker */
+}
+
+/* style.scss - entrypoint
+   Import via: sass app/scss/style.scss dist/style.css
+*/
+/* ===========================================
+   CONTACT PAGE STYLES
+   Matching Netmatters original design
+   =========================================== */
+/* ===========================================
+   BREADCRUMB
+   =========================================== */
+.breadcrumb-container {
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+  padding: 14px 0 13px;
+  background: #fff;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+.breadcrumb__link {
+  color: #6c4a89;
+  text-decoration: none;
+}
+.breadcrumb__link:hover {
+  text-decoration: underline;
+}
+.breadcrumb__separator {
+  color: #999;
+}
+.breadcrumb__current {
+  color: #666;
+}
+
+/* ===========================================
+   OFFICES SECTION
+   =========================================== */
+.offices {
+  padding: 2.5rem 0 3rem;
+  background: rgba(255, 255, 255, 0.4);
+}
+.offices__title {
+  font-size: 2.25rem;
+  font-weight: 300;
+  color: #333;
+  margin: 0 0 2rem;
+}
+.offices__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .offices__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .offices__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===========================================
+   OFFICE CARD
+   =========================================== */
+.office-card {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+}
+.office-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+.office-card__image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #e9e9e9;
+}
+.office-card__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.office-card__content {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.office-card__name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.75rem;
+}
+.office-card__address {
+  font-style: normal;
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+.office-card__phone {
+  display: block;
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: #926fb1;
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  letter-spacing: 1px;
+}
+.office-card__phone:hover {
+  color: #7e43b3;
+}
+.office-card__btn {
+  display: inline-block;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #fff;
+  background: #926fb1;
+  border: 1px solid #926fb1;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+.office-card__btn:hover {
+  text-decoration: none;
+  background: #7e57a0;
+  border-color: #735093;
+}
+
+/* ===========================================
+   CONTACT SECTION
+   =========================================== */
+.contact {
+  padding: 0 0 3rem;
+  background: #fff;
+}
+.contact__grid {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 992px) {
+  .contact__grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2.5rem;
+  }
+}
+.contact__form-wrapper {
+  background: #e6e7e9;
+  border-radius: 10px;
+  padding: 30px;
+}
+.contact__info {
+  padding: 0.5rem 0;
+}
+
+/* ===========================================
+   CONTACT FORM
+   =========================================== */
+.contact-form__row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+@media (min-width: 576px) {
+  .contact-form__row {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+.contact-form__footer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* ===========================================
+   FORM ELEMENTS
+   =========================================== */
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group--checkbox {
+  margin-bottom: 1rem;
+}
+.form-group--error .form-input,
+.form-group--error .form-textarea {
+  border-color: #c00;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #c00;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #926fb1;
+  box-shadow: 0 0 0 2px rgba(146, 111, 177, 0.1);
+}
+.form-input::-moz-placeholder, .form-textarea::-moz-placeholder {
+  color: #999;
+}
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #999;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  display: block;
+  font-size: 0.75rem;
+  color: #c00;
+  margin-top: 0.25rem;
+}
+
+/* Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.form-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.form-checkbox:checked + .checkbox-custom {
+  background: #6c4a89;
+  border-color: #6c4a89;
+}
+.form-checkbox:checked + .checkbox-custom::after {
+  opacity: 1;
+  transform: rotate(45deg) scale(1);
+}
+.form-checkbox:focus + .checkbox-custom {
+  box-shadow: 0 0 0 2px rgba(108, 74, 137, 0.2);
+}
+
+.checkbox-custom {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  background: #fff;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+.checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  opacity: 0;
+  transform: rotate(45deg) scale(0);
+  transition: all 0.2s ease;
+}
+
+.checkbox-text {
+  color: #333;
+  font-weight: 500;
+}
+.checkbox-text a {
+  color: #333;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.checkbox-text a:hover {
+  text-decoration: none;
+}
+
+/* reCAPTCHA text */
+.form-recaptcha {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0.75rem 0;
+}
+.form-recaptcha a {
+  color: #999;
+  text-decoration: underline;
+}
+.form-recaptcha a:hover {
+  text-decoration: none;
+}
+
+/* Button - scoped to contact form to avoid conflicts */
+.contact-form .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.contact-form .btn--primary {
+  color: #fff;
+  background: #333645;
+  border-color: #333645;
+}
+.contact-form .btn--primary:hover {
+  background: #22242e;
+  background-color: #191a22;
+}
+
+.form-note {
+  font-size: 0.8125rem;
+  color: #666;
+  margin-left: auto;
+}
+.form-note .required {
+  color: #c00;
+}
+
+/* ===========================================
+   CONTACT INFO (Right Column)
+   =========================================== */
+.contact-info__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.5rem;
+}
+
+.contact-info__email {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #926fb1;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+.contact-info__email:hover {
+  text-decoration: underline;
+}
+
+.contact-info__hours {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 1.25rem;
+}
+
+/* ===========================================
+   ACCORDION (Out of Hours)
+   =========================================== */
+.accordion-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: #333;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 1rem;
+  padding-bottom: 2px;
+}
+.accordion-trigger__text {
+  text-decoration: none;
+}
+.accordion-trigger__arrow {
+  transition: transform 0.3s ease;
+}
+.accordion-trigger__arrow .icon {
+  font-size: 0.625rem;
+  color: #333;
+}
+.accordion-trigger--active .accordion-trigger__arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.7;
+}
+.accordion-content[hidden] {
+  display: none !important;
+}
+.accordion-content p {
+  margin: 0 0 1rem;
+}
+.accordion-content__hours {
+  margin-bottom: 1rem;
+}
+.accordion-content__hours .hours-row {
+  margin-bottom: 0.25rem;
+}
+.accordion-content__hours strong {
+  color: #333;
+  font-weight: 700;
+}
+
+/* ===========================================
+   ALERTS
+   =========================================== */
+.alert {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+}
+.alert strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.alert p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+.alert--success {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+.alert--error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+/* _cookies.scss */
+.cookie-consent, .cookie-settings {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.cookie-consent.hidden, .hidden.cookie-settings {
+  display: none;
+}
+.cookie-consent__dialog {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  max-width: 500px;
+  width: 100%;
+  text-align: left;
+}
+.cookie-consent__header {
+  padding: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.cookie-consent__header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+.cookie-consent__body {
+  padding: 25px 20px;
+}
+.cookie-consent__body p {
+  margin: 0 35px;
+  line-height: 1.85;
+  color: #666;
+  font-size: 0.95rem;
+}
+.cookie-consent__body a {
+  color: #926fb1;
+  text-decoration: underline;
+}
+.cookie-consent__body a:hover {
+  color: #79539a;
+}
+.cookie-consent__footer {
+  padding: 20px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.cookie-consent__footer .btn {
+  padding: 12px 24px;
+  border-radius: 3px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border: none;
+}
+.cookie-consent__footer .btn--settings {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.cookie-consent__footer .btn--settings:hover {
+  background-color: #d0d0d0;
+}
+.cookie-consent__footer .btn--accept, .cookie-consent__footer .btn--save-settings {
+  background-color: #926fb1;
+  color: #fff;
+}
+.cookie-consent__footer .btn--accept:hover, .cookie-consent__footer .btn--save-settings:hover {
+  background-color: #79539a;
+}
+
+/* Settings Panel specific overrides */
+.cookie-settings {
+  overflow-y: auto;
+  /* Toggle Switches */
+}
+.cookie-settings__dialog {
+  max-width: 800px;
+}
+.cookie-settings .cookie-setting-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.cookie-settings .cookie-setting-item__text {
+  padding-right: 20px;
+}
+.cookie-settings .cookie-setting-item__text h4 {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+}
+.cookie-settings .cookie-setting-item__text p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+.cookie-settings .cookie-toggle {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.cookie-settings .cookie-toggle__checkbox {
+  display: none;
+}
+.cookie-settings .cookie-toggle .btn {
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  background: #f5f5f5;
+  color: #999;
+}
+.cookie-settings .cookie-toggle__checkbox:checked + label .btn--enable {
+  background: #926fb1;
+  color: white;
 }
 
 .footer {
@@ -2186,135 +2794,6 @@ blockquote {
 
 .welcome__button-link--trustpilot:hover {
   background-color: var(--muted-1);
-}
-
-/* _cookies.scss */
-.cookie-consent, .cookie-settings {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 2000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-.cookie-consent.hidden, .hidden.cookie-settings {
-  display: none;
-}
-.cookie-consent__dialog {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-  max-width: 500px;
-  width: 100%;
-  text-align: left;
-}
-.cookie-consent__header {
-  padding: 20px;
-  border-bottom: 1px solid #e5e5e5;
-}
-.cookie-consent__header h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #333;
-}
-.cookie-consent__body {
-  padding: 25px 20px;
-}
-.cookie-consent__body p {
-  margin: 0 35px;
-  line-height: 1.85;
-  color: #666;
-  font-size: 0.95rem;
-}
-.cookie-consent__body a {
-  color: #926fb1;
-  text-decoration: underline;
-}
-.cookie-consent__body a:hover {
-  color: #79539a;
-}
-.cookie-consent__footer {
-  padding: 20px;
-  text-align: right;
-  border-top: 1px solid #e5e5e5;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.cookie-consent__footer .btn {
-  padding: 12px 24px;
-  border-radius: 3px;
-  font-size: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  border: none;
-}
-.cookie-consent__footer .btn--settings {
-  background-color: #e0e0e0;
-  color: #333;
-}
-.cookie-consent__footer .btn--settings:hover {
-  background-color: #d0d0d0;
-}
-.cookie-consent__footer .btn--accept, .cookie-consent__footer .btn--save-settings {
-  background-color: #926fb1;
-  color: #fff;
-}
-.cookie-consent__footer .btn--accept:hover, .cookie-consent__footer .btn--save-settings:hover {
-  background-color: #79539a;
-}
-
-/* Settings Panel specific overrides */
-.cookie-settings {
-  overflow-y: auto;
-  /* Toggle Switches */
-}
-.cookie-settings__dialog {
-  max-width: 800px;
-}
-.cookie-settings .cookie-setting-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-.cookie-settings .cookie-setting-item__text {
-  padding-right: 20px;
-}
-.cookie-settings .cookie-setting-item__text h4 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-}
-.cookie-settings .cookie-setting-item__text p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-.cookie-settings .cookie-toggle {
-  display: flex;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-}
-.cookie-settings .cookie-toggle__checkbox {
-  display: none;
-}
-.cookie-settings .cookie-toggle .btn {
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  background: #f5f5f5;
-  color: #999;
-}
-.cookie-settings .cookie-toggle__checkbox:checked + label .btn--enable {
-  background: #926fb1;
-  color: white;
 }
 
 /* util _index.scss  */

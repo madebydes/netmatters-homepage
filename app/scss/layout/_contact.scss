@@ -1,0 +1,528 @@
+@use "../globals" as *;
+
+/* ===========================================
+   CONTACT PAGE STYLES
+   Matching Netmatters original design
+   =========================================== */
+
+/* ===========================================
+   BREADCRUMB
+   =========================================== */
+
+.breadcrumb-container {
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.1);
+  padding: 14px 0 13px;
+  background: #fff;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+
+  &__link {
+    color: #6c4a89;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__separator {
+    color: #999;
+  }
+
+  &__current {
+    color: #666;
+  }
+}
+
+/* ===========================================
+   OFFICES SECTION
+   =========================================== */
+
+.offices {
+  padding: 2.5rem 0 3rem;
+  background: #fff6;
+
+  &__title {
+    font-size: 2.25rem;
+    font-weight: 300;
+    color: #333;
+    margin: 0 0 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+/* ===========================================
+   OFFICE CARD
+   =========================================== */
+
+.office-card {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: 0 3px 35px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  &__image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #e9e9e9;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  &__name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 0.75rem;
+  }
+
+  &__address {
+    font-style: normal;
+    font-size: 0.875rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__phone {
+    display: block;
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: #926fb1;
+    text-decoration: none;
+    margin-bottom: 1.25rem;
+    letter-spacing: 1px;
+
+    &:hover {
+      color: #7e43b3;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background: #926fb1;
+    border: 1px solid #926fb1;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      text-decoration: none;
+      background: #7e57a0;
+      border-color: #735093;
+    }
+  }
+}
+
+/* ===========================================
+   CONTACT SECTION
+   =========================================== */
+
+.contact {
+  padding: 0 0 3rem;
+  background: #fff;
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__form-wrapper {
+    background: #e6e7e9;
+    border-radius: 10px;
+    padding: 30px;
+  }
+
+  &__info {
+    padding: 0.5rem 0;
+  }
+}
+
+/* ===========================================
+   CONTACT FORM
+   =========================================== */
+
+.contact-form {
+  &__row {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 0;
+
+    @media (min-width: 576px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
+/* ===========================================
+   FORM ELEMENTS
+   =========================================== */
+
+.form-group {
+  margin-bottom: 1rem;
+
+  &--checkbox {
+    margin-bottom: 1rem;
+  }
+
+  &--error {
+    .form-input,
+    .form-textarea {
+      border-color: #c00;
+    }
+  }
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #c00;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #333;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: #926fb1;
+    box-shadow: 0 0 0 2px rgba(146, 111, 177, 0.1);
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  display: block;
+  font-size: 0.75rem;
+  color: #c00;
+  margin-top: 0.25rem;
+}
+
+/* Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.form-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + .checkbox-custom {
+    background: #6c4a89;
+    border-color: #6c4a89;
+
+    &::after {
+      opacity: 1;
+      transform: rotate(45deg) scale(1);
+    }
+  }
+
+  &:focus + .checkbox-custom {
+    box-shadow: 0 0 0 2px rgba(108, 74, 137, 0.2);
+  }
+}
+
+.checkbox-custom {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #333;
+  border-radius: 3px;
+  background: #fff;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all 0.2s ease;
+  }
+}
+
+.checkbox-text {
+  color: #333;
+  font-weight: 500;
+
+  a {
+    color: #333;
+    font-weight: 700;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* reCAPTCHA text */
+.form-recaptcha {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 0.75rem 0;
+
+  a {
+    color: #999;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+/* Button - scoped to contact form to avoid conflicts */
+.contact-form .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &--primary {
+    color: #fff;
+    background: #333645;
+    border-color: #333645;
+
+    &:hover {
+      background: #22242e;
+      background-color: #191a22;
+    }
+  }
+}
+
+.form-note {
+  font-size: 0.8125rem;
+  color: #666;
+  margin-left: auto;
+
+  .required {
+    color: #c00;
+  }
+}
+
+/* ===========================================
+   CONTACT INFO (Right Column)
+   =========================================== */
+
+.contact-info__label {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.5rem;
+}
+
+.contact-info__email {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #926fb1;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.contact-info__hours {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 1.25rem;
+}
+
+/* ===========================================
+   ACCORDION (Out of Hours)
+   =========================================== */
+
+.accordion-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: inherit;
+  color: #333;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  text-align: left;
+  margin-bottom: 1rem;
+  padding-bottom: 2px;
+
+  &__text {
+    text-decoration: none;
+  }
+
+  &__arrow {
+    transition: transform 0.3s ease;
+
+    .icon {
+      font-size: 0.625rem;
+      color: #333;
+    }
+  }
+
+  &--active &__arrow {
+    transform: rotate(180deg);
+  }
+}
+
+.accordion-content {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.7;
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  p {
+    margin: 0 0 1rem;
+  }
+
+  &__hours {
+    margin-bottom: 1rem;
+
+    .hours-row {
+      margin-bottom: 0.25rem;
+    }
+
+    strong {
+      color: #333;
+      font-weight: 700;
+    }
+  }
+}
+
+/* ===========================================
+   ALERTS
+   =========================================== */
+
+.alert {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.25rem;
+
+  strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  &--success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+  }
+
+  &--error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+  }
+}
